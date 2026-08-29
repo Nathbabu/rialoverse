@@ -1511,7 +1511,30 @@ function generateAutonomousLatchAnswer(query) {
       "👉 Visit the [dApps Tab](#dapps) to search, filter by sector, and launch all 165+ live applications!";
   }
 
-  // 8. General Rialo Overview
+  // 8. EXACT TARGET: Quiz Games & Leaderboard Archive
+  if (q.includes("quiz") || q.includes("round") || q.includes("nathbabu") || q.includes("keinn") || q.includes("vangle") || q.includes("winner") || q.includes("champion") || q.includes("leaderboard") || q.includes("top builder")) {
+    return "🧠 **Verse AI Guide: Quiz Games & Community Leaderboard**\n\n" +
+      "Rialo hosts weekly official tech quizzes on Discord #quiz (30 official rounds archived from Jan 2 to Aug 28, 2026):\n\n" +
+      "• **Latest Round 30 (August 28, 2026):**\n" +
+      "  - 🥇 1st: **@KeinnXbt**\n" +
+      "  - 🥈 2nd: **@Vangle**\n" +
+      "  - 🥉 3rd: **@Mahershi**\n\n" +
+      "• **Community Highlights:**\n" +
+      "  - **@NathBabu** (Architect of RialoVerse) scored a **Top 10 (Rank 9)** finish in **Round 27 on July 3, 2026**.\n" +
+      "  - **Top Shipped Builders:** Yusoof4all (4 dApps), AMR70234 (4 dApps), Elias (3 dApps), Kingxfn (3 dApps), Iblamehsan (3 dApps).\n\n" +
+      "👉 Visit the [Events & Leaderboard Tabs](#events) to browse all 30 rounds and dynamic rankings!";
+  }
+
+  // 9. EXACT TARGET: Community Spotlight / Members of the Week
+  if (q.includes("spotlight") || q.includes("member") || q.includes("week") || q.includes("regional") || q.includes("community")) {
+    return "🌟 **Verse AI Guide: Community Spotlight & Members of the Week**\n\n" +
+      "Rialo recognizes 15 top regional community champions across the globe every week (9 official editions recorded):\n\n" +
+      "• **Latest Edition (August 24, 2026):** Features Azadsx3, Burak33b, Drakon62, Zingxoro, and regional ambassadors.\n" +
+      "• **Previous Editions:** Complete photographic archives available for Aug 17, Aug 10, Aug 3, Jul 26, Jul 21, Jul 12, Jul 5, and Jun 28.\n\n" +
+      "👉 Visit the [Events Tab](#events) to view regional portraits and contributor details!";
+  }
+
+  // 10. General Rialo Overview
   if (q.includes("what is rialo") || q.includes("about rialo") || q.includes("speed") || q.includes("privacy") || q.includes("layer 1") || q.includes("why rialo") || q.includes("rialo network")) {
     return "⚡ **Verse AI Guide: What is Rialo Network?**\n\n" +
       "Rialo is a high-speed Layer-1 blockchain engineered by Subzero Labs specifically for autonomous AI agents and privacy-preserving dApps.\n\n" +
