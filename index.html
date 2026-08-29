@@ -183,6 +183,37 @@
       animation: cursorBlink 0.7s infinite;
     }
 
+  
+    @keyframes aiBlockCascade {
+      0% {
+        opacity: 0;
+        transform: translateY(8px) scale(0.99);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .ai-block-stream {
+      animation: aiBlockCascade 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      will-change: transform, opacity;
+    }
+    .typing-cursor {
+      display: inline-block;
+      width: 6px;
+      height: 14px;
+      background: #205446;
+      border-radius: 2px;
+      margin-left: 3px;
+      vertical-align: middle;
+      box-shadow: 0 0 8px rgba(32, 84, 70, 0.6);
+      animation: cursorPulse 0.65s ease-in-out infinite alternate;
+    }
+    @keyframes cursorPulse {
+      0% { opacity: 0.2; transform: scaleY(0.85); }
+      100% { opacity: 1; transform: scaleY(1.1); box-shadow: 0 0 12px rgba(32, 84, 70, 0.9); }
+    }
+
   </style>
   <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>

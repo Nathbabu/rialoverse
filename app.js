@@ -1110,28 +1110,102 @@ function copyAssistantMessage(btn) {
   }
 }
 
-// Typewriter Streaming Animation for AI responses
+// ══════════════════════════════════════════════════════
+// ULTRA-SMOOTH BLOCK & TOKEN STREAMING ENGINE
+// ══════════════════════════════════════════════════════
 function typewriteResponse(targetElement, fullHtml, fullRawText, onComplete) {
-  var words = fullHtml.split(" ");
-  var currentIndex = 0;
-  targetElement.innerHTML = '<span class="typing-cursor"></span>';
-
   var thread = document.getElementById("chatThread");
-  
-  // High-speed smooth typing
-  var interval = setInterval(function() {
-    if (currentIndex < words.length) {
-      currentIndex += 2; // 2 words at a time for natural, brisk cadence
-      var currentSlice = words.slice(0, currentIndex).join(" ");
-      targetElement.innerHTML = currentSlice + '<span class="typing-cursor"></span>';
-      if (thread) thread.scrollTop = thread.scrollHeight;
-    } else {
-      clearInterval(interval);
+  targetElement.innerHTML = "";
+
+  // Temporary container to parse semantic HTML blocks
+  var temp = document.createElement("div");
+  temp.innerHTML = fullHtml;
+  var nodes = Array.from(temp.childNodes);
+
+  if (nodes.length === 0) {
+    targetElement.innerHTML = fullHtml;
+    if (onComplete) onComplete();
+    return;
+  }
+
+  var blockIndex = 0;
+
+  function streamNextBlock() {
+    if (blockIndex >= nodes.length) {
+      // Finished all blocks: ensure final HTML is clean and formatted
       targetElement.innerHTML = fullHtml;
-      if (thread) thread.scrollTop = thread.scrollHeight;
+      if (thread) {
+        thread.scrollTo({ top: thread.scrollHeight, behavior: "smooth" });
+      }
       if (onComplete) onComplete();
+      return;
     }
-  }, 18);
+
+    var node = nodes[blockIndex];
+    blockIndex++;
+
+    // For Code Blocks, Headers, Callout Boxes or Tables -> Cascade block smoothly
+    if (node.nodeType === Node.ELEMENT_NODE && (
+        node.tagName === "PRE" || 
+        node.tagName === "TABLE" || 
+        node.tagName === "H3" || 
+        node.tagName === "H4" ||
+        node.classList.contains("bg-") ||
+        node.querySelector("pre")
+    )) {
+      var blockWrapper = document.createElement("div");
+      blockWrapper.className = "ai-block-stream my-1.5";
+      blockWrapper.appendChild(node.cloneNode(true));
+      targetElement.appendChild(blockWrapper);
+
+      if (thread) {
+        thread.scrollTo({ top: thread.scrollHeight, behavior: "smooth" });
+      }
+      setTimeout(streamNextBlock, 60);
+      return;
+    }
+
+    // For text paragraphs and list items -> Smooth fluid token streaming
+    var blockWrapper = document.createElement("div");
+    blockWrapper.className = "ai-block-stream my-1";
+    targetElement.appendChild(blockWrapper);
+
+    var rawInnerHtml = node.nodeType === Node.ELEMENT_NODE ? node.innerHTML : node.textContent;
+    var tokens = rawInnerHtml.split(/(\s+)/); // Keep spaces intact for natural rendering
+    var tokenIdx = 0;
+
+    var cursor = document.createElement("span");
+    cursor.className = "typing-cursor";
+    blockWrapper.appendChild(cursor);
+
+    function streamTokens() {
+      if (tokenIdx < tokens.length) {
+        // Stream 2 tokens at a time for buttery smooth 60fps cadence
+        var chunk = (tokens[tokenIdx] || "") + (tokens[tokenIdx + 1] || "");
+        tokenIdx += 2;
+
+        var textSpan = document.createElement("span");
+        textSpan.innerHTML = chunk;
+        blockWrapper.insertBefore(textSpan, cursor);
+
+        if (thread && tokenIdx % 6 === 0) {
+          thread.scrollTop = thread.scrollHeight;
+        }
+
+        requestAnimationFrame(function() {
+          setTimeout(streamTokens, 16);
+        });
+      } else {
+        if (cursor && cursor.parentNode) cursor.remove();
+        if (thread) thread.scrollTop = thread.scrollHeight;
+        setTimeout(streamNextBlock, 40);
+      }
+    }
+
+    streamTokens();
+  }
+
+  streamNextBlock();
 }
 
 function appendChatMessage(role, text, saveToStorage, animate) {
