@@ -1221,7 +1221,7 @@ async function submitChatMessage() {
 
       var systemPrompt = 
         "You are Verse AI, the independent community AI assistant, ecosystem guide, and historical archive keeper for RialoVerse (rialoverse.com) — a community intelligence hub for Rialo Layer-1 Network (rialo.network) and Latch Protocol (onlatch.com / Subzero Labs).\n\n" +
-        "ECOSYSTEM SECTORS & DAPP RECOMMENDATION DATABASE (165+ Community Apps):\n" +
+        "ECOSYSTEM SECTORS & DAPP RECOMMENDATION DATABASE (Community Ecosystem Directory):\n" +
         "• Gaming, Racing & Betting:\n" +
         "  - Agent Grand Prix (AGP): Word-circuit AI agent racing with live parimutuel RP betting (agp.onlatch.com).\n" +
         "  - CyberRialo Combat Arena: Tactical PvP combat with 0.4s instant settlement (Shark Tank #1 Winner).\n" +
@@ -1423,7 +1423,7 @@ function generateAutonomousLatchAnswer(query) {
 
   // 7. EXACT TARGET: Top Verified Ecosystem dApps
   if (q.includes("dapp") || q.includes("app") || q.includes("verified") || q.includes("ecosystem") || q.includes("project") || q.includes("gaming") || q.includes("defi") || q.includes("olpa") || q.includes("dex")) {
-    return "📱 **Verse AI Guide: Top Verified Community dApps (165+ Total)**\n\n" +
+    return "📱 **Verse AI Guide: Top Verified Community dApps**\n\n" +
       "Here are top community-built applications across key sectors:\n\n" +
       "• **💎 DeFi & Derivatives:**\n" +
       "  - *OLPA DEX*: Event-native decentralized derivatives AMM ([olpadex.vercel.app](https://olpadex.vercel.app/)).\n" +
@@ -1458,7 +1458,7 @@ function generateAutonomousLatchAnswer(query) {
     "• *Testnet RPC & 20 RP faucet guide*\n" +
     "• *Retroactive Points & playground.rialo.io linking*\n" +
     "• *Agent Grand Prix (AGP) racing strategy*\n" +
-    "• *Shark Tank Winners & Top 165+ dApps*";
+    "• *Shark Tank Winners & Top ecosystem dApps*";
 }
 
 function escapeHtml(str) {
