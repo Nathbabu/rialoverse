@@ -1060,15 +1060,23 @@ function changeGeminiKeyPrompt() {
 }
 
 function removeGeminiKey() {
-  if (confirm("Disconnect and remove your Gemini API key from this browser? Verse AI will revert to the built-in offline knowledge engine.")) {
-    try {
-      localStorage.removeItem(GEMINI_STORAGE_KEY);
-      localStorage.removeItem(GEMINI_MODEL_KEY);
-      localStorage.removeItem(GEMINI_MODELS_LIST_KEY);
-      localStorage.removeItem(GEMINI_LAST_SYNC_KEY);
-    } catch(e){}
-    renderAiKeyControls();
-  }
+  showVerseConfirm({
+    title: "Disconnect Gemini API Key",
+    message: "Are you sure you want to remove your API key from this browser? Verse AI will smoothly revert to the built-in offline knowledge engine.",
+    icon: "🔑",
+    confirmText: "Disconnect Key",
+    isDanger: true,
+    onConfirm: function() {
+      try {
+        localStorage.removeItem(GEMINI_STORAGE_KEY);
+        localStorage.removeItem(GEMINI_MODEL_KEY);
+        localStorage.removeItem(GEMINI_MODELS_LIST_KEY);
+        localStorage.removeItem(GEMINI_LAST_SYNC_KEY);
+      } catch(e){}
+      renderAiKeyControls();
+      showVerseToast("API Key disconnected. Switched to Offline Built-in Mode.", "info");
+    }
+  });
 }
 
 function getStoredChatHistory() {
@@ -1094,25 +1102,33 @@ function saveChatMessageToStorage(role, text) {
 }
 
 function clearChatHistory() {
-  if (confirm("Are you sure you want to clear the entire chat history?")) {
-    try {
-      localStorage.removeItem(CHAT_HISTORY_STORAGE_KEY);
-    } catch(e) {}
-    aiConversationHistory = [];
-    var thread = document.getElementById("chatThread");
-    if (thread) {
-      thread.innerHTML = 
-        '<div class="p-5 rounded-2xl bg-white border border-black/[0.08] shadow-sm space-y-2.5">' +
-          '<div class="flex items-center gap-2 text-xs font-mono font-bold text-brand-pine">' +
-            '<span class="w-2.5 h-2.5 rounded-full bg-brand-pine"></span>' +
-            '<span>VERSE AI (COMMUNITY SENTINEL)</span>' +
-          '</div>' +
-          '<p class="text-sm text-brand-textMuted leading-relaxed">' +
-            'Chat history cleared. You can ask me anything about Rialo, Latch security policies, AGP racing strategies, or SDK code!' +
-          '</p>' +
-        '</div>';
+  showVerseConfirm({
+    title: "Clear Chat Conversation",
+    message: "Are you sure you want to clear the entire chat history? This will wipe the active conversation thread.",
+    icon: "🗑️",
+    confirmText: "Clear History",
+    isDanger: true,
+    onConfirm: function() {
+      try {
+        localStorage.removeItem(CHAT_HISTORY_STORAGE_KEY);
+      } catch(e) {}
+      aiConversationHistory = [];
+      var thread = document.getElementById("chatThread");
+      if (thread) {
+        thread.innerHTML = 
+          '<div class="p-5 rounded-2xl bg-white border border-black/[0.08] shadow-sm space-y-2.5">' +
+            '<div class="flex items-center gap-2 text-xs font-mono font-bold text-brand-pine">' +
+              '<span class="w-2.5 h-2.5 rounded-full bg-brand-pine"></span>' +
+              '<span>VERSE AI (COMMUNITY SENTINEL)</span>' +
+            '</div>' +
+            '<p class="text-sm text-brand-textMuted leading-relaxed">' +
+              'Chat history cleared. You can ask me anything about Rialo, Latch security policies, AGP racing strategies, or SDK code!' +
+            '</p>' +
+          '</div>';
+      }
+      showVerseToast("Chat history cleared cleanly!", "success");
     }
-  }
+  });
 }
 
 function loadSavedChatHistory() {
