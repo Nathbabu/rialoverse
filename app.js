@@ -1,3 +1,97 @@
+// ══════════════════════════════════════════════════════
+// LUXURY GLASSMORPHISM TOAST & CONFIRM MODAL SYSTEM
+// ══════════════════════════════════════════════════════
+function showVerseToast(message, type, duration) {
+  if (type === undefined) type = "success";
+  if (duration === undefined) duration = 3200;
+
+  var container = document.getElementById("verseToastContainer");
+  if (!container) return;
+
+  var toast = document.createElement("div");
+  toast.className = "pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-2xl shadow-xl border backdrop-blur-md transition-all duration-300 transform translate-y-4 opacity-0 text-xs font-mono font-bold select-none " +
+    (type === "error" ? "bg-rose-900/90 text-rose-100 border-rose-700/60 shadow-rose-950/20" :
+     type === "warning" ? "bg-amber-900/90 text-amber-100 border-amber-700/60 shadow-amber-950/20" :
+     type === "info" ? "bg-slate-900/90 text-slate-100 border-slate-700/60 shadow-slate-950/20" :
+     "bg-[#205446]/95 text-white border-emerald-500/40 shadow-emerald-950/20");
+
+  var iconMap = {
+    success: "✓",
+    error: "✕",
+    warning: "⚠️",
+    info: "⚡"
+  };
+
+  toast.innerHTML = 
+    '<span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs shrink-0">' + (iconMap[type] || "✓") + '</span>' +
+    '<span class="flex-1 leading-snug font-sans text-xs font-semibold">' + escapeHtml(message) + '</span>';
+
+  container.appendChild(toast);
+
+  requestAnimationFrame(function() {
+    toast.classList.remove("translate-y-4", "opacity-0");
+    toast.classList.add("translate-y-0", "opacity-100");
+  });
+
+  setTimeout(function() {
+    toast.classList.remove("translate-y-0", "opacity-100");
+    toast.classList.add("translate-y-2", "opacity-0");
+    setTimeout(function() { toast.remove(); }, 300);
+  }, duration);
+}
+
+function showVerseConfirm(options) {
+  var overlay = document.getElementById("verseModalOverlay");
+  var card = document.getElementById("verseModalCard");
+  var title = document.getElementById("verseModalTitle");
+  var msg = document.getElementById("verseModalMessage");
+  var icon = document.getElementById("verseModalIcon");
+  var confirmBtn = document.getElementById("verseModalConfirmBtn");
+  var cancelBtn = document.getElementById("verseModalCancelBtn");
+
+  if (!overlay || !card) {
+    if (confirm(options.message)) {
+      if (options.onConfirm) options.onConfirm();
+    }
+    return;
+  }
+
+  title.innerText = options.title || "Confirm Action";
+  msg.innerText = options.message || "Are you sure you want to proceed?";
+  icon.innerText = options.icon || "⚠️";
+  confirmBtn.innerText = options.confirmText || "Confirm";
+  
+  if (options.isDanger) {
+    confirmBtn.className = "px-4 py-2 rounded-xl text-xs font-mono font-bold text-white bg-rose-600 hover:bg-rose-700 active:scale-95 shadow-sm transition-all";
+    icon.className = "w-11 h-11 rounded-xl bg-rose-100 text-rose-900 border border-rose-200 flex items-center justify-center text-xl shrink-0 shadow-sm";
+  } else {
+    confirmBtn.className = "px-4 py-2 rounded-xl text-xs font-mono font-bold text-white bg-[#205446] hover:bg-[#184237] active:scale-95 shadow-sm transition-all";
+    icon.className = "w-11 h-11 rounded-xl bg-amber-100 text-amber-900 border border-amber-200 flex items-center justify-center text-xl shrink-0 shadow-sm";
+  }
+
+  function closeModal() {
+    overlay.classList.remove("opacity-100", "pointer-events-auto");
+    overlay.classList.add("opacity-0", "pointer-events-none");
+    card.classList.remove("scale-100");
+    card.classList.add("scale-95");
+  }
+
+  confirmBtn.onclick = function() {
+    closeModal();
+    if (options.onConfirm) options.onConfirm();
+  };
+
+  cancelBtn.onclick = closeModal;
+  overlay.onclick = function(e) {
+    if (e.target === overlay) closeModal();
+  };
+
+  overlay.classList.remove("opacity-0", "pointer-events-none");
+  overlay.classList.add("opacity-100", "pointer-events-auto");
+  card.classList.remove("scale-95");
+  card.classList.add("scale-100");
+}
+
 /* RIALOVERSE  -  Official Rialo Playground Cream & Pine Theme Engine */
 var allProjects = getSeedFallbackData();
 var filteredProjects = allProjects.slice();
@@ -48,23 +142,23 @@ async function addRialoToWallet() {
           blockExplorerUrls: ["https://explorer.testnet.rialo.io"]
         }]
       });
-      alert("✓ Rialo Testnet successfully added to your wallet!");
+      showVerseToast("✓ Rialo Testnet successfully added to your wallet!", "success");
     } catch (error) {
       if (error.code === 4001) {
-        alert("Network request was cancelled by user.");
+        showVerseToast("Network request was cancelled by user.", "info");
       } else {
-        alert("Could not add automatically: " + error.message);
+        showVerseToast("Could not add automatically: " + error.message, "error");
       }
     }
   } else {
-    alert("MetaMask not detected. Manual RPC: https://testnet.rialo.io/rpc (Chain ID: 9001)");
+    showVerseToast("MetaMask not detected. RPC: https://testnet.rialo.network", "warning");
   }
 }
 
 function copyText(str) {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(str).then(function() { 
-      alert("Copied to clipboard: " + str); 
+      showVerseToast("📋 Copied: " + str, "success"); 
     });
   } else {
     prompt("Copy parameter:", str);
@@ -103,7 +197,7 @@ function generateLatchPolicy() {
       ")\n\n" +
       "print(\"Safe Transaction Executed on Rialo:\", tx.tx_hash)";
   }
-  alert("✓ New Latch Policy & Scoped Token Generated for: " + role);
+  showVerseToast("✓ New Latch Policy & Scoped Token Generated for: " + role, "success");
 }
 
 function copyGeneratedLatchCode() {
@@ -841,7 +935,7 @@ async function discoverAndSelectBestModel(rawKey) {
 async function refreshGeminiModels() {
   var key = getStoredGeminiKey();
   if (!key) {
-    alert("No active API key to refresh. Please connect a key first.");
+    showVerseToast("No active API key to refresh. Connect a key first.", "warning");
     return;
   }
 
@@ -860,9 +954,9 @@ async function refreshGeminiModels() {
 
   if (result.success) {
     renderAiKeyControls();
-    alert("✅ Models Refreshed Successfully!\n\n• Active Model: " + result.model + "\n• Available Models: " + result.availableCount + "\n\nVerse AI is now using the newest live model from Google!");
+    showVerseToast("⚡ Models Refreshed: Using " + result.model + " (" + result.availableCount + " available)", "success", 4000);
   } else {
-    alert("⚠️ Model Refresh Notice:\n\n" + result.error);
+    showVerseToast("⚠️ Model Refresh: " + result.error, "warning", 4000);
   }
 }
 
