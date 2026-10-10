@@ -1,0 +1,21 @@
+# Dependencies (the agent intentionally has none)
+node_modules/
+
+# Secrets — never commit tokens
+.env
+.env.*
+*.token
+
+# Agent run artifacts (regenerated each run)
+agent/last-report.md
+
+# Internal spec: names a personal Discord account + describes a self-bot.
+# Keep it local; do not publish. Delete this line if you write a sanitized version.
+AI_AGENT_AND_PROJECT_SPEC.md
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+
+# Local development server
+serve.js

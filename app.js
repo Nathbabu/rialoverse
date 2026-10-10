@@ -124,7 +124,11 @@ function navigateTo(pageId) {
   if (pageId === "dapps") renderProjectDirectory();
   if (pageId === "leaderboard") renderLeaderboard();
   if (pageId === "analytics") renderAnalyticsView();
-  if (pageId === "events") renderSpotlightCards("all");
+  if (pageId === "events") {
+    if (typeof renderSharkTankCard === "function") renderSharkTankCard();
+    if (typeof renderCommunitySpotlight === "function") renderCommunitySpotlight();
+    if (typeof renderQuizChampions === "function") renderQuizChampions();
+  }
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -151,7 +155,7 @@ async function addRialoToWallet() {
       }
     }
   } else {
-    showVerseToast("MetaMask not detected. RPC: https://testnet.rialo.network", "warning");
+    showVerseToast("MetaMask not detected. RPC: https://testnet.rialo.io", "warning");
   }
 }
 
@@ -270,6 +274,47 @@ var sectorDatabase = {
   }
 };
 
+// Short display label for a long sector name, e.g. "DeFi, Prediction & Lending" -> "DeFi".
+function shortSectorName(sector) {
+  return String(sector).split(/[,&]/)[0].trim();
+}
+
+// Compute the 4 analytics metric cards live from the data — no hardcoded percentages.
+function updateAnalyticsMetrics(sectorCounts, sortedSectors, total) {
+  if (typeof document === "undefined") return;
+  var pct = function (c) { return Math.round((c / total) * 100); };
+  var set = function (id, txt) { var el = document.getElementById(id); if (el) el.textContent = txt; };
+
+  var top = sortedSectors[0];
+  set("metricNicheName", shortSectorName(top) + " (" + pct(sectorCounts[top]) + "%)");
+  set("metricNicheSub", sectorCounts[top] + " dApps in this sector");
+
+  // Trending = the sector with the most new projects, excluding the overall
+  // leader so this card adds information instead of repeating "Most built".
+  var newBySector = {};
+  allProjects.forEach(function (p) {
+    if (p.isNew) { var s = p.primarySector || top; newBySector[s] = (newBySector[s] || 0) + 1; }
+  });
+  var trend = Object.keys(newBySector)
+    .filter(function (s) { return s !== top; })
+    .sort(function (a, b) { return newBySector[b] - newBySector[a]; })[0];
+  if (trend) {
+    set("metricTrendName", shortSectorName(trend));
+    set("metricTrendSub", newBySector[trend] + " new projects added");
+  } else {
+    set("metricTrendName", shortSectorName(sortedSectors[1] || top));
+    set("metricTrendSub", "Recently active sector");
+  }
+
+  // Biggest gap = smallest sector (last after descending sort) = best opportunity.
+  var gap = sortedSectors[sortedSectors.length - 1];
+  set("metricGapName", shortSectorName(gap) + " (" + pct(sectorCounts[gap]) + "%)");
+  set("metricGapSub", sectorCounts[gap] + " dApps — room to build");
+
+  set("metricBuildersCount", uniqueBuilderCount());
+  set("metricBuildersSub", "shipping across " + total + " dApps");
+}
+
 function renderAnalyticsView() {
   var container = document.getElementById("categoryBarsContainer");
   if (!allProjects) return;
@@ -285,6 +330,8 @@ function renderAnalyticsView() {
 
   var total = allProjects.length || 1;
   var sortedSectors = Object.keys(sectorCounts).sort(function(a, b) { return sectorCounts[b] - sectorCounts[a]; });
+
+  updateAnalyticsMetrics(sectorCounts, sortedSectors, total);
 
   // 1. Render Right Side Progress Bars with Clickable Deep-Dive Modals
   if (container) {
@@ -585,10 +632,36 @@ function filterSharkTankWinners() {
 }
 
 
+// Count distinct builders across the whole dataset.
+function uniqueBuilderCount() {
+  var set = {};
+  allProjects.forEach(function (p) {
+    var k = p.builder ? (p.builder.username || p.builder.name || "") : "";
+    if (k) set[String(k).toLowerCase()] = true;
+  });
+  return Object.keys(set).length;
+}
+
+// Keep every displayed stat in sync with the real data — nothing hardcoded.
+function refreshCounts() {
+  if (typeof document === "undefined") return;
+  var n = allProjects.length;
+  var sp = document.getElementById("statProjects");
+  if (sp) sp.textContent = n;
+  document.querySelectorAll(".js-dapp-count").forEach(function (el) { el.textContent = n; });
+
+  var builders = uniqueBuilderCount();
+  var loves = allProjects.reduce(function (s, p) { return s + (p.loves || 0); }, 0);
+  var sb = document.getElementById("statBuilders"); if (sb) sb.textContent = builders;
+  var sl = document.getElementById("statLoves"); if (sl) sl.textContent = loves;
+  var rb = document.getElementById("rosterBuilderCount"); if (rb) rb.textContent = builders + " VERIFIED BUILDERS";
+}
+
 function renderAllViews() {
   renderSpotlightCards("all");
   renderAnalyticsView();
   if (typeof document === "undefined") return;
+  refreshCounts();
   renderProjectDirectory();
   renderLeaderboardView();
 }
@@ -726,13 +799,13 @@ function renderLeaderboardView() {
         "<div class=\"px-3 py-0.5 rounded-full bg-black/5 text-[#111214] font-mono text-[10px] font-bold border border-black/10\">🥈 #2 SILVER</div>" +
         "<img src=\"" + (b2.image || ("https://api.dicebear.com/7.x/identicon/svg?seed=" + b2.username)) + "\" class=\"w-16 h-16 rounded-full object-cover border-2 border-black/10\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + b2.username + "'\" />" +
         "<h3 class=\"text-sm font-bold text-[#111214]\">" + escapeHtml(b2.name) + "</h3>" +
-        "<div class=\"text-xs text-[#111214]Muted font-mono\">@" + escapeHtml(b2.username) + "</div>" +
+        "<div class=\"text-xs text-black/50 font-mono\">@" + escapeHtml(b2.username) + "</div>" +
         "<div class=\"text-xs font-mono font-bold text-[#205446]\">" + b2.projectsCount + " dApps · " + b2.totalLoves + " loves</div>" +
         "<button onclick=\"openBuilderModal('" + escapeHtml(b2.username) + "')\" class=\"text-xs text-[#111214] hover:underline pt-1 font-semibold\">View Profile</button>" +
       "</div>" +
-      "<div class=\"rp-card p-8 flex flex-col items-center text-center space-y-3 border-rialo-pine/40 bg-gradient-to-b from-emerald-50 to-[#F7F5F0] shadow-md\">" +
+      "<div class=\"rp-card p-8 flex flex-col items-center text-center space-y-3 border-[#205446]/40 bg-gradient-to-b from-emerald-50 to-[#F7F5F0] shadow-md\">" +
         "<div class=\"px-3.5 py-0.5 rounded-full bg-[#205446] hover:bg-[#184237] text-white font-mono text-[10px] font-black\">👑 #1 CHAMPION</div>" +
-        "<img src=\"" + (b1.image || ("https://api.dicebear.com/7.x/identicon/svg?seed=" + b1.username)) + "\" class=\"w-20 h-20 rounded-full object-cover border-2 border-rialo-pine shadow-sm\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + b1.username + "'\" />" +
+        "<img src=\"" + (b1.image || ("https://api.dicebear.com/7.x/identicon/svg?seed=" + b1.username)) + "\" class=\"w-20 h-20 rounded-full object-cover border-2 border-[#205446] shadow-sm\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + b1.username + "'\" />" +
         "<h3 class=\"text-base font-black text-[#111214]\">" + escapeHtml(b1.name) + "</h3>" +
         "<div class=\"text-xs text-[#205446] font-mono font-bold\">@" + escapeHtml(b1.username) + "</div>" +
         "<div class=\"text-sm font-mono font-black text-[#205446]\">" + b1.projectsCount + " dApps · " + b1.totalLoves + " loves</div>" +
@@ -742,7 +815,7 @@ function renderLeaderboardView() {
         "<div class=\"px-3 py-0.5 rounded-full bg-amber-800/10 text-amber-900 font-mono text-[10px] font-bold border border-amber-800/20\">🥉 #3 BRONZE</div>" +
         "<img src=\"" + (b3.image || ("https://api.dicebear.com/7.x/identicon/svg?seed=" + b3.username)) + "\" class=\"w-16 h-16 rounded-full object-cover border-2 border-black/10\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + b3.username + "'\" />" +
         "<h3 class=\"text-sm font-bold text-[#111214]\">" + escapeHtml(b3.name) + "</h3>" +
-        "<div class=\"text-xs text-[#111214]Muted font-mono\">@" + escapeHtml(b3.username) + "</div>" +
+        "<div class=\"text-xs text-black/50 font-mono\">@" + escapeHtml(b3.username) + "</div>" +
         "<div class=\"text-xs font-mono font-bold text-[#205446]\">" + b3.projectsCount + " dApps · " + b3.totalLoves + " loves</div>" +
         "<button onclick=\"openBuilderModal('" + escapeHtml(b3.username) + "')\" class=\"text-xs text-[#111214] hover:underline pt-1 font-semibold\">View Profile</button>" +
       "</div>";
@@ -753,11 +826,11 @@ function renderLeaderboardView() {
     rowsEl.innerHTML = sortedBuilders.map(function(b, idx) {
       return "<div class=\"flex items-center justify-between p-4 hover:bg-black/[0.02] transition-all text-xs\">" +
         "<div class=\"flex items-center gap-4 min-w-0\">" +
-          "<span class=\"font-mono font-bold w-6 text-center text-[#111214]Subtle\">#" + (idx + 1) + "</span>" +
+          "<span class=\"font-mono font-bold w-6 text-center text-black/40\">#" + (idx + 1) + "</span>" +
           "<img src=\"" + (b.image || ("https://api.dicebear.com/7.x/identicon/svg?seed=" + b.username)) + "\" class=\"w-9 h-9 rounded-full object-cover border border-black/10\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + b.username + "'\" />" +
           "<div class=\"truncate\">" +
             "<div class=\"font-bold text-[#111214] truncate cursor-pointer hover:text-[#205446]\" onclick=\"openBuilderModal('" + escapeHtml(b.username) + "')\">" + escapeHtml(b.name) + "</div>" +
-            "<div class=\"text-[11px] text-[#111214]Muted font-mono\">@" + escapeHtml(b.username) + "</div>" +
+            "<div class=\"text-[11px] text-black/50 font-mono\">@" + escapeHtml(b.username) + "</div>" +
           "</div>" +
         "</div>" +
         "<div class=\"flex items-center gap-5 text-right font-mono\">" +
@@ -788,12 +861,12 @@ function openBuilderModal(username) {
       "<div class=\"flex-1 min-w-0\">" +
         "<h2 class=\"text-lg font-black text-[#111214]\">" + escapeHtml(builder.name || username) + "</h2>" +
         "<div class=\"text-xs font-mono text-[#205446] font-bold\">@" + escapeHtml(builder.username || username) + "</div>" +
-        (builder.about ? "<p class=\"text-xs text-[#111214]Muted mt-2 p-3 rounded-xl bg-white border border-black/[0.06]\">" + escapeHtml(builder.about) + "</p>" : "") +
+        (builder.about ? "<p class=\"text-xs text-black/50 mt-2 p-3 rounded-xl bg-white border border-black/[0.06]\">" + escapeHtml(builder.about) + "</p>" : "") +
       "</div>" +
     "</div>" +
     "<div class=\"grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-white border border-black/[0.06] text-center font-mono text-xs shadow-sm\">" +
-      "<div><div class=\"text-[#111214]Subtle text-[10px]\">SHIPPED</div><div class=\"text-sm font-black text-[#111214]\">" + builderProjects.length + " dApps</div></div>" +
-      "<div><div class=\"text-[#111214]Subtle text-[10px]\">TOTAL LOVES</div><div class=\"text-sm font-black text-pink-600\">" + totalLoves + "</div></div>" +
+      "<div><div class=\"text-black/40 text-[10px]\">SHIPPED</div><div class=\"text-sm font-black text-[#111214]\">" + builderProjects.length + " dApps</div></div>" +
+      "<div><div class=\"text-black/40 text-[10px]\">TOTAL LOVES</div><div class=\"text-sm font-black text-pink-600\">" + totalLoves + "</div></div>" +
     "</div>" +
     "<div class=\"space-y-2\">" +
       "<div class=\"text-xs font-bold text-[#111214] uppercase tracking-wider\">Shipped Projects:</div>" +
@@ -812,13 +885,6 @@ function openBuilderModal(username) {
 function closeBuilderModal() {
   var modalEl = document.getElementById("builderModal");
   if (modalEl) modalEl.classList.add("hidden");
-}
-
-function askPreset(promptText) {
-  navigateTo("ai");
-  var input = document.getElementById("chatInput");
-  if (input) input.value = promptText;
-  submitChatMessage();
 }
 
 // ══════════════════════════════════════════════════════
@@ -890,14 +956,10 @@ async function discoverAndSelectBestModel(rawKey) {
         "gemini-2.0-flash",
         "gemini-2.5-flash",
         "gemini-2.0-flash-001",
-        "gemini-1.5-flash-latest",
-        "gemini-1.5-flash",
-        "gemini-2.0-pro",
+        "gemini-2.0-flash-lite",
+        "gemini-flash-latest",
         "gemini-2.5-pro",
-        "gemini-1.5-pro-latest",
-        "gemini-1.5-pro",
-        "gemini-1.5-flash-8b",
-        "gemini-pro"
+        "gemini-2.0-pro"
       ];
 
       var selectedModel = "";
@@ -1459,9 +1521,9 @@ async function submitChatMessage() {
         success = true;
       } else if (data.error) {
         console.warn("Primary model error:", data.error.message);
-        // Quick 1-step fallback to gemini-1.5-flash if model was invalid
-        if (cleanModel !== "gemini-1.5-flash") {
-          var fallbackUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + encodeURIComponent(key);
+        // Quick 1-step fallback to a current model if the selected one was invalid
+        if (cleanModel !== "gemini-2.0-flash") {
+          var fallbackUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + encodeURIComponent(key);
           var fbRes = await fetch(fallbackUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -1474,7 +1536,7 @@ async function submitChatMessage() {
           var fbData = await fbRes.json();
           if (fbRes.ok && fbData.candidates && fbData.candidates[0].content.parts[0].text) {
             replyText = fbData.candidates[0].content.parts[0].text;
-            localStorage.setItem(GEMINI_MODEL_KEY, "gemini-1.5-flash");
+            localStorage.setItem(GEMINI_MODEL_KEY, "gemini-2.0-flash");
             renderAiKeyControls();
             success = true;
           }
@@ -1538,10 +1600,10 @@ function generateAutonomousLatchAnswer(query) {
     return "🧪 **Verse AI Guide: Rialo Testnet RPC & 20 RP Faucet Guide**\n\n" +
       "**Network Parameters:**\n" +
       "• **Network Name:** Rialo Testnet\n" +
-      "• **RPC URL:** `https://testnet.rialo.network`\n" +
+      "• **RPC URL:** `https://testnet.rialo.io`\n" +
       "• **Chain ID:** `9001` (Hex: `0x2329`)\n" +
       "• **Currency Symbol:** `RP` (or `RIA`)\n" +
-      "• **Block Explorer:** [explorer.testnet.rialo.network](https://explorer.testnet.rialo.network)\n\n" +
+      "• **Block Explorer:** [explorer.testnet.rialo.io](https://explorer.testnet.rialo.io)\n\n" +
       "**How to Claim 20 RP:**\n" +
       "1. Join the official Rialo Discord: [discord.gg/BuwYqeZ357](https://discord.gg/BuwYqeZ357)\n" +
       "2. Head over to the **#faucet** channel.\n" +
@@ -1573,7 +1635,7 @@ function generateAutonomousLatchAnswer(query) {
       "agent = LatchAgent(\n" +
       "    token='lat_live_rialo_agent_7x9q',\n" +
       "    network='rialo-testnet-1',\n" +
-      "    rpc='https://testnet.rialo.network'\n" +
+      "    rpc='https://testnet.rialo.io'\n" +
       ")\n\n" +
       "# 2. Enforce strict budget & contract whitelists\n" +
       "policy = Policy(\n" +
@@ -1623,24 +1685,26 @@ function generateAutonomousLatchAnswer(query) {
 
   // 8. EXACT TARGET: Quiz Games & Leaderboard Archive
   if (q.includes("quiz") || q.includes("round") || q.includes("nathbabu") || q.includes("keinn") || q.includes("vangle") || q.includes("winner") || q.includes("champion") || q.includes("leaderboard") || q.includes("top builder")) {
+    var latestQuiz = (typeof quizHistory !== "undefined" && quizHistory[0]) ? quizHistory[0] : null;
+    var quizCount = (typeof quizHistory !== "undefined") ? quizHistory.length : 30;
+    var quizLines = (latestQuiz && latestQuiz.champions) ? latestQuiz.champions.slice(0, 3).map(function (c) {
+      return "  - " + c.medal + " " + c.tag + ": **" + c.name + "**\n";
+    }).join("") : "";
     return "🧠 **Verse AI Guide: Quiz Games & Community Leaderboard**\n\n" +
-      "Rialo hosts weekly official tech quizzes on Discord #quiz (30 official rounds archived from Jan 2 to Aug 28, 2026):\n\n" +
-      "• **Latest Round 30 (August 28, 2026):**\n" +
-      "  - 🥇 1st: **@KeinnXbt**\n" +
-      "  - 🥈 2nd: **@Vangle**\n" +
-      "  - 🥉 3rd: **@Mahershi**\n\n" +
-      "• **Community Highlights:**\n" +
-      "  - **@NathBabu** (Architect of RialoVerse) scored a **Top 10 (Rank 9)** finish in **Round 27 on July 3, 2026**.\n" +
-      "  - **Top Shipped Builders:** Yusoof4all (4 dApps), AMR70234 (4 dApps), Elias (3 dApps), Kingxfn (3 dApps), Iblamehsan (3 dApps).\n\n" +
-      "👉 Visit the [Events & Leaderboard Tabs](#events) to browse all 30 rounds and dynamic rankings!";
+      "Rialo hosts weekly tech quizzes on Discord #quiz (" + quizCount + " rounds archived):\n\n" +
+      (latestQuiz ? "• **Latest quiz (" + latestQuiz.date + "):**\n" + quizLines + "\n" : "") +
+      "👉 Visit the [Events & Leaderboard Tabs](#events) to browse every round and the live builder rankings!";
   }
 
   // 9. EXACT TARGET: Community Spotlight / Members of the Week
   if (q.includes("spotlight") || q.includes("member") || q.includes("week") || q.includes("regional") || q.includes("community")) {
+    var latestSpot = (typeof spotlightHistory !== "undefined" && spotlightHistory[0]) ? spotlightHistory[0] : null;
+    var spotCount = (typeof spotlightHistory !== "undefined") ? spotlightHistory.length : 9;
+    var spotNames = (latestSpot && latestSpot.members && latestSpot.members.length)
+      ? latestSpot.members.slice(0, 5).map(function (m) { return m.name; }).join(", ") : "";
     return "🌟 **Verse AI Guide: Community Spotlight & Members of the Week**\n\n" +
-      "Rialo recognizes 15 top regional community champions across the globe every week (9 official editions recorded):\n\n" +
-      "• **Latest Edition (August 24, 2026):** Features Azadsx3, Burak33b, Drakon62, Zingxoro, and regional ambassadors.\n" +
-      "• **Previous Editions:** Complete photographic archives available for Aug 17, Aug 10, Aug 3, Jul 26, Jul 21, Jul 12, Jul 5, and Jun 28.\n\n" +
+      "Rialo recognizes top regional community champions every week (" + spotCount + " editions recorded):\n\n" +
+      (latestSpot ? "• **Latest edition (" + latestSpot.date + "):** " + (spotNames ? spotNames + ", and more regional ambassadors." : "see the archive for the full lineup.") + "\n" : "") +
       "👉 Visit the [Events Tab](#events) to view regional portraits and contributor details!";
   }
 
@@ -1687,7 +1751,6 @@ function getSeedFallbackData() {
     "liveLink": "https://olpadex.vercel.app/",
     "builder": {
       "name": "OLPA Labs",
-      "email": "",
       "username": "olpa_dex",
       "image": "https://api.dicebear.com/7.x/identicon/svg?seed=rdex_labs",
       "xLink": "https://x.com/rdex_labs",
@@ -1711,7 +1774,6 @@ function getSeedFallbackData() {
     "liveLink": "https://playground.rialo.io/",
     "builder": {
       "name": "Stello Team",
-      "email": "",
       "username": "stellofinance",
       "image": "https://api.dicebear.com/7.x/identicon/svg?seed=stellofinance",
       "xLink": "https://x.com/stellofinance",
@@ -1734,7 +1796,6 @@ function getSeedFallbackData() {
     "liveLink": "https://muhtasimmuiz.github.io/Rialo-Game-/",
     "builder": {
       "name": "Muhtasim Muiz",
-      "email": "muhtasim706@gmail.com",
       "username": "muhtasim4921",
       "image": "https://pbs.twimg.com/profile_images/2006444862737186816/kYzDIO54_400x400.jpg",
       "xLink": "https://x.com/muhtasimmuiz",
@@ -1748,31 +1809,6 @@ function getSeedFallbackData() {
     "primarySector": "Web3 Gaming & On-Chain Arcade"
   },
   {
-    "title": "Agentflow",
-    "description": "Run a Research → Analyst → Writer pipeline. Pay per step with gasless x402 USDC micropayments on Arc Testnet.",
-    "category": [
-      "agent",
-      "assistant",
-      "chatbot"
-    ],
-    "gitRepo": "https://github.com/Snehal707/agentflow-frontend",
-    "liveLink": "https://github.com/Snehal707/agentflow-frontend",
-    "builder": {
-      "name": "Snehal",
-      "email": "",
-      "username": "snehal007",
-      "image": "https://pbs.twimg.com/profile_images/1979229895369629697/_ISKkXsi_400x400.jpg",
-      "xLink": "https://x.com/SnehalRekt",
-      "about": "arly, just never left the screen..\nAmbassador/builder \n@recallnet\n \n@base\n \n@fhenix\n \n@NousResearch\n \n@arc"
-    },
-    "loves": 2,
-    "views": 8,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "Autonomous AI Agents & Bots"
-  },
-  {
     "title": "Rialo - 2048",
     "description": "Rialo-2048 is a web-based version of the classic number-merging puzzle game 2048.",
     "category": [
@@ -1782,7 +1818,6 @@ function getSeedFallbackData() {
     "liveLink": "https://mishunir.github.io/Rialo-2048/",
     "builder": {
       "name": "Koushik Nir",
-      "email": "koushiknir5@gmail.com",
       "username": "mishunir",
       "image": "https://pbs.twimg.com/profile_images/1990726148997918720/wC0FYl9O_400x400.jpg",
       "xLink": "https://x.com/AhmedNir",
@@ -1805,7 +1840,6 @@ function getSeedFallbackData() {
     "liveLink": "https://r-cade-demo.vercel.app/",
     "builder": {
       "name": "Nahian",
-      "email": "yournahian@gmail.com",
       "username": "yournahian",
       "image": "https://pbs.twimg.com/profile_images/1966521996080209920/MbtcGvTv_400x400.jpg",
       "xLink": "https://x.com/yournahian",
@@ -1831,7 +1865,6 @@ function getSeedFallbackData() {
     "liveLink": "https://privacy-simulator-rialo.vercel.app/",
     "builder": {
       "name": "Harshit",
-      "email": "",
       "username": "Phonicxxxx24",
       "image": "https://pbs.twimg.com/profile_images/1989340568288382976/mu8jtfjJ_400x400.jpg",
       "xLink": "https://x.com/gaminggop24",
@@ -1856,7 +1889,6 @@ function getSeedFallbackData() {
     "liveLink": "https://www.rialo.online/",
     "builder": {
       "name": "Vika Joestar",
-      "email": "",
       "username": "vikajoestar",
       "image": "https://pbs.twimg.com/profile_images/2038221160400449536/brTBv48V_400x400.jpg",
       "xLink": "https://x.com/cryptocymol",
@@ -1864,31 +1896,6 @@ function getSeedFallbackData() {
     },
     "loves": 103,
     "views": 136,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "DeFi, Prediction & Lending"
-  },
-  {
-    "title": "RialoPredict",
-    "description": "Real-time stock price prediction with high accuracy using machine learning and historical data analysis",
-    "category": [
-      "treding",
-      "predicitonmarket",
-      "dex"
-    ],
-    "gitRepo": "https://github.com/KingClaszzz/rialoPredict",
-    "liveLink": "https://github.com/KingClaszzz/rialoPredict",
-    "builder": {
-      "name": "Elias",
-      "email": "",
-      "username": "eliasskun",
-      "image": "https://pbs.twimg.com/profile_images/1978492502786416640/pb-VpMY1_400x400.jpg",
-      "xLink": "https://x.com/Johson_Nguyen",
-      "about": "onchain | building dApp on \n@arc\n \n@RialoHQ\n \ndc: eliasskun"
-    },
-    "loves": 3,
-    "views": 10,
     "isNew": false,
     "source": "Rialo Showcase DB",
     "verified": true,
@@ -1904,7 +1911,6 @@ function getSeedFallbackData() {
     "liveLink": "https://reloxrialo.netlify.app/",
     "builder": {
       "name": "Hasibul Hasan Mahi",
-      "email": "mahimahi2009ma@gmail.com",
       "username": "mahi017fr",
       "image": "https://pbs.twimg.com/profile_images/1979567307299880964/jtyBPk_O_400x400.jpg",
       "xLink": "https://x.com/HasibulHasanM2",
@@ -1927,7 +1933,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialo-hub.vercel.app/",
     "builder": {
       "name": "SZA",
-      "email": "",
       "username": "deffz10",
       "image": "https://pbs.twimg.com/profile_images/2002722627140673536/DR8ThBcv_400x400.jpg",
       "xLink": "https://x.com/Szaonly666",
@@ -1950,7 +1955,6 @@ function getSeedFallbackData() {
     "liveLink": "https://roxor-web.vercel.app/",
     "builder": {
       "name": "CryptoNdo",
-      "email": "",
       "username": "fernando220169",
       "image": "https://pbs.twimg.com/profile_images/1978513383550025728/KaL7KjRl_400x400.jpg",
       "xLink": "https://x.com/FernandoZa5928",
@@ -1974,7 +1978,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialo-event-hub.vercel.app/",
     "builder": {
       "name": "MrNetwork",
-      "email": "",
       "username": "mrnetwork001",
       "image": "https://pbs.twimg.com/profile_images/1866934536992354304/8lTxuhqj_400x400.jpg",
       "xLink": "https://x.com/encrypt_wizard",
@@ -1988,29 +1991,6 @@ function getSeedFallbackData() {
     "primarySector": "Block Explorers & Telemetry"
   },
   {
-    "title": "Devil Underworld Trials",
-    "description": "The Devil Game is a high-stakes psychological thriller where players must outsmart a manipulative entity through intricate puzzles and strategic deception to survive.",
-    "category": [
-      "game"
-    ],
-    "gitRepo": "https://github.com/mahi017fr/DEVIL-Underworld-Trials",
-    "liveLink": "https://silver-gingersnap-2820f5.netlify.app/lvl1.html",
-    "builder": {
-      "name": "Mahi Hasan",
-      "email": "mahimahi2009ma@gmail.com",
-      "username": "hasibulhasanm",
-      "image": "https://pbs.twimg.com/profile_images/1979567307299880964/jtyBPk_O_400x400.jpg",
-      "xLink": "https://x.com/HasibulHasanM2",
-      "about": "Hello! I’m Hasibul Hasan Mahi, a passionate web designer, graphic designer, and a budding web3 expert from Bangladesh."
-    },
-    "loves": 9,
-    "views": 26,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "Web3 Gaming & On-Chain Arcade"
-  },
-  {
     "title": "Rialo Car Game",
     "description": "Rialo Car Game is a fast-paced, reflex-based driving game where players must navigate their car along multiple lanes while avoiding incoming obstacles. The game tests your hand-eye coordination and timing: as obstacles fall or appear in different lanes, you need to quickly move your car left or right to avoid collisions.",
     "category": [
@@ -2020,7 +2000,6 @@ function getSeedFallbackData() {
     "liveLink": "https://roaring-babka-e33b03.netlify.app/",
     "builder": {
       "name": "Nayem",
-      "email": "sifathossain551@gmail.com",
       "username": "nayem_109",
       "image": "https://pbs.twimg.com/profile_images/1972187817259438080/RSW4XQsg_400x400.jpg",
       "xLink": "https://x.com/Nayem109",
@@ -2044,7 +2023,6 @@ function getSeedFallbackData() {
     "liveLink": "https://trigr-web.vercel.app/",
     "builder": {
       "name": "minion.btc",
-      "email": "",
       "username": "nftgal",
       "image": "https://pbs.twimg.com/profile_images/2022058390445277185/uVzdi9pW_400x400.jpg",
       "xLink": "https://x.com/minion_btc",
@@ -2068,7 +2046,6 @@ function getSeedFallbackData() {
     "liveLink": "https://keen-centaur-8c8bf6.netlify.app/",
     "builder": {
       "name": "ayun",
-      "email": "",
       "username": "syf1213764315",
       "image": "https://pbs.twimg.com/profile_images/2010998012731146249/BSRCYUaT_400x400.jpg",
       "xLink": "https://x.com/ayun24335167",
@@ -2091,7 +2068,6 @@ function getSeedFallbackData() {
     "liveLink": "https://muhtasimmuiz.github.io/Rialo-Catch-Game/",
     "builder": {
       "name": "Anika Saima",
-      "email": "anikasaima2@gmail.com",
       "username": "woshopy",
       "image": "https://pbs.twimg.com/profile_images/1997930342527995904/kNdm1BDs_400x400.jpg",
       "xLink": "https://x.com/muhtasimmuiz",
@@ -2114,7 +2090,6 @@ function getSeedFallbackData() {
     "liveLink": "https://unifairlabs.xyz/",
     "builder": {
       "name": "Luzzy",
-      "email": "",
       "username": "luzzy97",
       "image": "https://pbs.twimg.com/profile_images/2024600868944039936/VmY2nOE4_400x400.jpg",
       "xLink": "https://x.com/luzzyzz97",
@@ -2137,7 +2112,6 @@ function getSeedFallbackData() {
     "liveLink": "https://www.privstay.cloud/",
     "builder": {
       "name": "Cloud Labs",
-      "email": "",
       "username": "cloudtechvn",
       "image": "https://pbs.twimg.com/profile_images/2033003962698465280/H3zXD_Q5_400x400.jpg",
       "xLink": "https://x.com/cloudtechvn",
@@ -2160,7 +2134,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialobs.vercel.app",
     "builder": {
       "name": "Sukanto",
-      "email": "",
       "username": "sukanto01899",
       "image": "https://pbs.twimg.com/profile_images/2032044013885468672/ogpJNYPp_400x400.jpg",
       "xLink": "https://x.com/sukanto018",
@@ -2183,7 +2156,6 @@ function getSeedFallbackData() {
     "liveLink": "https://sender-dapp.vercel.app/",
     "builder": {
       "name": "hossain",
-      "email": "",
       "username": "funkgirl",
       "image": "https://pbs.twimg.com/profile_images/2022010475031277571/D-op69r8_400x400.jpg",
       "xLink": "https://x.com/0xclowng",
@@ -2206,7 +2178,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialo-royale-casino.vercel.app/games/slots",
     "builder": {
       "name": "Juniorr",
-      "email": "",
       "username": "juniorr1945",
       "image": "https://pbs.twimg.com/profile_images/2002722627140673536/DR8ThBcv_400x400.jpg",
       "xLink": "https://x.com/szaonly666?s=21",
@@ -2230,7 +2201,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialoalpha.vercel.app/",
     "builder": {
       "name": "Elias",
-      "email": "",
       "username": "eliasskun",
       "image": "https://pbs.twimg.com/profile_images/1978492502786416640/pb-VpMY1_400x400.jpg",
       "xLink": "https://x.com/Johson_Nguyen",
@@ -2253,7 +2223,6 @@ function getSeedFallbackData() {
     "liveLink": "https://mmarena.online/",
     "builder": {
       "name": "Minwon",
-      "email": "",
       "username": "maiwuocbinh1997",
       "image": "https://pbs.twimg.com/profile_images/2035613679195242496/agjj_2Df_400x400.jpg",
       "xLink": "https://x.com/binhbethc",
@@ -2277,7 +2246,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialo-oracle.vercel.app/",
     "builder": {
       "name": "Stellamaris",
-      "email": "",
       "username": "steste112",
       "image": "https://pbs.twimg.com/profile_images/1830888540458102784/sXDE1OoU_400x400.jpg",
       "xLink": "https://x.com/Marisdigitals11",
@@ -2300,7 +2268,6 @@ function getSeedFallbackData() {
     "liveLink": "https://whisper-tiles-rialo.vercel.app/",
     "builder": {
       "name": "NR Raihan",
-      "email": "nrraihan391@gmail.com",
       "username": "nrraihan",
       "image": "https://pbs.twimg.com/profile_images/1972622416443850752/ER88re_7_400x400.jpg",
       "xLink": "https://x.com/nrraihan391",
@@ -2324,7 +2291,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialestate.vercel.app/",
     "builder": {
       "name": "Rita Crypto Tips",
-      "email": "",
       "username": "rita95",
       "image": "http://pbs.twimg.com/profile_images/2011939995758854144/2r1bexy7_400x400.jpg",
       "xLink": "https://x.com/RitaCryptoTips",
@@ -2347,7 +2313,6 @@ function getSeedFallbackData() {
     "liveLink": "https://taleofnexus.netlify.app/",
     "builder": {
       "name": "Reji ganteng",
-      "email": "",
       "username": "reji00504",
       "image": "https://pbs.twimg.com/profile_images/2031949830977961992/AskQyajG_400x400.jpg",
       "xLink": "https://x.com/rejii73927",
@@ -2361,30 +2326,6 @@ function getSeedFallbackData() {
     "primarySector": "Wallets, Identity & Bridges"
   },
   {
-    "title": "PKMON",
-    "description": "Where Trainers can Share, Trade, and Win.\nKnow First. Trade Better. An Intelligent Agent for Pokémon Market Insight.",
-    "category": [
-      "ai",
-      "tooling"
-    ],
-    "gitRepo": "http://github.com/pkmon746/pkmon",
-    "liveLink": "https://www.pkmon.store/index.html",
-    "builder": {
-      "name": "hositam",
-      "email": "",
-      "username": "pddprof_web3",
-      "image": "https://pbs.twimg.com/profile_images/2031736361372508161/1M8jv1Z__400x400.jpg",
-      "xLink": "https://x.com/pddprof",
-      "about": "Hositamtam: https://t.me/tamtamcrypto.   Ambassador l \n@renaissxyz"
-    },
-    "loves": 0,
-    "views": 9,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "Developer SDKs & Tooling"
-  },
-  {
     "title": "R-Cloud",
     "description": "Connect your family cameras to a secure private cloud. Watch live feeds, store recordings, and review footage anytime from any device.",
     "category": [
@@ -2394,7 +2335,6 @@ function getSeedFallbackData() {
     "liveLink": "https://github.com/STMTP95/R-Cloud/",
     "builder": {
       "name": "SonTung.MTP",
-      "email": "",
       "username": "stmtp95",
       "image": "https://pbs.twimg.com/profile_images/2004226467987877888/Fk54rG50_400x400.jpg",
       "xLink": "https://x.com/STMTP95",
@@ -2417,7 +2357,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialo-fun.vercel.app/",
     "builder": {
       "name": "rey88",
-      "email": "",
       "username": "rey88.",
       "image": "https://i.ibb.co/9kCqQWpR/rey.jpg",
       "xLink": "https://x.com/Rey_8899",
@@ -2440,7 +2379,6 @@ function getSeedFallbackData() {
     "liveLink": "https://psu0612.github.io/truthlens/",
     "builder": {
       "name": "Greenmelon",
-      "email": "",
       "username": "sangwook06",
       "image": "https://pbs.twimg.com/profile_images/1990594528395603973/kL_eV-41_400x400.jpg",
       "xLink": "https://x.com/bjdrst",
@@ -2463,7 +2401,6 @@ function getSeedFallbackData() {
     "liveLink": "https://project-gaia-ten.vercel.app/",
     "builder": {
       "name": "Meowth",
-      "email": "",
       "username": "tenoli0424",
       "image": "https://pbs.twimg.com/profile_images/2036224208376848384/8clGeaSJ_400x400.jpg",
       "xLink": "https://x.com/dwowmuch",
@@ -2486,7 +2423,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialo-court.vercel.app/",
     "builder": {
       "name": "ZOEFUNDS",
-      "email": "",
       "username": "zoefunds",
       "image": "https://pbs.twimg.com/profile_images/2043659553120903168/Tmk6FSrz_400x400.jpg",
       "xLink": "https://x.com/BardOfTheBlocks",
@@ -2511,7 +2447,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialobster.vercel.app/",
     "builder": {
       "name": "Lun",
-      "email": "",
       "username": "cr3ap3r9487",
       "image": "https://pbs.twimg.com/profile_images/1878842647403716608/JXkozxNn_400x400.jpg",
       "xLink": "https://x.com/creapergod",
@@ -2525,29 +2460,6 @@ function getSeedFallbackData() {
     "primarySector": "Developer SDKs & Tooling"
   },
   {
-    "title": "Open Parametric",
-    "description": "Making insurance settlement programmable\nReal-time, Multi-party, On-chain",
-    "category": [
-      "insurance"
-    ],
-    "gitRepo": "https://github.com/EventSure/riskmesh",
-    "liveLink": "https://eventsure.github.io/riskmesh/",
-    "builder": {
-      "name": "Bookiroad",
-      "email": "",
-      "username": "bookiroad",
-      "image": "https://pbs.twimg.com/profile_images/2032464379321659392/tKKgBHAh_400x400.jpg",
-      "xLink": "https://x.com/bookiroad1",
-      "about": "Building programmable settlement infra for real-world events onchain"
-    },
-    "loves": 0,
-    "views": 2,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "Autonomous AI Agents & Bots"
-  },
-  {
     "title": "Chainsure",
     "description": "ChainSure is a decentralized insurance protocol built on the Rialo blockchain, leveraging native Timer and HTTP capabilities for fully automated, trustless insurance products.",
     "category": [
@@ -2559,7 +2471,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialo-qrv4.vercel.app/",
     "builder": {
       "name": "ウルトラマンエース",
-      "email": "",
       "username": "memeswapbitj6842",
       "image": "https://pbs.twimg.com/profile_images/2029092326828851202/e9ytdsyv_400x400.jpg",
       "xLink": "https://x.com/TeenaTiesha",
@@ -2582,7 +2493,6 @@ function getSeedFallbackData() {
     "liveLink": "https://volund.vercel.app/",
     "builder": {
       "name": "Kent Lee",
-      "email": "",
       "username": "kent_lee",
       "image": "https://pbs.twimg.com/profile_images/1974496931624943616/4EVMRyVc_400x400.jpg",
       "xLink": "https://x.com/kentwoodsahpu",
@@ -2605,7 +2515,6 @@ function getSeedFallbackData() {
     "liveLink": "https://github.com/sheingelzs/Rialo-Predict",
     "builder": {
       "name": "sheina",
-      "email": "",
       "username": "rayhan_pdillah",
       "image": "https://pbs.twimg.com/profile_images/2004558427377512448/2pODKBqE_400x400.jpg",
       "xLink": "https://x.com/sheinasalisha",
@@ -2629,7 +2538,6 @@ function getSeedFallbackData() {
     "liveLink": "https://olpasimulation.lovable.app/",
     "builder": {
       "name": "Chiphon",
-      "email": "",
       "username": "mhiztabillion01",
       "image": "https://pbs.twimg.com/profile_images/1960714139145318400/rLkmDlcq_400x400.jpg",
       "xLink": "https://x.com/chiphon_olpa",
@@ -2652,7 +2560,6 @@ function getSeedFallbackData() {
     "liveLink": "https://www.mahii.xyz/",
     "builder": {
       "name": "MAHE",
-      "email": "",
       "username": "hasibulhasanm",
       "image": "https://pbs.twimg.com/profile_images/1979567307299880964/jtyBPk_O_400x400.jpg",
       "xLink": "https://x.com/HasibulHasanM2",
@@ -2675,7 +2582,6 @@ function getSeedFallbackData() {
     "liveLink": "https://who-wants-to-be-a-rial-one.vercel.app/",
     "builder": {
       "name": "Chuks",
-      "email": "",
       "username": "chuksdakingz",
       "image": "https://pbs.twimg.com/profile_images/1971512283239944192/-Aq4HpnX_400x400.jpg",
       "xLink": "https://x.com/Chuksdakingz",
@@ -2698,7 +2604,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialo-builder-tracker.vercel.app/",
     "builder": {
       "name": "SurajCrypto69",
-      "email": "",
       "username": "surajcrypto69",
       "image": "https://pbs.twimg.com/profile_images/2014694734841970693/WG2xlWmM_400x400.jpg",
       "xLink": "https://x.com/SurajCrypto69",
@@ -2721,7 +2626,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialo-pay.vercel.app",
     "builder": {
       "name": "𝖆urah",
-      "email": "",
       "username": "aur_ah",
       "image": "https://pbs.twimg.com/profile_images/1981036814119899136/IljcJWac_400x400.jpg",
       "xLink": "https://x.com/imani_cc",
@@ -2744,7 +2648,6 @@ function getSeedFallbackData() {
     "liveLink": "https://github.com/syf1213764315/rialo_game",
     "builder": {
       "name": "Cat🐱🐱🐱ayun",
-      "email": "",
       "username": "syf1213764315",
       "image": "https://pbs.twimg.com/profile_images/2010998012731146249/BSRCYUaT_400x400.jpg",
       "xLink": "https://x.com/ayun24335167",
@@ -2758,30 +2661,6 @@ function getSeedFallbackData() {
     "primarySector": "Web3 Gaming & On-Chain Arcade"
   },
   {
-    "title": "Privacy Simulator",
-    "description": "Public blockchains expose secrets.\nRialo REX keeps them confidential.",
-    "category": [
-      "visualizer",
-      "tooling"
-    ],
-    "gitRepo": "https://github.com/Phonicxxxx24/Privacy-Simulator",
-    "liveLink": "https://privacy-simulator-rialo.vercel.app/",
-    "builder": {
-      "name": "Harshit",
-      "email": "",
-      "username": "@phoenix_hj_24",
-      "image": "https://pbs.twimg.com/profile_images/1989340568288382976/mu8jtfjJ_400x400.jpg",
-      "xLink": "https://x.com/gaminggop24",
-      "about": "Building cool things with code\nWeb3 | AI | Blockchain | Dev"
-    },
-    "loves": 0,
-    "views": 2,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "Block Explorers & Telemetry"
-  },
-  {
     "title": "Rialo saving jar",
     "description": "Deposit USDC or USDT into your Rialo Saving Jar. Yield compounds daily on-chain — no bots, no keepers, no complexity. Just steady growth.",
     "category": [
@@ -2793,7 +2672,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialo-saving-jar.vercel.app/",
     "builder": {
       "name": "Brokie",
-      "email": "",
       "username": "brokie0928",
       "image": "https://pbs.twimg.com/profile_images/2056672867656556544/d0mIkCZv_400x400.jpg",
       "xLink": "https://x.com/cryptofav",
@@ -2816,7 +2694,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialo-poap.vercel.app/",
     "builder": {
       "name": "Szaa",
-      "email": "",
       "username": "szaxbt",
       "image": "https://pbs.twimg.com/profile_images/2046308716333678592/UT1jfwsY_400x400.jpg",
       "xLink": "https://x.com/szaonly666",
@@ -2839,7 +2716,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialo-rex-vision.vercel.app/",
     "builder": {
       "name": "SurajCrypto69",
-      "email": "",
       "username": "surajcrypto69",
       "image": "https://pbs.twimg.com/profile_images/2014694734841970693/WG2xlWmM_400x400.jpg",
       "xLink": "https://x.com/SurajCrypto69",
@@ -2853,29 +2729,6 @@ function getSeedFallbackData() {
     "primarySector": "Block Explorers & Telemetry"
   },
   {
-    "title": "CarbonChain",
-    "description": "This lightweight dapp connects directly to the Sepolia contract and keeps the workflow focused: marketplace discovery, one-step listing, and retirement tracking for your wallet-held credits.",
-    "category": [
-      "data"
-    ],
-    "gitRepo": "https://github.com/Phonicxxxx24/CC-marketplace",
-    "liveLink": "https://cc-marketplace-tau.vercel.app/",
-    "builder": {
-      "name": "HJ24",
-      "email": "",
-      "username": "phoenix_hj_24",
-      "image": "https://pbs.twimg.com/profile_images/1989340568288382976/mu8jtfjJ_400x400.jpg",
-      "xLink": "https://x.com/gaminggop24",
-      "about": "You can't see what you've built because you're measuring yourself against an imaginary version of yourself that's already \"arrived.\""
-    },
-    "loves": 0,
-    "views": 0,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "Autonomous AI Agents & Bots"
-  },
-  {
     "title": "Stride",
     "description": "Zero-inflation, Move-to-Earn built natively on Rialo Network. Stake USDC against your fitness goals - win your stake back plus yield slashed from those who faltered.",
     "category": [
@@ -2885,7 +2738,6 @@ function getSeedFallbackData() {
     "liveLink": "https://stride-run-app.vercel.app/",
     "builder": {
       "name": "MrNetwork",
-      "email": "",
       "username": "mrnetwork001",
       "image": "https://pbs.twimg.com/profile_images/1866934536992354304/8lTxuhqj_400x400.jpg",
       "xLink": "https://x.com/encrypt_wizard",
@@ -2908,7 +2760,6 @@ function getSeedFallbackData() {
     "liveLink": "https://riapps.vercel.app/",
     "builder": {
       "name": "Thelotachi",
-      "email": "",
       "username": "0xlota",
       "image": "https://pbs.twimg.com/profile_images/2007684416890343424/qJRJzRG__400x400.jpg",
       "xLink": "https://x.com/0xlota",
@@ -2922,29 +2773,6 @@ function getSeedFallbackData() {
     "primarySector": "Developer SDKs & Tooling"
   },
   {
-    "title": "NeuroBase",
-    "description": "Upload your personal knowledge bases to scalable decentralized storage. Earn instant APT micropayments every time an AI agent queries your mind.",
-    "category": [
-      "storage"
-    ],
-    "gitRepo": "https://github.com/JohnsonNguyen-coll/neuro-base",
-    "liveLink": "http://neurobased.vercel.app/",
-    "builder": {
-      "name": "Elias",
-      "email": "",
-      "username": "eliasskun",
-      "image": "https://pbs.twimg.com/profile_images/1978492502786416640/pb-VpMY1_400x400.jpg",
-      "xLink": "https://x.com/Johson_Nguyen",
-      "about": "onchain | building dApp on \n@arc\n \n@RialoHQ"
-    },
-    "loves": 0,
-    "views": 1,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "Autonomous AI Agents & Bots"
-  },
-  {
     "title": "Rialo-arena",
     "description": "A competitive real-time multiplayer quiz & reflex game built on Web3/Rialo.",
     "category": [
@@ -2954,7 +2782,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialo-arena.vercel.app/",
     "builder": {
       "name": "",
-      "email": "",
       "username": "asad_0x",
       "image": "https://pbs.twimg.com/profile_images/1980911132358402049/NSV1eBoE_400x400.jpg",
       "xLink": "https://x.com/Asad_0x",
@@ -2978,7 +2805,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialos.vercel.app/",
     "builder": {
       "name": "Just Jena",
-      "email": "",
       "username": "kirahell69",
       "image": "assets/just_jena.png",
       "xLink": "https://x.com/RialOS_xyz",
@@ -3003,7 +2829,6 @@ function getSeedFallbackData() {
     "liveLink": "https://narrativeonchain.netlify.app/",
     "builder": {
       "name": "Surya",
-      "email": "",
       "username": "surya6276",
       "image": "https://pbs.twimg.com/profile_images/1982406446407987200/GbIPi7Ul_400x400.jpg",
       "xLink": "https://x.com/Surya_xyz_",
@@ -3026,57 +2851,10 @@ function getSeedFallbackData() {
     "liveLink": "https://proofpay-nu.vercel.app",
     "builder": {
       "name": "TiAdler",
-      "email": "",
       "username": "_neitenoz26",
       "image": "https://pbs.twimg.com/profile_images/1918191739585875968/OduU6Qq2_400x400.jpg",
       "xLink": "https://x.com/Neitenoz26",
       "about": "AI Engineer at CMS Technology | Crypto x AI | Fun & Fundamentals"
-    },
-    "loves": 0,
-    "views": 0,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "Autonomous AI Agents & Bots"
-  },
-  {
-    "title": "Aeternum Tesseract",
-    "description": "Aeternum Tesseract is a decentralized time capsule on Base.\n\nSeal encrypted messages or lock ERC-20 assets behind an immutable UNIX timestamp.",
-    "category": [
-      "tools"
-    ],
-    "gitRepo": "",
-    "liveLink": "https://teseract.netlify.app/",
-    "builder": {
-      "name": "Vika Auditore da Firenze",
-      "email": "",
-      "username": "vikajoestar",
-      "image": "https://pbs.twimg.com/profile_images/2056792286005252097/bzIQtKlj_400x400.jpg",
-      "xLink": "https://x.com/cryptocymol",
-      "about": "Builder at \n@RialoHQ"
-    },
-    "loves": 0,
-    "views": 1,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "Developer SDKs & Tooling"
-  },
-  {
-    "title": "Open Parametric | RiskMesh",
-    "description": "Making insurance settlement programmable\nReal-time, Multi-party, On-chain",
-    "category": [
-      "insurance"
-    ],
-    "gitRepo": "https://github.com/EventSure/riskmesh",
-    "liveLink": "https://eventsure.github.io/riskmesh/",
-    "builder": {
-      "name": "Bookiroad",
-      "email": "",
-      "username": "bookiroad",
-      "image": "https://pbs.twimg.com/profile_images/2032464379321659392/tKKgBHAh_400x400.jpg",
-      "xLink": "https://x.com/bookiroad1",
-      "about": "Building programmable settlement infra for real-world events on-chain"
     },
     "loves": 0,
     "views": 0,
@@ -3259,7 +3037,6 @@ function getSeedFallbackData() {
     "liveLink": "https://rialolens.vercel.app/",
     "builder": {
       "name": "Relixsx",
-      "email": "",
       "username": "relixsx",
       "image": "https://pbs.twimg.com/profile_images/1950794865421250560/NxS9OgIs_400x400.jpg",
       "xLink": "https://x.com/GojoReality",
@@ -3312,7 +3089,6 @@ function getSeedFallbackData() {
     "liveLink": "https://payonrain.vercel.app/",
     "builder": {
       "name": "varl𓏲ּ𝄢",
-      "email": "",
       "username": "varl999",
       "image": "https://pbs.twimg.com/profile_images/2017108189053956096/Xhz4pMt0_400x400.jpg",
       "xLink": "https://x.com/varl999",
@@ -4382,28 +4158,6 @@ function getSeedFallbackData() {
     "primarySector": "Developer SDKs & Tooling"
   },
   {
-    "title": "RialoSawp",
-    "description": "Rialo ecosystem project",
-    "category": [
-      "Tooling",
-      "AI Agent"
-    ],
-    "gitRepo": "",
-    "liveLink": "https://rialo-sawp.vercel.app",
-    "builder": {
-      "name": "BappyOnchain",
-      "username": "BappyOnchain",
-      "image": "https://avatars.githubusercontent.com/u/196145964?v=4",
-      "xLink": ""
-    },
-    "loves": 1,
-    "views": 5,
-    "isNew": true,
-    "source": "GitHub Testnet Crawler (August 2026)",
-    "verified": true,
-    "primarySector": "Developer SDKs & Tooling"
-  },
-  {
     "title": "Rialo Spend Guardian",
     "description": "Rialo ecosystem project",
     "category": [
@@ -4793,28 +4547,6 @@ function getSeedFallbackData() {
       "xLink": ""
     },
     "loves": 2,
-    "views": 5,
-    "isNew": true,
-    "source": "GitHub Testnet Crawler (August 2026)",
-    "verified": true,
-    "primarySector": "Developer SDKs & Tooling"
-  },
-  {
-    "title": "Proofpay",
-    "description": "ProofPay is a dApp prototype inspired by Rialo, demonstrating the idea of ​​“real-world proof → programmable condition → automated payment",
-    "category": [
-      "Tooling",
-      "AI Agent"
-    ],
-    "gitRepo": "https://github.com/Tiadler/Proofpay",
-    "liveLink": "https://proofpay-nu.vercel.app",
-    "builder": {
-      "name": "Tiadler",
-      "username": "Tiadler",
-      "image": "https://avatars.githubusercontent.com/u/103565397?v=4",
-      "xLink": ""
-    },
-    "loves": 1,
     "views": 5,
     "isNew": true,
     "source": "GitHub Testnet Crawler (August 2026)",
@@ -5333,7 +5065,7 @@ function getSeedFallbackData() {
     "primarySector": "Web3 Gaming & On-Chain Arcade"
   },
   {
-    "title": "hey guys. i create a minimalist tile puzzle gam...",
+    "title": "Minimalist Tile Puzzle Game",
     "description": "hey guys. i create a minimalist tile puzzle game to assemble the RIALO logo. you can fork if you want to make your own version\n\nGithub: https://github.com/xyzsola/rialo-puzzle-game\nX Post: https://x.com/solasidoXYZ/status/1977987484559814779\n\nkindly check or you can play it <@740494723080388638> <@9",
     "category": [
       "Community dApp",
@@ -5399,7 +5131,7 @@ function getSeedFallbackData() {
     "primarySector": "Web3 Gaming & On-Chain Arcade"
   },
   {
-    "title": "Been exploring Rialo’s world and couldn’t resis...",
+    "title": "Rialo Space Quest",
     "description": "Been exploring Rialo’s world and couldn’t resist building my own version of Rialo Space Quest 🚀\n\nInspired by the Coordination Layer — smoother gameplay, fresh visuals, and pure community energy!\n\nPlay game:- https://ashokakb000.github.io/rialouniverse/\nGithub:-https://github.com/Ashokakb000/rialoun",
     "category": [
       "Community dApp",
@@ -8239,15 +7971,24 @@ function renderCommunitySpotlight() {
       "</div>" +
     "</div>" +
 
-    "<div class=\"grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5 pt-1\">" +
-      data.members.map(function(m) {
-        return "<div class=\"p-3.5 bg-[#F6F4EE] rounded-xl border border-black/[0.06] flex flex-col items-center text-center space-y-2 shadow-sm hover:border-[#205446] transition-all cursor-default select-none\">" +
-          "<img src=\"" + m.avatar + "\" alt=\"" + escapeHtml(m.name) + "\" class=\"w-12 h-12 rounded-full border border-black/10 shadow-sm object-cover bg-slate-800\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + m.name + "'\" />" +
-          "<div class=\"text-xs font-bold text-brand-text truncate w-full\">" + escapeHtml(m.name) + "</div>" +
-          "<span class=\"text-[10px] font-mono font-semibold px-2 py-0.5 bg-white rounded-full border border-black/[0.06] text-slate-600\">" + escapeHtml(m.region) + "</span>" +
-        "</div>";
-      }).join("") +
-    "</div>";
+    (data.image
+      ? "<div class=\"pt-1 space-y-3\">" +
+          "<img src=\"" + data.image + "\" alt=\"Members of the Week " + escapeHtml(data.date) + "\" class=\"w-full rounded-xl border border-black/[0.06] shadow-sm\" loading=\"lazy\" />" +
+          ((data.members && data.members.length)
+            ? "<div class=\"flex flex-wrap gap-1.5\">" + data.members.map(function(m) {
+                return "<span class=\"text-[10px] font-mono font-semibold px-2 py-0.5 bg-[#F6F4EE] rounded-full border border-black/[0.06] text-slate-700\">" + escapeHtml(m.name) + "</span>";
+              }).join("") + "</div>"
+            : "") +
+        "</div>"
+      : "<div class=\"grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5 pt-1\">" +
+          data.members.map(function(m) {
+            return "<div class=\"p-3.5 bg-[#F6F4EE] rounded-xl border border-black/[0.06] flex flex-col items-center text-center space-y-2 shadow-sm hover:border-[#205446] transition-all cursor-default select-none\">" +
+              "<img src=\"" + m.avatar + "\" alt=\"" + escapeHtml(m.name) + "\" class=\"w-12 h-12 rounded-full border border-black/10 shadow-sm object-cover bg-slate-800\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + m.name + "'\" />" +
+              "<div class=\"text-xs font-bold text-brand-text truncate w-full\">" + escapeHtml(m.name) + "</div>" +
+              "<span class=\"text-[10px] font-mono font-semibold px-2 py-0.5 bg-white rounded-full border border-black/[0.06] text-slate-600\">" + escapeHtml(m.region) + "</span>" +
+            "</div>";
+          }).join("") +
+        "</div>");
 }
 
 function prevSpotlightDate() {
@@ -8261,6 +8002,60 @@ function nextSpotlightDate() {
   if (currentSpotlightIndex > 0) {
     currentSpotlightIndex--;
     renderCommunitySpotlight();
+  }
+}
+
+// ══════════════════════════════════════════════════════
+// LIVE DATA LOADER — Verse Agent output is the source of truth
+// ══════════════════════════════════════════════════════
+// The Verse Agent (agent/sync.js) writes data/quiz.json and data/spotlight.json
+// from Discord. On the live site those files win. When index.html is opened
+// directly from disk (file://) fetch is blocked, so we silently keep the
+// embedded arrays above as an offline fallback.
+function loadLiveData() {
+  if (typeof fetch !== "function") return;
+
+  // Projects are the single source of truth. Adding an entry here makes the
+  // count, analytics cards, charts, sector bars, and leaderboard all recompute.
+  fetch("data/projects.json", { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (list) {
+      if (Array.isArray(list) && list.length) {
+        allProjects = list;
+        applyFilters(document.getElementById("dappSearchInput") ? document.getElementById("dappSearchInput").value : "");
+        renderAllViews();
+      }
+    })
+    .catch(function () { /* offline / file:// — keep embedded fallback */ });
+
+  fetch("data/quiz.json", { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (list) {
+      if (Array.isArray(list) && list.length) {
+        quizHistory = list;
+        currentQuizIndex = 0;
+        renderQuizChampions();
+      }
+    })
+    .catch(function () { /* offline / file:// — keep embedded fallback */ });
+
+  fetch("data/spotlight.json", { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (list) {
+      if (Array.isArray(list) && list.length) {
+        spotlightHistory = list;
+        currentSpotlightIndex = 0;
+        renderCommunitySpotlight();
+      }
+    })
+    .catch(function () { /* offline / file:// — keep embedded fallback */ });
+}
+
+if (typeof document !== "undefined") {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", loadLiveData);
+  } else {
+    loadLiveData();
   }
 }
 

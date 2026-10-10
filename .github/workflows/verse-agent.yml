@@ -1,0 +1,67 @@
+name: Verse Agent — Discord → Site Sync
+
+# Runs entirely on GitHub's free cloud runners. No PC required.
+on:
+  schedule:
+    # 06:15 and 18:15 UTC daily. GitHub may delay cron by up to ~15 min — fine
+    # for weekly data. New quiz/spotlight posts are picked up within ~12h.
+    - cron: "15 6,18 * * *"
+  workflow_dispatch: {} # manual "Run workflow" button in the Actions tab
+
+# Let the job commit data back to the repo.
+permissions:
+  contents: write
+
+concurrency:
+  group: verse-agent
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run Verse Agent - direct Rialo scrape (no npm install — zero dependencies)
+        id: agent
+        env:
+          DISCORD_USER_TOKEN: ${{ secrets.DISCORD_USER_TOKEN }}
+        run: node agent/sync.js
+
+      - name: Publish run report to the Actions summary
+        if: always()
+        run: |
+          echo "### Verse Agent report" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          cat agent/last-report.md >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || echo "(no report)" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit new data (only when something changed)
+        if: steps.agent.outputs.changed == 'true'
+        run: |
+          git config user.name  "verse-agent[bot]"
+          git config user.email "verse-agent@users.noreply.github.com"
+          git add data/ assets/spotlight/
+          git commit -m "chore(agent): sync new Discord records [skip ci]"
+          git push
+
+      - name: Monthly heartbeat (keeps the schedule from auto-disabling)
+        if: steps.agent.outputs.changed != 'true' && github.event_name == 'schedule'
+        run: |
+          # GitHub disables cron on a public repo after 60 idle days. On the 1st
+          # of each month, push an empty commit so that never happens.
+          if [ "$(date -u +%d)" = "01" ]; then
+            git config user.name  "verse-agent[bot]"
+            git config user.email "verse-agent@users.noreply.github.com"
+            git commit --allow-empty -m "chore(agent): monthly heartbeat [skip ci]"
+            git push
+          else
+            echo "No changes; not the 1st — nothing to commit."
+          fi

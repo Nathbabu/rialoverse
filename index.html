@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RialoVerse  -  Official Ecosystem & Latch Hub</title>
-  <meta name="description" content="The official intelligent ecosystem portal for Rialo Layer-1, Latch hardware governance, 171+ verified dApps, and builder leaderboard.">
+  <title>RialoVerse  -  Community Ecosystem & Latch Hub</title>
+  <meta name="description" content="A community ecosystem portal for Rialo Layer-1, Latch hardware governance, 153 verified community dApps, and a builder leaderboard.">
 
   <!-- Google Fonts: Plus Jakarta Sans & DM Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -239,7 +239,7 @@
       </a>
 
       <!-- Smart Streamlined Navigation (No redundant home, clean width) -->
-      <nav class="flex items-center gap-1 bg-white p-1 rounded-full border border-black/[0.08] shadow-sm flex-shrink-0">
+      <nav class="flex items-center gap-1 bg-white p-1 rounded-full border border-black/[0.08] shadow-sm min-w-0 overflow-x-auto no-scrollbar">
         <button id="nav-btn-rialo" onclick="navigateTo('rialo')" class="nav-pill px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1 whitespace-nowrap cursor-pointer">
           <span class="material-symbols-outlined text-[14px] leading-none">bolt</span>
           <span>Testnet</span>
@@ -294,7 +294,7 @@
         
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-pineMuted border border-brand-pine/25 text-brand-pine text-xs font-mono font-semibold">
           <span class="w-2 h-2 rounded-full bg-brand-pine"></span>
-          <span>The Official Rialo L1 & Autonomous Latch Ecosystem</span>
+          <span>A Community Hub for the Rialo L1 & Autonomous Latch Ecosystem</span>
         </div>
 
         <h1 class="text-4xl sm:text-6xl font-extrabold text-brand-text tracking-tight leading-[1.12]">
@@ -303,7 +303,7 @@
         </h1>
 
         <p class="text-base sm:text-lg text-brand-textMuted max-w-2xl mx-auto leading-relaxed">
-          Discover 171+ verified dApps, inspect builder rankings, configure hardware-level Latch agent security policies, and explore the testnet ecosystem.
+          Discover <span class="js-dapp-count">153</span> verified community dApps, inspect builder rankings, configure hardware-level Latch agent security policies, and explore the testnet ecosystem.
         </p>
 
         <!-- CTA Row -->
@@ -328,7 +328,7 @@
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="hb-card p-6 space-y-1.5 shadow-sm">
           <div class="text-[11px] font-mono text-brand-textMuted uppercase font-semibold">VERIFIED DAPPS</div>
-          <div id="statProjects" class="text-3xl font-extrabold text-brand-text font-mono">171</div>
+          <div id="statProjects" class="text-3xl font-extrabold text-brand-text font-mono">153</div>
           <div class="text-xs text-brand-pine font-mono flex items-center gap-1">
             <span>●</span> Live on Rialo Testnet
           </div>
@@ -723,10 +723,10 @@ print("Safe Transaction Executed on Rialo:", tx.tx_hash)</pre>
         <div>
           <div class="text-xs font-mono text-brand-pine font-bold uppercase tracking-wider">ECOSYSTEM DIRECTORY</div>
           <h2 class="text-3xl font-extrabold text-brand-text tracking-tight mt-1">Verified App Catalog</h2>
-          <p class="text-xs text-brand-textMuted mt-1">Explore 165 verified community projects, official protocols, GitHub repositories, and live demos.</p>
+          <p class="text-xs text-brand-textMuted mt-1">Explore <span class="js-dapp-count">153</span> verified community projects, protocols, GitHub repositories, and live demos.</p>
         </div>
         <div class="text-xs font-mono text-brand-text font-bold bg-white px-4 py-2 rounded-full border border-black/[0.08] shadow-sm">
-          <span class="text-brand-pine font-black" id="dirCount">171</span> ENTRIES
+          <span class="text-brand-pine font-black" id="dirCount">153</span> ENTRIES
         </div>
       </div>
 
@@ -820,7 +820,7 @@ print("Safe Transaction Executed on Rialo:", tx.tx_hash)</pre>
       <div class="hb-card overflow-hidden shadow-sm">
         <div class="px-6 py-4 border-b border-black/[0.06] flex items-center justify-between text-xs font-mono text-brand-textMuted bg-black/[0.02]">
           <span>BUILDER ROSTER & PORTFOLIO</span>
-          <span>45+ VERIFIED BUILDERS</span>
+          <span id="rosterBuilderCount">— VERIFIED BUILDERS</span>
         </div>
         <div id="leaderboardRows" class="divide-y divide-black/[0.06]">
           <!-- Rendered by JS -->
@@ -1012,7 +1012,7 @@ print("Safe Transaction Executed on Rialo:", tx.tx_hash)</pre>
         </div>
         <div class="flex items-center gap-2">
           <span class="text-xs font-mono px-3 py-1.5 rounded-full bg-white border border-black/[0.08] text-brand-text font-bold shadow-sm">
-            <span class="text-brand-pine">165</span> dApps Analyzed
+            <span class="text-brand-pine js-dapp-count">153</span> dApps Analyzed
           </span>
         </div>
       </div>
@@ -1021,23 +1021,23 @@ print("Safe Transaction Executed on Rialo:", tx.tx_hash)</pre>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="hb-card p-6 space-y-1.5 shadow-sm">
           <div class="text-[11px] font-mono text-brand-textMuted uppercase font-semibold">MOST BUILT NICHE</div>
-          <div class="text-2xl font-black text-brand-text font-mono">Gaming (38%)</div>
-          <div class="text-xs text-brand-pine font-medium">65 Arcade & Puzzle dApps</div>
+          <div id="metricNicheName" class="text-2xl font-black text-brand-text font-mono">—</div>
+          <div id="metricNicheSub" class="text-xs text-brand-pine font-medium">—</div>
         </div>
         <div class="hb-card p-6 space-y-1.5 shadow-sm">
-          <div class="text-[11px] font-mono text-brand-textMuted uppercase font-semibold">FASTEST GROWING</div>
-          <div class="text-2xl font-black text-brand-text font-mono">AI Agents (24%)</div>
-          <div class="text-xs text-brand-pine font-medium">41 Autonomous Latch Bots</div>
+          <div class="text-[11px] font-mono text-brand-textMuted uppercase font-semibold">TRENDING SECTOR</div>
+          <div id="metricTrendName" class="text-2xl font-black text-brand-text font-mono">—</div>
+          <div id="metricTrendSub" class="text-xs text-brand-pine font-medium">—</div>
         </div>
         <div class="hb-card p-6 space-y-1.5 shadow-sm">
           <div class="text-[11px] font-mono text-brand-textMuted uppercase font-semibold">BIGGEST GAP</div>
-          <div class="text-2xl font-black text-amber-800 font-mono">DeFi & RWAs (8%)</div>
-          <div class="text-xs text-amber-700 font-medium">Massive Grant Opportunity</div>
+          <div id="metricGapName" class="text-2xl font-black text-amber-800 font-mono">—</div>
+          <div id="metricGapSub" class="text-xs text-amber-700 font-medium">—</div>
         </div>
         <div class="hb-card p-6 space-y-1.5 shadow-sm">
-          <div class="text-[11px] font-mono text-brand-textMuted uppercase font-semibold">BUILDER RETENTION</div>
-          <div class="text-2xl font-black text-brand-text font-mono">82%</div>
-          <div class="text-xs text-brand-pine font-medium">Active GitHub Commits</div>
+          <div class="text-[11px] font-mono text-brand-textMuted uppercase font-semibold">ACTIVE BUILDERS</div>
+          <div id="metricBuildersCount" class="text-2xl font-black text-brand-text font-mono">—</div>
+          <div id="metricBuildersSub" class="text-xs text-brand-pine font-medium">—</div>
         </div>
       </div>
 
@@ -1050,9 +1050,9 @@ print("Safe Transaction Executed on Rialo:", tx.tx_hash)</pre>
           <div class="flex items-center justify-between border-b border-black/[0.08] pb-3">
             <div>
               <h3 class="text-base font-extrabold text-brand-text">Ecosystem Sector Share</h3>
-              <p class="text-[11px] text-brand-textMuted">Interactive distribution across 165 dApps</p>
+              <p class="text-[11px] text-brand-textMuted">Interactive distribution across <span class="js-dapp-count">153</span> dApps</p>
             </div>
-            <span class="text-[10px] font-mono font-bold bg-brand-pineMuted text-brand-pine px-2.5 py-0.5 rounded-full">165 TOTAL</span>
+            <span class="text-[10px] font-mono font-bold bg-brand-pineMuted text-brand-pine px-2.5 py-0.5 rounded-full"><span class="js-dapp-count">153</span> TOTAL</span>
           </div>
 
           <div class="flex-1 flex flex-col items-center justify-center relative py-2">
@@ -1060,7 +1060,7 @@ print("Safe Transaction Executed on Rialo:", tx.tx_hash)</pre>
               <canvas id="categoryPieChart"></canvas>
               <!-- Center Donut Text -->
               <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                <span class="text-2xl font-black text-brand-text font-mono">165</span>
+                <span class="text-2xl font-black text-brand-text font-mono js-dapp-count">153</span>
                 <span class="text-[10px] font-mono text-brand-pine font-bold uppercase">Live dApps</span>
               </div>
             </div>
@@ -1086,7 +1086,7 @@ print("Safe Transaction Executed on Rialo:", tx.tx_hash)</pre>
           </div>
 
           <div class="text-[11px] font-mono text-brand-textMuted pt-2 border-t border-black/[0.06] flex items-center justify-between">
-            <span>Aggregated across 165 projects</span>
+            <span>Aggregated across <span class="js-dapp-count">153</span> projects</span>
             <span class="text-brand-pine font-bold">100% Network Coverage</span>
           </div>
         </div>
@@ -1265,51 +1265,9 @@ print("Safe Transaction Executed on Rialo:", tx.tx_hash)</pre>
       <!-- 1. Top Row: Left = Shark Tank Winner (Just Jena) | Right = AGP Status Card -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         
-        <!-- Shark Tank Winner (7 cols) -->
-        <div class="lg:col-span-7 hb-card p-6 flex flex-col justify-between space-y-4 shadow-sm bg-gradient-to-br from-white via-[#FAF9F5] to-emerald-50/50 border-2 border-brand-pine/30 rounded-2xl">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between border-b border-black/[0.08] pb-3">
-              <div class="flex items-center gap-2">
-                <span class="text-lg">🦈</span>
-                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-brand-pine text-white">SHARK TANK WINNER</span>
-                <span class="text-[10px] font-mono text-emerald-800 font-bold bg-emerald-100 px-2 py-0.5 rounded-full">THIS WEEK</span>
-              </div>
-              <span class="text-[10px] font-mono text-brand-textMuted font-semibold">UPDATED WEEKLY</span>
-            </div>
-
-            <!-- Builder Profile & dApp Info with Real Avatar -->
-            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <div class="relative flex-shrink-0">
-                <img src="assets/avatars/just_jena.png" alt="Just Jena" class="w-16 h-16 rounded-2xl border-2 border-brand-pine shadow-md object-cover bg-[#9CB99C]" />
-                <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white"></span>
-              </div>
-              <div class="space-y-1 min-w-0">
-                <div class="flex items-center gap-2">
-                  <h3 class="text-xl font-extrabold text-brand-text">Just Jena.</h3>
-                  <span class="text-xs font-mono text-brand-pine font-bold bg-brand-pineMuted px-2 py-0.5 rounded-full">@kirahell69</span>
-                </div>
-                <div class="text-xs font-bold text-brand-text font-mono flex items-center gap-1.5">
-                  <span>Project:</span>
-                  <span class="text-brand-pine font-extrabold text-sm underline">RialOS</span>
-                </div>
-                <p class="text-xs text-brand-textMuted leading-relaxed">
-                  One programmable operating system layer for payroll, credit, and investing on Rialo L1  -  running automatically, on-chain with zero intermediaries.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- CTAs -->
-          <div class="pt-3 border-t border-black/[0.06] flex flex-wrap items-center justify-between gap-3">
-            <a href="https://rialos.vercel.app/" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-brand-pine hover:bg-brand-pineHover text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1.5">
-              <span>Launch RialOS</span>
-              <span class="material-symbols-outlined text-xs leading-none">arrow_outward</span>
-            </a>
-            <span class="text-xs font-mono text-emerald-800 font-bold flex items-center gap-1.5 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200">
-              <span>🏆</span>
-              <span>Weekly Shark Tank Pitch Winner</span>
-            </span>
-          </div>
+        <!-- Shark Tank Winner (7 cols) — rendered by renderSharkTankCard(), navigable across editions -->
+        <div class="lg:col-span-7 hb-card p-6 shadow-sm bg-gradient-to-br from-white via-[#FAF9F5] to-emerald-50/50 border-2 border-brand-pine/30 rounded-2xl">
+          <div id="sharkTankCardContainer" class="space-y-4"></div>
         </div>
 
         <!-- AGP Status Card (5 cols) -->
