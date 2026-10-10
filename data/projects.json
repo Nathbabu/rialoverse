@@ -30,7 +30,7 @@
       "lending"
     ],
     "gitRepo": "",
-    "liveLink": "https://playground.rialo.io/",
+    "liveLink": "",
     "builder": {
       "name": "Stello Team",
       "username": "stellofinance",
@@ -3121,30 +3121,8 @@
     "primarySector": "DeFi, Prediction & Lending"
   },
   {
-    "title": "Hello @everyone 📢",
-    "description": "Hello @everyone 📢\nWelcome to Rialo! 💐\n\nRialo is the first full-stack network for real-world apps, bringing real users directly to real builders.\nWhy does it matter? Because today’s Web3 isn’t the future we were promised.\n\n**✨ It’s been:**\n\n- 16 years since digital scarcity on blockchains\n- 10 year",
-    "category": [
-      "Community dApp",
-      "Game/Tooling"
-    ],
-    "gitRepo": "",
-    "liveLink": "https://www.rialo.io/",
-    "builder": {
-      "name": "neyamulhadi",
-      "username": "neyamulhadi",
-      "image": "https://cdn.discordapp.com/avatars/465146664861040640/ffb5cf917edc9a9522e13689f001b2c2.png",
-      "xLink": ""
-    },
-    "loves": 3,
-    "views": 15,
-    "isNew": true,
-    "source": "Rialo Discord Community",
-    "verified": true,
-    "primarySector": "Web3 Gaming & On-Chain Arcade"
-  },
-  {
-    "title": "<@862550907349893151>",
-    "description": "<@862550907349893151> \nI made game, rialo puzzle vibe game, \nFor now only max lv5, i can up more LV.\n\nhttps://x.com/Wisnu100802/status/1978063455895597556\n\nhttps://khoerulwisnupirdaus.github.io/rialo-puzzle/\n\npreviously had a bug, then we talked with <@1055977815742349373>, we discussed it together ",
+    "title": "Rialo Puzzle",
+    "description": "A Rialo-themed puzzle game with increasing difficulty levels, built using HTML/CSS/JS.",
     "category": [
       "Community dApp",
       "Game/Tooling"
@@ -3165,8 +3143,8 @@
     "primarySector": "Web3 Gaming & On-Chain Arcade"
   },
   {
-    "title": "Hello <@862550907349893151> <@302388310142353410>",
-    "description": "Hello <@862550907349893151> <@302388310142353410> \nI made a mini game using HTML, CSS and Javascript for the Rialo community and I was inspired by space shooter galaxy attack.please take a look and try playing  \n\ngithub (Open Source) : https://iddesot.github.io/Rialo-Shooter---Defend-the-Future/\n\nx ",
+    "title": "Rialo Shooter",
+    "description": "A Rialo-themed space shooter game inspired by galaxy attack. Built with HTML, CSS and JavaScript.",
     "category": [
       "Community dApp",
       "Game/Tooling"
@@ -3346,30 +3324,8 @@
     "primarySector": "Web3 Gaming & On-Chain Arcade"
   },
   {
-    "title": "Here’s the link to the repositories",
-    "description": "Here’s the link to the repositories https://github.com/0xQayyum/Rialo",
-    "category": [
-      "Community dApp",
-      "Game/Tooling"
-    ],
-    "gitRepo": "",
-    "liveLink": "https://github.com/0xQayyum/Rialo",
-    "builder": {
-      "name": "0xxabdul",
-      "username": "0xxabdul",
-      "image": "https://cdn.discordapp.com/avatars/828397810814025748/dd312dc7f748f0642c8af73bd4f5e341.png",
-      "xLink": ""
-    },
-    "loves": 3,
-    "views": 15,
-    "isNew": true,
-    "source": "Rialo Discord Community",
-    "verified": true,
-    "primarySector": "Web3 Gaming & On-Chain Arcade"
-  },
-  {
-    "title": "I Created a Game for Rialo 😊",
-    "description": "I Created a Game for Rialo 😊 \nRialo Rush brings utility and fun together, a new way to experience crypto gaming. it’s about belonging to a community that runs together. 💙\n\nGame Link: https://valoto2.github.io/RialoRush/\nRepo Link: https://github.com/valoto2/RialoRush\nI posted on X, Please Check ou",
+    "title": "Rialo Rush",
+    "description": "A fast-paced Rialo-themed runner game that brings utility and fun together. Crypto gaming for the community.",
     "category": [
       "Community dApp",
       "Game/Tooling"
