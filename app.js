@@ -5240,54 +5240,82 @@ function renderSharkTankCard() {
   var isLast = currentSharkTankIndex === sharkTankHistory.length - 1;
 
   var projectUrlBtn = data.projectUrl ? 
-    "<a href=\"" + data.projectUrl + "\" target=\"_blank\" rel=\"noopener\" class=\"px-4 py-2 rounded-xl bg-[#205446] hover:bg-[#184237] active:scale-95 text-white text-xs font-bold font-mono transition-all flex items-center gap-1.5 shadow-sm\">" +
+    "<a href=\"" + data.projectUrl + "\" target=\"_blank\" rel=\"noopener\" class=\"px-4 py-2 rounded-xl bg-brand-pine hover:bg-brand-pineHover active:scale-95 text-white text-xs font-bold font-mono transition-all flex items-center gap-1.5 shadow-sm\">" +
       "<span>Open Live App</span>" +
-      "<span class=\"text-xs\">↗</span>" +
-    "</a>" : "";
+      "<span class=\"material-symbols-outlined text-xs leading-none\">arrow_outward</span>" +
+    "</a>" : 
+    "<span class=\"px-3.5 py-1.5 rounded-xl bg-black/[0.04] text-black/40 text-xs font-mono font-medium border border-black/5\">Prototype Phase</span>";
 
   cardContainer.innerHTML = 
-    "<div class=\"flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-black/[0.08] pb-3.5\">" +
-      "<div class=\"flex items-center gap-3\">" +
-        "<div class=\"w-9 h-9 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-base shadow-sm\">🏆</div>" +
-        "<div>" +
-          "<div class=\"flex items-center gap-2\">" +
-            "<h3 class=\"text-base font-extrabold text-brand-text\">Shark Tank Pitch Winner</h3>" +
-            "<span class=\"text-xs font-mono font-bold bg-amber-100/80 text-amber-900 px-2.5 py-0.5 rounded-full border border-amber-200/60\">📅 " + data.date + "</span>" +
-            (data.isLatest ? "<span class=\"text-[10px] font-mono font-bold bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-200\">LATEST</span>" : "") +
+    "<div class=\"flex flex-col justify-between h-full space-y-4\">" +
+      // Header row with clean non-wrapping badges & compact controls
+      "<div class=\"flex items-center justify-between border-b border-black/[0.08] pb-3\">" +
+        "<div class=\"flex items-center gap-2.5 min-w-0\">" +
+          "<div class=\"w-8 h-8 rounded-xl bg-amber-100/90 text-amber-900 border border-amber-200/80 flex items-center justify-center font-bold text-sm shadow-xs flex-shrink-0\">🏆</div>" +
+          "<div class=\"min-w-0\">" +
+            "<div class=\"flex items-center gap-2 flex-wrap\">" +
+              "<h3 class=\"text-base font-extrabold text-brand-text leading-tight\">Shark Tank Pitch Winner</h3>" +
+              "<span class=\"text-[10px] font-mono font-bold bg-amber-100/80 text-amber-900 px-2.5 py-0.5 rounded-full border border-amber-200/70 whitespace-nowrap\">" + (data.edition || "Edition") + "</span>" +
+              (data.isLatest ? "<span class=\"text-[10px] font-mono font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-200 whitespace-nowrap\">LATEST</span>" : "") +
+            "</div>" +
+            "<p class=\"text-[11px] text-brand-textMuted font-mono truncate mt-0.5\">Winner of the Rialo Discord Stage live community pitch</p>" +
           "</div>" +
-          "<p class=\"text-[11px] text-black/60 font-mono mt-0.5\">Winner of the Rialo Discord Stage live community pitch competition</p>" +
+        "</div>" +
+        
+        // Compact pagination
+        "<div class=\"flex items-center gap-1.5 flex-shrink-0 ml-2\">" +
+          "<button onclick=\"prevSharkTank()\" " + (isLast ? "disabled" : "") + " class=\"px-2.5 py-1 rounded-lg border border-black/10 flex items-center gap-1 text-xs font-mono font-bold transition-all " + (isLast ? "opacity-30 cursor-not-allowed bg-black/[0.02] text-black/40" : "bg-white hover:bg-black/5 active:scale-95 text-brand-text shadow-xs") + "\" title=\"Previous Edition\">" +
+            "<span>←</span>" +
+          "</button>" +
+          "<span class=\"text-xs font-mono font-bold text-black/60 px-1 whitespace-nowrap\">" + (currentSharkTankIndex + 1) + " / " + sharkTankHistory.length + "</span>" +
+          "<button onclick=\"nextSharkTank()\" " + (isFirst ? "disabled" : "") + " class=\"px-2.5 py-1 rounded-lg border border-black/10 flex items-center gap-1 text-xs font-mono font-bold transition-all " + (isFirst ? "opacity-30 cursor-not-allowed bg-black/[0.02] text-black/40" : "bg-white hover:bg-black/5 active:scale-95 text-brand-text shadow-xs") + "\" title=\"Next Edition\">" +
+            "<span>→</span>" +
+          "</button>" +
         "</div>" +
       "</div>" +
-      "<div class=\"flex items-center gap-2 self-start sm:self-auto\">" +
-        "<button onclick=\"prevSharkTank()\" " + (isLast ? "disabled" : "") + " class=\"px-3 py-1.5 rounded-xl border border-black/10 flex items-center gap-1.5 text-xs font-mono font-bold transition-all " + (isLast ? "opacity-30 cursor-not-allowed bg-black/[0.02] text-black/40" : "bg-white hover:bg-black/5 active:scale-95 text-brand-text shadow-sm") + "\" title=\"Previous Edition\">" +
-          "<span>← Prev Date</span>" +
-        "</button>" +
-        "<span class=\"text-xs font-mono font-bold text-black/50 px-1\">" + (currentSharkTankIndex + 1) + " / " + sharkTankHistory.length + "</span>" +
-        "<button onclick=\"nextSharkTank()\" " + (isFirst ? "disabled" : "") + " class=\"px-3 py-1.5 rounded-xl border border-black/10 flex items-center gap-1.5 text-xs font-mono font-bold transition-all " + (isFirst ? "opacity-30 cursor-not-allowed bg-black/[0.02] text-black/40" : "bg-white hover:bg-black/5 active:scale-95 text-brand-text shadow-sm") + "\" title=\"Next Edition\">" +
-          "<span>Next Date →</span>" +
-        "</button>" +
-      "</div>" +
-    "</div>" +
 
-    "<div class=\"p-5 rounded-2xl bg-gradient-to-r " + data.bgClass + " border border-black/[0.08] flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-sm transition-all\">" +
-      "<div class=\"flex items-center gap-4\">" +
-        "<div class=\"relative\">" +
-          "<img src=\"" + data.avatar + "\" alt=\"" + escapeHtml(data.winnerName) + "\" class=\"w-16 h-16 rounded-full border-2 border-brand-pine/40 shadow-sm object-cover bg-slate-900\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + encodeURIComponent(data.winnerName) + "'\" />" +
-          "<div class=\"absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-amber-400 text-amber-950 flex items-center justify-center text-xs font-bold border border-white shadow-sm\" title=\"Pitch Champion\">👑</div>" +
+      // Middle Card: Winner Feature Box
+      "<div class=\"flex-1 flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-gradient-to-br " + data.bgClass + " border border-black/[0.08] shadow-sm space-y-3.5 transition-all\">" +
+        // Top row inside card: Avatar & Title info
+        "<div class=\"flex items-start gap-3.5 sm:gap-4\">" +
+          "<div class=\"relative flex-shrink-0\">" +
+            "<img src=\"" + data.avatar + "\" alt=\"" + escapeHtml(data.winnerName) + "\" class=\"w-14 h-14 sm:w-16 sm:h-16 rounded-2xl border-2 border-brand-pine/40 shadow-sm object-cover bg-slate-900\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + encodeURIComponent(data.winnerName) + "'\" />" +
+            "<div class=\"absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-amber-400 text-amber-950 flex items-center justify-center text-[10px] font-bold border-2 border-white shadow-xs\" title=\"Pitch Champion\">👑</div>" +
+          "</div>" +
+          "<div class=\"space-y-1 min-w-0 flex-1\">" +
+            "<div class=\"flex items-center justify-between gap-2 flex-wrap\">" +
+              "<h4 class=\"text-base sm:text-lg font-extrabold text-brand-text leading-snug\">" + escapeHtml(data.projectName) + "</h4>" +
+              "<span class=\"text-[10px] font-mono font-bold px-2.5 py-0.5 bg-brand-pine/10 text-brand-pine rounded-full border border-brand-pine/20 whitespace-nowrap\">" + escapeHtml(data.badge) + "</span>" +
+            "</div>" +
+            "<div class=\"flex items-center gap-2 text-xs font-mono flex-wrap\">" +
+              "<span class=\"text-brand-textMuted\">Pitcher:</span>" +
+              "<strong class=\"text-brand-text\">" + escapeHtml(data.winnerName) + "</strong>" +
+              "<span class=\"text-brand-pine font-bold bg-brand-pineMuted px-2 py-0.5 rounded-full text-[11px]\">" + escapeHtml(data.handle) + "</span>" +
+            "</div>" +
+          "</div>" +
         "</div>" +
-        "<div class=\"space-y-1\">" +
-          "<div class=\"flex items-center gap-2\">" +
-            "<h4 class=\"text-base font-extrabold text-brand-text\">" + escapeHtml(data.projectName) + "</h4>" +
-            "<span class=\"text-[11px] font-mono font-bold px-2.5 py-0.5 bg-[#205446]/10 text-[#205446] rounded-full border border-[#205446]/20\">" + escapeHtml(data.badge) + "</span>" +
-          "</div>" +
-          "<div class=\"text-xs text-black/70 font-mono\">" +
-            "<span>Pitcher: </span><strong class=\"text-brand-text\">" + escapeHtml(data.winnerName) + "</strong> <span class=\"text-slate-500 font-mono text-[11px]\">(" + escapeHtml(data.handle) + ")</span>" +
-          "</div>" +
-          "<p class=\"text-xs text-black/70 leading-relaxed max-w-xl pt-0.5\">" + escapeHtml(data.description) + "</p>" +
+
+        // Description Quote Box
+        "<div class=\"p-3 bg-white/75 rounded-xl border border-black/[0.06] shadow-xs\">" +
+          "<p class=\"text-xs text-brand-text/80 leading-relaxed font-body\">" + escapeHtml(data.description) + "</p>" +
+        "</div>" +
+
+        // Meta tags
+        "<div class=\"flex items-center justify-between text-[11px] font-mono text-brand-textMuted pt-0.5\">" +
+          "<span class=\"flex items-center gap-1\">📅 <span>" + data.date + "</span></span>" +
+          "<span class=\"text-emerald-800 font-bold flex items-center gap-1\"><span>🏆</span> <span>Rialo Discord Stage Winner</span></span>" +
         "</div>" +
       "</div>" +
-      "<div class=\"flex flex-wrap items-center gap-2.5 self-start md:self-auto\">" +
-        projectUrlBtn +
+
+      // Bottom Row / Footer (Matching AGP card's footer border & height)
+      "<div class=\"pt-2 border-t border-black/[0.06] flex items-center justify-between gap-3\">" +
+        "<div class=\"text-xs font-mono text-emerald-900 font-bold flex items-center gap-1.5 bg-emerald-50/90 px-3 py-2 rounded-xl border border-emerald-200/70\">" +
+          "<span>🦈</span>" +
+          "<span class=\"truncate\">Weekly Shark Tank Pitch Champion</span>" +
+        "</div>" +
+        "<div>" +
+          projectUrlBtn +
+        "</div>" +
       "</div>" +
     "</div>";
 }
