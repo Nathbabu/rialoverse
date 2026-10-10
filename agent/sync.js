@@ -47,6 +47,7 @@ const TOKEN   = process.env.DISCORD_USER_TOKEN || "";
 const SERVER_ID         = process.env.RIALO_GUILD_ID       || "1393211102577557544";
 const QUIZ_CHANNEL      = process.env.QUIZ_CHANNEL_ID      || "1446510433287536680";
 const SPOTLIGHT_CHANNEL = process.env.SPOTLIGHT_CHANNEL_ID || "1445429099135762493";
+const AGP_CHANNEL       = process.env.AGP_CHANNEL_ID       || "1524939872110907474";
 
 // Realistic browser User-Agent to reduce detection surface
 const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
@@ -362,6 +363,117 @@ async function runSpotlight() {
   writeJSON(file, list);
 }
 
+
+// ══════════════════════════════════════════════════════
+// AGP (Agent Grand Prix) AUTOMATION ENGINE
+// ══════════════════════════════════════════════════════
+function parseAgp(messages) {
+  if (!messages || !messages.length) return null;
+
+  const allAnnouncements = messages.map((m) => {
+    const text = (m.content || "").trim();
+    const trackMatch = text.match(/https:\/\/agp\.onlatch\.com\/tracks\?id=[\w-]+/);
+    const timestampMatch = text.match(/<t:(\d+):([a-zA-Z]?)>/);
+    const futureDate = timestampMatch ? new Date(parseInt(timestampMatch[1], 10) * 1000) : null;
+
+    return {
+      id: m.id,
+      timestamp: m.timestamp,
+      date: fmtDate(m.timestamp),
+      author: m.author?.username || "ericargent",
+      text: text,
+      trackUrl: trackMatch ? trackMatch[0] : null,
+      targetTime: futureDate ? futureDate.toISOString() : null,
+    };
+  });
+
+  const latestItem = allAnnouncements[0];
+  const now = new Date();
+  const latestMsgDate = new Date(latestItem.timestamp);
+  const diffHours = (now - latestMsgDate) / (1000 * 60 * 60);
+
+  let status = "STANDBY";
+  let statusBadge = "CIRCUIT STANDBY";
+  let statusColor = "amber";
+  let headline = "Tournament Status: Waiting for Next Round";
+  let details = "Previous AGP races on Latch TEE word-circuits have concluded. Subzero Labs will announce the next race round in Discord.";
+  let ctaText = "Preview AGP Track (onlatch.com) ↗";
+  let ctaUrl = latestItem.trackUrl || "https://agp.onlatch.com";
+
+  if (diffHours < 24) {
+    if (/incoming|drops|starting|started|race day|live/i.test(latestItem.text)) {
+      status = "LIVE";
+      statusBadge = "RACE LIVE 🔴";
+      statusColor = "emerald";
+      headline = "Live Race in Progress!";
+      details = latestItem.text.replace(/<@&?\d+>/g, "").replace(/https?:\/\/\S+/g, "").slice(0, 180).trim();
+      ctaText = "Enter Live Track 🏎️ ↗";
+    } else {
+      status = "ANNOUNCED";
+      statusBadge = "NEW ANNOUNCEMENT";
+      statusColor = "purple";
+      headline = "New AGP Update Dropped";
+      details = latestItem.text.replace(/<@&?\d+>/g, "").replace(/https?:\/\/\S+/g, "").slice(0, 180).trim();
+    }
+  } else if (/first race is happening|second race|next race/i.test(latestItem.text) && latestItem.targetTime && new Date(latestItem.targetTime) > now) {
+    status = "UPCOMING";
+    statusBadge = "DATE ANNOUNCED";
+    statusColor = "purple";
+    headline = "Next Race Scheduled";
+    details = "Next tournament circuit scheduled for " + new Date(latestItem.targetTime).toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+    ctaText = "View Circuit Details ↗";
+  }
+
+  return {
+    status,
+    statusBadge,
+    statusColor,
+    headline,
+    details,
+    ctaText,
+    ctaUrl,
+    latestAnnouncement: {
+      id: latestItem.id,
+      timestamp: latestItem.timestamp,
+      author: latestItem.author,
+      date: latestItem.date,
+      snippet: latestItem.text.slice(0, 300),
+      trackUrl: latestItem.trackUrl,
+    },
+    totalAnnouncements: allAnnouncements.length,
+    announcements: allAnnouncements,
+    syncedAt: new Date().toISOString(),
+  };
+}
+
+async function runAgp() {
+  log("Fetching #agp-announcements directly from Rialo server...");
+  const messages = await fetchMessages(AGP_CHANNEL);
+  if (!Array.isArray(messages) || !messages.length) {
+    warn("AGP: no messages returned (channel may be gated or token expired).");
+    return;
+  }
+
+  const file = path.join(DATA_DIR, "agp.json");
+  const existing = readJSON(file, null);
+
+  const parsed = parseAgp(messages);
+  if (!parsed) return;
+
+  const isDifferent = !existing || 
+    existing.latestAnnouncement?.id !== parsed.latestAnnouncement?.id ||
+    existing.status !== parsed.status ||
+    existing.statusBadge !== parsed.statusBadge;
+
+  if (isDifferent) {
+    writeJSON(file, parsed);
+    changed = true;
+    log("AGP synced: Status [" + parsed.statusBadge + "] - Latest msg: " + parsed.latestAnnouncement.id);
+  } else {
+    log("AGP: No status change (Latest msg: " + (existing.latestAnnouncement?.id || "none") + ").");
+  }
+}
+
 // Main
 async function main() {
   log("Verse Agent run @ " + new Date().toISOString() + (DRY_RUN ? " (dry-run)" : ""));
@@ -375,6 +487,7 @@ async function main() {
   try {
     await runQuiz();
     await runSpotlight();
+    await runAgp();
   } catch (err) {
     warn("Run error: " + err.message);
     fs.writeFileSync(REPORT_PATH, report.join("\n"));
@@ -389,7 +502,7 @@ async function main() {
   }
 }
 
-module.exports = { parseQuiz, parseSpotlight, flatten, resolveMentions, fmtDate };
+module.exports = { parseQuiz, parseSpotlight, parseAgp, flatten, resolveMentions, fmtDate };
 if (require.main === module) {
   main();
 }

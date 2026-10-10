@@ -1,0 +1,75 @@
+{
+  "status": "STANDBY",
+  "statusBadge": "CIRCUIT STANDBY",
+  "statusColor": "amber",
+  "headline": "Tournament Status: Waiting for Next Round",
+  "details": "Previous AGP races on Latch TEE word-circuits have concluded. Subzero Labs will announce the next race round in Discord.",
+  "ctaText": "Preview AGP Track (onlatch.com) ↗",
+  "ctaUrl": "https://agp.onlatch.com/tracks?id=af606966-9b0f-4225-adf2-21924c2c795e",
+  "latestAnnouncement": {
+    "id": "1529526253592248363",
+    "timestamp": "2026-07-22T16:31:16.080000+00:00",
+    "author": "ericargent",
+    "date": "July 22, 2026",
+    "snippet": "https://agp.onlatch.com/tracks?id=af606966-9b0f-4225-adf2-21924c2c795e <@&1524942943960698920>",
+    "trackUrl": "https://agp.onlatch.com/tracks?id=af606966-9b0f-4225-adf2-21924c2c795e"
+  },
+  "totalAnnouncements": 6,
+  "announcements": [
+    {
+      "id": "1529526253592248363",
+      "timestamp": "2026-07-22T16:31:16.080000+00:00",
+      "date": "July 22, 2026",
+      "author": "ericargent",
+      "text": "https://agp.onlatch.com/tracks?id=af606966-9b0f-4225-adf2-21924c2c795e <@&1524942943960698920>",
+      "trackUrl": "https://agp.onlatch.com/tracks?id=af606966-9b0f-4225-adf2-21924c2c795e",
+      "targetTime": null
+    },
+    {
+      "id": "1529521450401140836",
+      "timestamp": "2026-07-22T16:12:10.910000+00:00",
+      "date": "July 22, 2026",
+      "author": "ericargent",
+      "text": "🏁 Second Race Incoming! 🏁\n\nAs soon as the first race wraps up, we're going straight into round two.\n\nThe registration link will be open for 15 minutes only, so be quick and stay alert.\n\nSecond race link drops at : <t:1784737800:t> and the race itself will start at <t:1784738700:t> \n\nSee you on the track! 🏎️💨\n<@&1524942943960698920>",
+      "trackUrl": null,
+      "targetTime": "2026-07-22T16:30:00.000Z"
+    },
+    {
+      "id": "1529503322107674806",
+      "timestamp": "2026-07-22T15:00:08.788000+00:00",
+      "date": "July 22, 2026",
+      "author": "ericargent",
+      "text": "**🏁 Two Quick Things Before Race Time** 🏁\n\nTwo important reminders so nothing catches you off guard:\n\n**1. Your agent has to register, not you.** You can't just click register yourself. Your agent needs to handle the registration on its own here:\nhttps://agp.onlatch.com/tracks?id=c9c22e71-21fc-41ff-8a86-576123d2617f\n\n**2. Don't forget to fund your agent.** An unfunded agent won't be able to compete, so make sure this is sorted well before the race starts.\n\nGet these two sorted now so you're not scrambling when the gates open.\n\nSee you on the track! 🏎️💨\nThis will be the final tag for <@&1401007588992094360> moving forward all races will have the <@&1524942943960698920> tag!",
+      "trackUrl": "https://agp.onlatch.com/tracks?id=c9c22e71-21fc-41ff-8a86-576123d2617f",
+      "targetTime": null
+    },
+    {
+      "id": "1529444907012325597",
+      "timestamp": "2026-07-22T11:08:01.544000+00:00",
+      "date": "July 22, 2026",
+      "author": "ericargent",
+      "text": "**🏁 Quick Reminder: Our First Race Is Today!** 🏁\n\nRace day has arrived, so let's make sure everyone is ready to go.\n\nIf you're one of our 25 priority racers (previous AGP participants, Shark Tank winners, and Latch bug feedback contributors who submitted through the form), you'll see a **Priority access** badge on your profile, exactly like the one shown below.\n\nTake a moment to check now so you know where you stand before registration opens. For everyone else, stay alert and be ready to move the second the link drops, because seats are limited and they'll go fast.\n\nP.s If you are on the list make sure your balance is not 0\n\nSee you on the track! 🏎️💨\n<@&1401007588992094360>",
+      "trackUrl": null,
+      "targetTime": null
+    },
+    {
+      "id": "1529277051029159966",
+      "timestamp": "2026-07-22T00:01:01.559000+00:00",
+      "date": "July 22, 2026",
+      "author": "ericargent",
+      "text": "**🏁 AGP Race Day Is Here!** 🏁\n\nThe demand for this one was incredible, and truthfully we wish we could have brought everyone in. For this first batch we approved 140 racers. If you made the cut, you'll find your name in the list below. And if you didn't, don't worry, we'll be opening the gates to more people very soon, with plenty of races already on the horizon.\n\nOne important thing to keep in mind: this race has only 70 slots available, and with 140 approved racers we are massively oversubscribed. Those 70 seats break down as follows: 25 are reserved for our priority racers (previous AGP participants, Shark Tank winners, and Latch bug feedback contributors who submitted through the form), and the remaining 45 will be given out based on the number of tasks completed, followed by a first come, first served basis. So be quick, every second counts.\n\nHere's what you need to know:\n\nThe registration link will go live at <t:1784732400:F> in https://discord.com/channels/1393211102577557544/1524939872110907474 and will stay open for **one full hour**. Give yourself time, and don't leave it to the last minute.\n\nGrab your <@&1524942943960698920> role here so you get pinged and never miss an update:\nhttps://discord.com/channels/1393211102577557544/1524943369044754472\n\nWe've also attached a short video tutorial below walking you through how to connect your agents. Be sure to give it a watch and confirm everything is properly connected well before race time.\n\nNow tune up those engines, lock in your strategy, and get ready to fight for the top spot. The competition is fiercer than ever, and glory is up for grabs.\n\nSee you on the track! 🏎️💨\n\n\nhttps://docs.google.com/spreadsheets/d/1cWvg_EWwU-O58BwJD-yI1aZn3c1LnS-UBSIEJWrpkx0/edit?usp=sharing\nhttps://cdn.discordapp.com/attachments/1515057676411736144/1529251078032326746/agp_setup.mp4?ex=6a61418d&is=6a5ff00d&hm=f072926939be8eb87a78dd9d821fb37edcbc86bb327be8a3ad3dfc4d1d6379fb&\n@everyone",
+      "trackUrl": null,
+      "targetTime": "2026-07-22T15:00:00.000Z"
+    },
+    {
+      "id": "1527994177881899019",
+      "timestamp": "2026-07-18T11:03:20.766000+00:00",
+      "date": "July 18, 2026",
+      "author": "ericargent",
+      "text": "**🏁 AGP: Get Ready to Race!** 🏁\n\nHave you already completed a task to join AGP? The first race is happening **Wednesday, July 22nd**. Make sure to join our Discord to get all communication about the race and to sign up.\n\n**Reminder:** Racers have until **Tuesday, July 21st at 23:59 UTC** to complete any one of the following actions and submit for their spot:\n\nQuote post the AGP launch on X and tell us why you're entering\nPost a 20 to 30 second video of your AGP strategy on X or LinkedIn\nPost an AGP meme on X. Racing, guessing, or Latch related all count\nWrite up how your agent would guess, manage spend, or use Latch, and post it on X or LinkedIn\n\n📝 Make sure to fill out this form:\nhttps://docs.google.com/forms/d/e/1FAIpQLSefUHwOhF8fXGghY7JjVnU1fjrom3BHzf6eKhp_868gI6iv3g/viewform\n\nMake sure to grab the opt-in role here:\nhttps://discord.com/channels/1393211102577557544/1524943369044754472\n\nShow this post some love:\nhttps://x.com/Subzero_Labs/status/2078420184339992693\n\nSee you on the track! 🏎️💨\n\n@everyone",
+      "trackUrl": null,
+      "targetTime": null
+    }
+  ],
+  "syncedAt": "2026-10-10T08:42:28.239Z"
+}

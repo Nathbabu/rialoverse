@@ -8040,6 +8040,48 @@ function nextSpotlightDate() {
 // from Discord. On the live site those files win. When index.html is opened
 // directly from disk (file://) fetch is blocked, so we silently keep the
 // embedded arrays above as an offline fallback.
+
+function renderAgpCard(data) {
+  if (!data) return;
+  var badge = document.getElementById("agpStatusBadge");
+  var headline = document.getElementById("agpStatusHeadline");
+  var details = document.getElementById("agpStatusDetails");
+  var statusBox = document.getElementById("agpStatusBox");
+  var statusIcon = document.getElementById("agpStatusIcon");
+  var cta = document.getElementById("agpTrackCta");
+  var ctaText = document.getElementById("agpTrackCtaText");
+
+  if (badge && data.statusBadge) {
+    badge.innerText = data.statusBadge;
+    if (data.status === "LIVE") {
+      badge.className = "text-[10px] font-mono font-bold bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full border border-emerald-300 animate-pulse whitespace-nowrap";
+    } else if (data.status === "UPCOMING" || data.status === "ANNOUNCED") {
+      badge.className = "text-[10px] font-mono font-bold bg-purple-100 text-purple-900 px-2.5 py-0.5 rounded-full border border-purple-200 whitespace-nowrap";
+    } else {
+      badge.className = "text-[10px] font-mono font-bold bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full border border-amber-200 whitespace-nowrap";
+    }
+  }
+
+  if (headline && data.headline) headline.innerText = data.headline;
+  if (details && data.details) details.innerText = data.details;
+
+  if (statusBox) {
+    if (data.status === "LIVE") {
+      statusBox.className = "p-3 bg-emerald-50/80 rounded-xl border border-emerald-200 space-y-1 transition-colors";
+      if (statusIcon) { statusIcon.innerText = "radio_button_checked"; statusIcon.className = "material-symbols-outlined text-sm text-emerald-700 animate-ping"; }
+    } else if (data.status === "UPCOMING" || data.status === "ANNOUNCED") {
+      statusBox.className = "p-3 bg-purple-50/70 rounded-xl border border-purple-200 space-y-1 transition-colors";
+      if (statusIcon) { statusIcon.innerText = "event_upcoming"; statusIcon.className = "material-symbols-outlined text-sm text-purple-700"; }
+    } else {
+      statusBox.className = "p-3 bg-amber-50/60 rounded-xl border border-amber-200/70 space-y-1 transition-colors";
+      if (statusIcon) { statusIcon.innerText = "schedule"; statusIcon.className = "material-symbols-outlined text-sm text-amber-700"; }
+    }
+  }
+
+  if (cta && data.ctaUrl) cta.href = data.ctaUrl;
+  if (ctaText && data.ctaText) ctaText.innerText = data.ctaText;
+}
+
 function loadLiveData() {
   if (typeof fetch !== "function") return;
 
@@ -8066,6 +8108,14 @@ function loadLiveData() {
       }
     })
     .catch(function () { /* offline / file:// — keep embedded fallback */ });
+
+  
+  fetch("data/agp.json", { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (data) renderAgpCard(data);
+    })
+    .catch(function () { /* offline fallback */ });
 
   fetch("data/spotlight.json", { cache: "no-store" })
     .then(function (r) { return r.ok ? r.json() : null; })

@@ -1278,17 +1278,17 @@ print("Safe Transaction Executed on Rialo:", tx.tx_hash)</pre>
                 <span class="text-xl">🏁</span>
                 <h3 class="text-base font-extrabold text-brand-text">Agent Grand Prix (AGP)</h3>
               </div>
-              <span class="text-[10px] font-mono font-bold bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full border border-amber-200">COMING SOON</span>
+              <span id="agpStatusBadge" class="text-[10px] font-mono font-bold bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full border border-amber-200 whitespace-nowrap">CIRCUIT STANDBY</span>
             </div>
 
             <div class="space-y-2">
-              <div class="p-3 bg-amber-50/60 rounded-xl border border-amber-200/70 space-y-1">
+              <div id="agpStatusBox" class="p-3 bg-amber-50/60 rounded-xl border border-amber-200/70 space-y-1 transition-colors">
                 <div class="text-xs font-bold text-amber-900 flex items-center gap-1.5">
-                  <span class="material-symbols-outlined text-sm text-amber-700">schedule</span>
-                  <span>Tournament Status: Not Live Yet</span>
+                  <span id="agpStatusIcon" class="material-symbols-outlined text-sm text-amber-700">schedule</span>
+                  <span id="agpStatusHeadline">Tournament Status: Waiting for Next Round</span>
                 </div>
-                <p class="text-[11px] text-amber-800 leading-relaxed">
-                  Official race date has not been announced yet. Subzero Labs will announce the live launch soon in Discord.
+                <p id="agpStatusDetails" class="text-[11px] text-amber-800 leading-relaxed">
+                  Previous AGP races on Latch TEE word-circuits have concluded. Subzero Labs will announce the next race round in Discord.
                 </p>
               </div>
 
@@ -1298,15 +1298,15 @@ print("Safe Transaction Executed on Rialo:", tx.tx_hash)</pre>
                   <span class="text-[10px] font-mono text-purple-800 font-bold">agp.onlatch.com</span>
                 </div>
                 <p class="text-[11px] text-brand-textMuted leading-relaxed">
-                  Autonomous AI agent word-circuit tournament. 140 registered bots will race under strict Latch TEE rules.
+                  Autonomous AI agent word-circuit tournament. 140 registered bots race under strict Latch TEE rules.
                 </p>
               </div>
             </div>
           </div>
 
           <div class="pt-2 border-t border-black/[0.06]">
-            <a href="https://agp.onlatch.com" target="_blank" rel="noopener" class="w-full py-2.5 rounded-xl bg-[#F6F4EE] hover:bg-black/5 text-brand-text text-xs font-bold text-center transition-all flex items-center justify-center gap-1.5 border border-black/10 shadow-sm">
-              <span>Preview AGP Track (Pre-Launch) ↗</span>
+            <a id="agpTrackCta" href="https://agp.onlatch.com" target="_blank" rel="noopener" class="w-full py-2.5 rounded-xl bg-[#F6F4EE] hover:bg-black/5 text-brand-text text-xs font-bold text-center transition-all flex items-center justify-center gap-1.5 border border-black/10 shadow-sm">
+              <span id="agpTrackCtaText">Preview AGP Track (onlatch.com) ↗</span>
             </a>
           </div>
         </div>
