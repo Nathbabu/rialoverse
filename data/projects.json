@@ -1,12 +1,12 @@
 [
   {
     "title": "OLPA DEX",
-    "description": "The first event-native decentralized derivatives exchange and automated market maker built for real-time order routing.",
+    "description": "The first event-native decentralized derivatives exchange and automated market maker built for real-time order routing on Rialo.",
     "category": [
       "defi",
       "dex"
     ],
-    "gitRepo": "",
+    "gitRepo": "https://github.com/MrBillion1/olpasimulation",
     "liveLink": "https://olpadex.vercel.app/",
     "builder": {
       "name": "OLPA Labs",
@@ -16,7 +16,7 @@
       "about": "High-frequency AMM for Rialo L1"
     },
     "loves": 24,
-    "views": 45,
+    "views": 51,
     "isNew": true,
     "source": "Community Submissions",
     "verified": true,
@@ -473,28 +473,6 @@
     "primarySector": "DeFi, Prediction & Lending"
   },
   {
-    "title": "MMArena( Meme Arena )",
-    "description": "Bet ETH\nFight for real\nWin on-chain\nRound-by-round 1v1 PvP combat, stake real SepoliaETH",
-    "category": [
-      "memecoin"
-    ],
-    "gitRepo": "",
-    "liveLink": "https://mmarena.online/",
-    "builder": {
-      "name": "Minwon",
-      "username": "maiwuocbinh1997",
-      "image": "https://pbs.twimg.com/profile_images/2035613679195242496/agjj_2Df_400x400.jpg",
-      "xLink": "https://x.com/binhbethc",
-      "about": "Builders at : \n@RialoHQ"
-    },
-    "loves": 1,
-    "views": 3,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "Autonomous AI Agents & Bots"
-  },
-  {
     "title": "Rialo Oracle",
     "description": "Predict the outcome and earn rewards if you're right.",
     "category": [
@@ -787,29 +765,6 @@
     "primarySector": "DeFi, Prediction & Lending"
   },
   {
-    "title": "OlpaDEX",
-    "description": "The moment it happens on the pitch, it happens on-chain. Trade on real-world events with millisecond execution, zero manipulation, and complete transparency.",
-    "category": [
-      "tooling",
-      "dex"
-    ],
-    "gitRepo": "https://github.com/MrBillion1/olpasimulation",
-    "liveLink": "https://olpasimulation.lovable.app/",
-    "builder": {
-      "name": "Chiphon",
-      "username": "mhiztabillion01",
-      "image": "https://pbs.twimg.com/profile_images/1960714139145318400/rLkmDlcq_400x400.jpg",
-      "xLink": "https://x.com/chiphon_olpa",
-      "about": "Constructive thinker"
-    },
-    "loves": 0,
-    "views": 6,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "DeFi, Prediction & Lending"
-  },
-  {
     "title": "RialoHub prediction market",
     "description": "1. What differentiates Rialohub from competitors?\nRialohub is designed as a Hybrid Prediction Ecosystem. Unlike Polymarket, which focuses primarily on binary event outcomes, Rialohub integrates:\nMulti-Vertical Markets: Football predictions, Binary Options (high-frequency crypto price trading), and general Market Forecasts in a single dashboard.\nIntegrated AI Intelligence: A native AI Agent that provides real-time market sentiment and data analysis to help users make informed predictions.\nGamified UX: A high-performance, \"hardware-inspired\" interface that feels more like a professional trading terminal than a standard web app.",
     "category": [
@@ -1040,7 +995,7 @@
     "gitRepo": "https://github.com/Asadullah0575/rialo-arena",
     "liveLink": "https://rialo-arena.vercel.app/",
     "builder": {
-      "name": "",
+      "name": "asad_0x",
       "username": "asad_0x",
       "image": "https://pbs.twimg.com/profile_images/1980911132358402049/NSV1eBoE_400x400.jpg",
       "xLink": "https://x.com/Asad_0x",
@@ -1075,30 +1030,6 @@
     "source": "Rialo Shark Tank Winner",
     "verified": true,
     "primarySector": "Developer SDKs & Tooling"
-  },
-  {
-    "title": "NarrativeOS",
-    "description": "narrativeonchain",
-    "category": [
-      "defi",
-      "dex",
-      "tooling"
-    ],
-    "gitRepo": "https://github.com/SuryaXyz-art/NarrativeOS",
-    "liveLink": "https://narrativeonchain.netlify.app/",
-    "builder": {
-      "name": "Surya",
-      "username": "surya6276",
-      "image": "https://pbs.twimg.com/profile_images/1982406446407987200/GbIPi7Ul_400x400.jpg",
-      "xLink": "https://x.com/Surya_xyz_",
-      "about": "The blockchain is going to change everything more than the Internet has - I write about blockchain"
-    },
-    "loves": 0,
-    "views": 0,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "DeFi, Prediction & Lending"
   },
   {
     "title": "PROOF PAY",
@@ -3366,5 +3297,181 @@
     "source": "Rialo Discord Community",
     "verified": true,
     "primarySector": "Web3 Gaming & On-Chain Arcade"
+  },
+  {
+    "title": "LatchLens",
+    "description": "Red-team assurance lab for Latch agent policies, powered by Rialo. Validates agent safety boundaries, tool constraints, and fail-closed isolated executions.",
+    "category": [
+      "Security",
+      "AI Agent"
+    ],
+    "gitRepo": "https://github.com/sanjeebdas1979/latchlens",
+    "liveLink": "https://latchlens.vercel.app",
+    "builder": {
+      "name": "sanjeebdas1979",
+      "username": "sanjeebdas1979",
+      "image": "https://avatars.githubusercontent.com/u/202400483?v=4",
+      "xLink": ""
+    },
+    "loves": 5,
+    "views": 24,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "Autonomous AI Agents & Bots"
+  },
+  {
+    "title": "Rialo Calls",
+    "description": "A fully on-chain prediction market dApp built on Rialo Network. Create prediction markets, trade outcomes, and settle transparently on-chain.",
+    "category": [
+      "DeFi",
+      "Prediction Market"
+    ],
+    "gitRepo": "https://github.com/kaicrypt00/rialo-calls",
+    "liveLink": "https://rialo-calls.vercel.app",
+    "builder": {
+      "name": "kaicrypt00",
+      "username": "kaicrypt00",
+      "image": "https://avatars.githubusercontent.com/u/283329888?v=4",
+      "xLink": ""
+    },
+    "loves": 8,
+    "views": 32,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "DeFi, Prediction & Lending"
+  },
+  {
+    "title": "MergePay",
+    "description": "Onchain bounties for GitHub pull requests, powered by Rialo. Verify contributors, escrow RLO, and settle payouts or refunds automatically through REX workflows.",
+    "category": [
+      "Dev Tooling",
+      "REX"
+    ],
+    "gitRepo": "https://github.com/Alice699/mergepay",
+    "liveLink": "https://mergepay-mu.vercel.app",
+    "builder": {
+      "name": "Alice699",
+      "username": "Alice699",
+      "image": "https://avatars.githubusercontent.com/u/120354104?v=4",
+      "xLink": ""
+    },
+    "loves": 12,
+    "views": 40,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "Developer SDKs & Tooling"
+  },
+  {
+    "title": "Resonance",
+    "description": "Anime-inspired Rialo learning adventure featuring reactive vault simulations, interactive tutorials, and on-chain mastery tracks.",
+    "category": [
+      "Education",
+      "Gaming"
+    ],
+    "gitRepo": "https://github.com/direncankutanis/resonance",
+    "liveLink": "https://resonance-learning-adventure.vercel.app",
+    "builder": {
+      "name": "direncankutanis",
+      "username": "direncankutanis",
+      "image": "https://avatars.githubusercontent.com/u/109218555?v=4",
+      "xLink": ""
+    },
+    "loves": 6,
+    "views": 28,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "Web3 Gaming & On-Chain Arcade"
+  },
+  {
+    "title": "Rialo Edge Log",
+    "description": "Tamper-evident IoT telemetry with ESP8266, signed sensor readings, and real-time on-chain verification on Rialo Devnet.",
+    "category": [
+      "IoT",
+      "DePIN"
+    ],
+    "gitRepo": "https://github.com/ra5alghu1/rialo-edge-log",
+    "liveLink": "https://rialo-edge-log.xyz",
+    "builder": {
+      "name": "ra5alghu1",
+      "username": "ra5alghu1",
+      "image": "https://avatars.githubusercontent.com/u/83699597?v=4",
+      "xLink": ""
+    },
+    "loves": 4,
+    "views": 19,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "Developer SDKs & Tooling"
+  },
+  {
+    "title": "RialoTrace",
+    "description": "Proof of Work & Engagement engine for Rialo Network. Quantifies and verifies community contributions, impressions, and viral discussions across X.",
+    "category": [
+      "Analytics",
+      "Community"
+    ],
+    "gitRepo": "https://github.com/yournahian/RialoTrace",
+    "liveLink": "https://rialotrace.vercel.app",
+    "builder": {
+      "name": "yournahian",
+      "username": "yournahian",
+      "image": "https://avatars.githubusercontent.com/u/134517537?v=4",
+      "xLink": ""
+    },
+    "loves": 7,
+    "views": 35,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "Wallets, Identity & Bridges"
+  },
+  {
+    "title": "Skyline Rialo",
+    "description": "A weather prediction duel between friends powered by Rialo's reactive, self-executing smart contracts that fetch live web data without oracles.",
+    "category": [
+      "Prediction",
+      "Gaming"
+    ],
+    "gitRepo": "https://github.com/hosammahdy91/skyline-rialo",
+    "liveLink": "https://hosam-rialo-sky.surge.sh",
+    "builder": {
+      "name": "hosammahdy91",
+      "username": "hosammahdy91",
+      "image": "https://avatars.githubusercontent.com/u/66032004?v=4",
+      "xLink": ""
+    },
+    "loves": 5,
+    "views": 22,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "DeFi, Prediction & Lending"
+  },
+  {
+    "title": "RialoScan",
+    "description": "An independent block explorer for Rialo Network. Inspect blocks, transactions, accounts, validators, and REX workflows straight from node JSON-RPC.",
+    "category": [
+      "Explorer",
+      "Infrastructure"
+    ],
+    "gitRepo": "https://github.com/Orvynel/rialoscan",
+    "liveLink": "https://github.com/Orvynel/rialoscan",
+    "builder": {
+      "name": "Orvynel",
+      "username": "Orvynel",
+      "image": "https://avatars.githubusercontent.com/u/88089483?v=4",
+      "xLink": ""
+    },
+    "loves": 9,
+    "views": 44,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "Developer SDKs & Tooling"
   }
 ]

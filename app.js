@@ -1742,12 +1742,12 @@ function getSeedFallbackData() {
   return [
   {
     "title": "OLPA DEX",
-    "description": "The first event-native decentralized derivatives exchange and automated market maker built for real-time order routing.",
+    "description": "The first event-native decentralized derivatives exchange and automated market maker built for real-time order routing on Rialo.",
     "category": [
       "defi",
       "dex"
     ],
-    "gitRepo": "",
+    "gitRepo": "https://github.com/MrBillion1/olpasimulation",
     "liveLink": "https://olpadex.vercel.app/",
     "builder": {
       "name": "OLPA Labs",
@@ -1757,7 +1757,7 @@ function getSeedFallbackData() {
       "about": "High-frequency AMM for Rialo L1"
     },
     "loves": 24,
-    "views": 45,
+    "views": 51,
     "isNew": true,
     "source": "Community Submissions",
     "verified": true,
@@ -1843,7 +1843,7 @@ function getSeedFallbackData() {
       "username": "yournahian",
       "image": "https://pbs.twimg.com/profile_images/1966521996080209920/MbtcGvTv_400x400.jpg",
       "xLink": "https://x.com/yournahian",
-      "about": "â–  Ritual Fanboy-live on \n@ritualnet\n\nðŸŽ¯ Started at 0 â†’ Writing to earn attention\nðŸš€ Building, learning, connecting"
+      "about": "❖  Ritual Fanboy-live on \n@ritualnet\n\n🎯 Started at 0 → Writing to earn attention\n🚀 Building, learning, connecting"
     },
     "loves": 8,
     "views": 25,
@@ -1868,7 +1868,7 @@ function getSeedFallbackData() {
       "username": "Phonicxxxx24",
       "image": "https://pbs.twimg.com/profile_images/1989340568288382976/mu8jtfjJ_400x400.jpg",
       "xLink": "https://x.com/gaminggop24",
-      "about": "Hey, Iâ€™m Harshit CS student, web and AI enthusiast, exploring the world of technology and blockchain through real projects.\n I share my journey, experiments, and lessons learned as I build in Web, AI, and Crypto."
+      "about": "Hey, I’m Harshit CS student, web and AI enthusiast, exploring the world of technology and blockchain through real projects.\n I share my journey, experiments, and lessons learned as I build in Web, AI, and Crypto."
     },
     "loves": 6,
     "views": 11,
@@ -1903,7 +1903,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "RELOX",
-    "description": "RELOX â€“ Relax, Match, Earn!\n\nStep into the vibrant world of RELOX, where color, strategy, and crypto collide! Match patterns, earn Relox Points, and unlock rewards as you navigate this visually stunning grid-based game. With an easy-to-learn interface and a playful, neon aesthetic, RELOX invites both casual gamers and crypto enthusiasts to test their focus, reflexes, and strategy.",
+    "description": "RELOX – Relax, Match, Earn!\n\nStep into the vibrant world of RELOX, where color, strategy, and crypto collide! Match patterns, earn Relox Points, and unlock rewards as you navigate this visually stunning grid-based game. With an easy-to-learn interface and a playful, neon aesthetic, RELOX invites both casual gamers and crypto enthusiasts to test their focus, reflexes, and strategy.",
     "category": [
       "game"
     ],
@@ -1914,7 +1914,7 @@ function getSeedFallbackData() {
       "username": "mahi017fr",
       "image": "https://pbs.twimg.com/profile_images/1979567307299880964/jtyBPk_O_400x400.jpg",
       "xLink": "https://x.com/HasibulHasanM2",
-      "about": "Hello! Iâ€™m Hasibul Hasan Mahi, a passionate web designer, graphic designer, and a budding web3 expert from Bangladesh."
+      "about": "Hello! I’m Hasibul Hasan Mahi, a passionate web designer, graphic designer, and a budding web3 expert from Bangladesh."
     },
     "loves": 5,
     "views": 7,
@@ -1947,7 +1947,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "ROXOR Cavalier Scent",
-    "description": "ROXOR Cavalier: RWA Loyalty System ðŸ§ª Smart Contract for ROXOR fragrance brand. Integrating real-world luxury with blockchain utility on Rialo Network.",
+    "description": "ROXOR Cavalier: RWA Loyalty System 🧪 Smart Contract for ROXOR fragrance brand. Integrating real-world luxury with blockchain utility on Rialo Network.",
     "category": [
       "tooling"
     ],
@@ -2014,7 +2014,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Trigr",
-    "description": "he first trading terminal with native automation. Your orders execute automatically on-chain â€” no bots, no keepers, no third parties.",
+    "description": "he first trading terminal with native automation. Your orders execute automatically on-chain — no bots, no keepers, no third parties.",
     "category": [
       "trading",
       "dex"
@@ -2026,7 +2026,7 @@ function getSeedFallbackData() {
       "username": "nftgal",
       "image": "https://pbs.twimg.com/profile_images/2022058390445277185/uVzdi9pW_400x400.jpg",
       "xLink": "https://x.com/minion_btc",
-      "about": "Building on Arc | Full-Stack Dev in the making...\nArt & Content CreatorðŸ’™ | dc id: nftgal"
+      "about": "Building on Arc | Full-Stack Dev in the making...\nArt & Content Creator💙 | dc id: nftgal"
     },
     "loves": 7,
     "views": 14,
@@ -2049,7 +2049,7 @@ function getSeedFallbackData() {
       "username": "syf1213764315",
       "image": "https://pbs.twimg.com/profile_images/2010998012731146249/BSRCYUaT_400x400.jpg",
       "xLink": "https://x.com/ayun24335167",
-      "about": "web3äºé’±è€…"
+      "about": "web3亏钱者"
     },
     "loves": 3,
     "views": 10,
@@ -2060,7 +2060,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialo Catch Game",
-    "description": "Rialo Catch Game - Catch, Score, Conquer!\nA fast-paced casual arcade experience where reflexes and focus are your greatest allies! In this minimalist yet addictive title, tokens drift through the air and itâ€™s up to you to catch them with precision before time runs out.",
+    "description": "Rialo Catch Game - Catch, Score, Conquer!\nA fast-paced casual arcade experience where reflexes and focus are your greatest allies! In this minimalist yet addictive title, tokens drift through the air and it’s up to you to catch them with precision before time runs out.",
     "category": [
       "game"
     ],
@@ -2115,7 +2115,7 @@ function getSeedFallbackData() {
       "username": "cloudtechvn",
       "image": "https://pbs.twimg.com/profile_images/2033003962698465280/H3zXD_Q5_400x400.jpg",
       "xLink": "https://x.com/cloudtechvn",
-      "about": "ðŸªª https://cloudlabs.id.vn\nðŸ§‘â€ðŸ’» Mod & Researcher\nðŸ§‘â€ðŸ’»  Alpha and OG Support Early project\nðŸ¤Magnitude at \n@SeismicSys\n\nðŸŸ¢https://seismicpfp.xyz"
+      "about": "🪪 https://cloudlabs.id.vn\n🧑‍💻 Mod & Researcher\n🧑‍💻  Alpha and OG Support Early project\n🤝Magnitude at \n@SeismicSys\n\n🟢https://seismicpfp.xyz"
     },
     "loves": 1,
     "views": 2,
@@ -2214,28 +2214,6 @@ function getSeedFallbackData() {
     "primarySector": "DeFi, Prediction & Lending"
   },
   {
-    "title": "MMArena( Meme Arena )",
-    "description": "Bet ETH\nFight for real\nWin on-chain\nRound-by-round 1v1 PvP combat, stake real SepoliaETH",
-    "category": [
-      "memecoin"
-    ],
-    "gitRepo": "",
-    "liveLink": "https://mmarena.online/",
-    "builder": {
-      "name": "Minwon",
-      "username": "maiwuocbinh1997",
-      "image": "https://pbs.twimg.com/profile_images/2035613679195242496/agjj_2Df_400x400.jpg",
-      "xLink": "https://x.com/binhbethc",
-      "about": "Builders at : \n@RialoHQ"
-    },
-    "loves": 1,
-    "views": 3,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "Autonomous AI Agents & Bots"
-  },
-  {
     "title": "Rialo Oracle",
     "description": "Predict the outcome and earn rewards if you're right.",
     "category": [
@@ -2249,7 +2227,7 @@ function getSeedFallbackData() {
       "username": "steste112",
       "image": "https://pbs.twimg.com/profile_images/1830888540458102784/sXDE1OoU_400x400.jpg",
       "xLink": "https://x.com/Marisdigitals11",
-      "about": "Founder \n@sweepers_dao\n\ncrypto enthusiast\nAlpha hunter\n@maygNFT\n holder ðŸ˜Ž\nAmbassador \n@spicenetio\n\nVIBE CODER"
+      "about": "Founder \n@sweepers_dao\n\ncrypto enthusiast\nAlpha hunter\n@maygNFT\n holder 😎\nAmbassador \n@spicenetio\n\nVIBE CODER"
     },
     "loves": 1,
     "views": 5,
@@ -2259,8 +2237,8 @@ function getSeedFallbackData() {
     "primarySector": "DeFi, Prediction & Lending"
   },
   {
-    "title": "Whisper Tiles â€” Flip Edition",
-    "description": "All cards start hidden. Watch for the signal and flip the correct cards at the right moment. Precision and timing decide everythingâ€”Rialo-style.",
+    "title": "Whisper Tiles — Flip Edition",
+    "description": "All cards start hidden. Watch for the signal and flip the correct cards at the right moment. Precision and timing decide everything—Rialo-style.",
     "category": [
       "game"
     ],
@@ -2271,7 +2249,7 @@ function getSeedFallbackData() {
       "username": "nrraihan",
       "image": "https://pbs.twimg.com/profile_images/1972622416443850752/ER88re_7_400x400.jpg",
       "xLink": "https://x.com/nrraihan391",
-      "about": "Content Creator ðŸŽ¨ | Web3 & Crypto Strategist ðŸ’¹ | NFT Artist & Collector ðŸ–¼ï¸ | Collabs & Discord"
+      "about": "Content Creator 🎨 | Web3 & Crypto Strategist 💹 | NFT Artist & Collector 🖼️ | Collabs & Discord"
     },
     "loves": 2,
     "views": 5,
@@ -2338,7 +2316,7 @@ function getSeedFallbackData() {
       "username": "stmtp95",
       "image": "https://pbs.twimg.com/profile_images/2004226467987877888/Fk54rG50_400x400.jpg",
       "xLink": "https://x.com/STMTP95",
-      "about": "ðŸ¥‡ CM Support\nðŸ¥‡ Project Support\nðŸ¥‡ Contribute for community"
+      "about": "🥇 CM Support\n🥇 Project Support\n🥇 Contribute for community"
     },
     "loves": 1,
     "views": 5,
@@ -2371,7 +2349,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "TruthLens",
-    "description": "Every photo and video is recorded on-chain the moment it's captured.\nWhether it's AI-generated or real â€” the chain proves it.",
+    "description": "Every photo and video is recorded on-chain the moment it's captured.\nWhether it's AI-generated or real — the chain proves it.",
     "category": [
       "ai"
     ],
@@ -2382,7 +2360,7 @@ function getSeedFallbackData() {
       "username": "sangwook06",
       "image": "https://pbs.twimg.com/profile_images/1990594528395603973/kL_eV-41_400x400.jpg",
       "xLink": "https://x.com/bjdrst",
-      "about": "I ALWAYS DO MY BEST  (ðŸ‡°ðŸ‡· KOREA)\nDiscord : sangwook06\nRialo : Rialo Club Member\nSuccinct : ALL IN SUCCINCT"
+      "about": "I ALWAYS DO MY BEST  (🇰🇷 KOREA)\nDiscord : sangwook06\nRialo : Rialo Club Member\nSuccinct : ALL IN SUCCINCT"
     },
     "loves": 0,
     "views": 3,
@@ -2404,7 +2382,7 @@ function getSeedFallbackData() {
       "username": "tenoli0424",
       "image": "https://pbs.twimg.com/profile_images/2036224208376848384/8clGeaSJ_400x400.jpg",
       "xLink": "https://x.com/dwowmuch",
-      "about": "ì½”ì¸ê³¼ AIë¥¼ ì¢‹ì•„í•˜ëŠ” INFP (í—›ì†Œë¦¬ ì‹¬í•¨) D is for Dogecoin"
+      "about": "코인과 AI를 좋아하는 INFP (헛소리 심함) D is for Dogecoin"
     },
     "loves": 0,
     "views": 3,
@@ -2415,7 +2393,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialo Court",
-    "description": "File a dispute, submit evidence, and receive a binding verdict from our AI arbitration engine â€” backed by on-chain escrow.",
+    "description": "File a dispute, submit evidence, and receive a binding verdict from our AI arbitration engine — backed by on-chain escrow.",
     "category": [
       "ai"
     ],
@@ -2470,11 +2448,11 @@ function getSeedFallbackData() {
     "gitRepo": "https://github.com/GeorgeScoote/rialo-",
     "liveLink": "https://rialo-qrv4.vercel.app/",
     "builder": {
-      "name": "ã‚¦ãƒ«ãƒˆãƒ©ãƒžãƒ³ã‚¨ãƒ¼ã‚¹",
+      "name": "ウルトラマンエース",
       "username": "memeswapbitj6842",
       "image": "https://pbs.twimg.com/profile_images/2029092326828851202/e9ytdsyv_400x400.jpg",
       "xLink": "https://x.com/TeenaTiesha",
-      "about": "Developer ðŸ±â€ðŸMonad Developer"
+      "about": "Developer 🐱‍🏍Monad Developer"
     },
     "loves": 0,
     "views": 5,
@@ -2528,29 +2506,6 @@ function getSeedFallbackData() {
     "primarySector": "DeFi, Prediction & Lending"
   },
   {
-    "title": "OlpaDEX",
-    "description": "The moment it happens on the pitch, it happens on-chain. Trade on real-world events with millisecond execution, zero manipulation, and complete transparency.",
-    "category": [
-      "tooling",
-      "dex"
-    ],
-    "gitRepo": "https://github.com/MrBillion1/olpasimulation",
-    "liveLink": "https://olpasimulation.lovable.app/",
-    "builder": {
-      "name": "Chiphon",
-      "username": "mhiztabillion01",
-      "image": "https://pbs.twimg.com/profile_images/1960714139145318400/rLkmDlcq_400x400.jpg",
-      "xLink": "https://x.com/chiphon_olpa",
-      "about": "Constructive thinker"
-    },
-    "loves": 0,
-    "views": 6,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "DeFi, Prediction & Lending"
-  },
-  {
     "title": "RialoHub prediction market",
     "description": "1. What differentiates Rialohub from competitors?\nRialohub is designed as a Hybrid Prediction Ecosystem. Unlike Polymarket, which focuses primarily on binary event outcomes, Rialohub integrates:\nMulti-Vertical Markets: Football predictions, Binary Options (high-frequency crypto price trading), and general Market Forecasts in a single dashboard.\nIntegrated AI Intelligence: A native AI Agent that provides real-time market sentiment and data analysis to help users make informed predictions.\nGamified UX: A high-performance, \"hardware-inspired\" interface that feels more like a professional trading terminal than a standard web app.",
     "category": [
@@ -2574,7 +2529,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Who wants to be a RialOne",
-    "description": "Read Â· Answer Â· Earn your card Â· 60 Questions",
+    "description": "Read · Answer · Earn your card · 60 Questions",
     "category": [
       "game"
     ],
@@ -2596,7 +2551,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialo Builder Tracker",
-    "description": "Rialo Builders Arena is a web platform built for the Rialo Discord community to: ðŸ—ï¸ Builder's Hub â€” Showcase weekly builder projects in a warm, workshop-themed environment ðŸ¦ˆ Shark Tank â€” Feature bold pitches in an intense, ocean-themed arena ðŸ—³ï¸ Community Voting â€” Discord-verified voting where Club Members get 2x voting power ðŸ‘¤ Builder Profiles â€” GitHub-integrated profiles with stats, repos, and achievement badges ðŸ† Hall of Fame â€” Immortalize weekly winners",
+    "description": "Rialo Builders Arena is a web platform built for the Rialo Discord community to: 🏗️ Builder's Hub — Showcase weekly builder projects in a warm, workshop-themed environment 🦈 Shark Tank — Feature bold pitches in an intense, ocean-themed arena 🗳️ Community Voting — Discord-verified voting where Club Members get 2x voting power 👤 Builder Profiles — GitHub-integrated profiles with stats, repos, and achievement badges 🏆 Hall of Fame — Immortalize weekly winners",
     "category": [
       "showcase"
     ],
@@ -2625,7 +2580,7 @@ function getSeedFallbackData() {
     "gitRepo": "https://github.com/Bibidee/rialopay",
     "liveLink": "https://rialo-pay.vercel.app",
     "builder": {
-      "name": "ð–†urah",
+      "name": "𝖆urah",
       "username": "aur_ah",
       "image": "https://pbs.twimg.com/profile_images/1981036814119899136/IljcJWac_400x400.jpg",
       "xLink": "https://x.com/imani_cc",
@@ -2647,11 +2602,11 @@ function getSeedFallbackData() {
     "gitRepo": "https://github.com/syf1213764315/rialo_game",
     "liveLink": "https://github.com/syf1213764315/rialo_game",
     "builder": {
-      "name": "CatðŸ±ðŸ±ðŸ±ayun",
+      "name": "Cat🐱🐱🐱ayun",
       "username": "syf1213764315",
       "image": "https://pbs.twimg.com/profile_images/2010998012731146249/BSRCYUaT_400x400.jpg",
       "xLink": "https://x.com/ayun24335167",
-      "about": "web3äºé’±è€…"
+      "about": "web3亏钱者"
     },
     "loves": 0,
     "views": 2,
@@ -2662,7 +2617,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialo saving jar",
-    "description": "Deposit USDC or USDT into your Rialo Saving Jar. Yield compounds daily on-chain â€” no bots, no keepers, no complexity. Just steady growth.",
+    "description": "Deposit USDC or USDT into your Rialo Saving Jar. Yield compounds daily on-chain — no bots, no keepers, no complexity. Just steady growth.",
     "category": [
       "defi",
       "dex",
@@ -2763,7 +2718,7 @@ function getSeedFallbackData() {
       "username": "0xlota",
       "image": "https://pbs.twimg.com/profile_images/2007684416890343424/qJRJzRG__400x400.jpg",
       "xLink": "https://x.com/0xlota",
-      "about": "Apply Yourself Daily | Keep Clicking ðŸ§‘â€ðŸ’»"
+      "about": "Apply Yourself Daily | Keep Clicking 🧑‍💻"
     },
     "loves": 0,
     "views": 0,
@@ -2781,7 +2736,7 @@ function getSeedFallbackData() {
     "gitRepo": "https://github.com/Asadullah0575/rialo-arena",
     "liveLink": "https://rialo-arena.vercel.app/",
     "builder": {
-      "name": "",
+      "name": "asad_0x",
       "username": "asad_0x",
       "image": "https://pbs.twimg.com/profile_images/1980911132358402049/NSV1eBoE_400x400.jpg",
       "xLink": "https://x.com/Asad_0x",
@@ -2796,7 +2751,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "RialOS",
-    "description": "One programmable layer for payroll, credit, and investing â€” running automatically, on-chain, with no intermediaries. Shark Tank Winner.",
+    "description": "One programmable layer for payroll, credit, and investing — running automatically, on-chain, with no intermediaries. Shark Tank Winner.",
     "category": [
       "tools",
       "system"
@@ -2808,7 +2763,7 @@ function getSeedFallbackData() {
       "username": "kirahell69",
       "image": "assets/just_jena.png",
       "xLink": "https://x.com/RialOS_xyz",
-      "about": "Shark Tank Winner Â· Builder of RialOS on Rialo L1"
+      "about": "Shark Tank Winner · Builder of RialOS on Rialo L1"
     },
     "loves": 45,
     "views": 58,
@@ -2816,30 +2771,6 @@ function getSeedFallbackData() {
     "source": "Rialo Shark Tank Winner",
     "verified": true,
     "primarySector": "Developer SDKs & Tooling"
-  },
-  {
-    "title": "NarrativeOS",
-    "description": "narrativeonchain",
-    "category": [
-      "defi",
-      "dex",
-      "tooling"
-    ],
-    "gitRepo": "https://github.com/SuryaXyz-art/NarrativeOS",
-    "liveLink": "https://narrativeonchain.netlify.app/",
-    "builder": {
-      "name": "Surya",
-      "username": "surya6276",
-      "image": "https://pbs.twimg.com/profile_images/1982406446407987200/GbIPi7Ul_400x400.jpg",
-      "xLink": "https://x.com/Surya_xyz_",
-      "about": "The blockchain is going to change everything more than the Internet has - I write about blockchain"
-    },
-    "loves": 0,
-    "views": 0,
-    "isNew": false,
-    "source": "Rialo Showcase DB",
-    "verified": true,
-    "primarySector": "DeFi, Prediction & Lending"
   },
   {
     "title": "PROOF PAY",
@@ -2909,7 +2840,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialo",
-    "description": "Rialo is an early-stage Layer 1 blockchain building high-throughput infrastructure with configurable privacy for real-world finance and the emerging agent economy. Developed by Subzero Labs and backed by Pantera Capital, Rialo positions itself as the infrastructure for the next generation of intelligent systems, replacing the fragile stack ofâ€¦",
+    "description": "Rialo is an early-stage Layer 1 blockchain building high-throughput infrastructure with configurable privacy for real-world finance and the emerging agent economy. Developed by Subzero Labs and backed by Pantera Capital, Rialo positions itself as the infrastructure for the next generation of intelligent systems, replacing the fragile stack of…",
     "category": [
       "apis-json",
       "blockchain",
@@ -2939,7 +2870,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialo Playground Automation",
-    "description": "Multi-account terminal client (TUI) untuk Rialo Playground â€” cek wallet, klaim faucet, dan pantau points dari satu terminal. Go + Bubble Tea + Camoufox.",
+    "description": "Multi-account terminal client (TUI) untuk Rialo Playground — cek wallet, klaim faucet, dan pantau points dari satu terminal. Go + Bubble Tea + Camoufox.",
     "category": [
       "Tooling",
       "AI Agent"
@@ -3040,7 +2971,7 @@ function getSeedFallbackData() {
       "username": "relixsx",
       "image": "https://pbs.twimg.com/profile_images/1950794865421250560/NxS9OgIs_400x400.jpg",
       "xLink": "https://x.com/GojoReality",
-      "about": "Machine learning Engineer â”ƒAI Devâ”ƒ"
+      "about": "Machine learning Engineer ┃AI Dev┃"
     },
     "loves": 0,
     "views": 0,
@@ -3088,11 +3019,11 @@ function getSeedFallbackData() {
     "gitRepo": "https://github.com/Jennivarl/Rialo-Weather-Insurance",
     "liveLink": "https://payonrain.vercel.app/",
     "builder": {
-      "name": "varlð“²Ö¼ð„¢",
+      "name": "varl𓏲ּ𝄢",
       "username": "varl999",
       "image": "https://pbs.twimg.com/profile_images/2017108189053956096/Xhz4pMt0_400x400.jpg",
       "xLink": "https://x.com/varl999",
-      "about": "â€¦?"
+      "about": "…?"
     },
     "loves": 0,
     "views": 0,
@@ -3345,7 +3276,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Trocooony",
-    "description": "On-chain labor market for AI agents on Rialo â€” escrow-backed work, autonomous judging, deadline auto-refunds, and risk-priced insurance.",
+    "description": "On-chain labor market for AI agents on Rialo — escrow-backed work, autonomous judging, deadline auto-refunds, and risk-priced insurance.",
     "category": [
       "Tooling",
       "AI Agent"
@@ -3521,7 +3452,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialobounty",
-    "description": "AÃ§Ä±k kaynaÄŸa katkÄ± ver, RIALO ile kazan. Åžirketler Ã¶dÃ¼l koyar, geliÅŸtiriciler GitHub Ã¼zerinden Ã§Ã¶zÃ¼m gÃ¶nderir, en iyi Ã§Ã¶zÃ¼m seÃ§ilir ve Ã¶deme zincir Ã¼stÃ¼nde otomatik yapÄ±lÄ±r.",
+    "description": "Açık kaynağa katkı ver, RIALO ile kazan. Şirketler ödül koyar, geliştiriciler GitHub üzerinden çözüm gönderir, en iyi çözüm seçilir ve ödeme zincir üstünde otomatik yapılır.",
     "category": [
       "Tooling",
       "AI Agent"
@@ -3653,7 +3584,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Latchspend",
-    "description": "Agent spend control â€” Latch scopes charges, Rialo records settlement",
+    "description": "Agent spend control — Latch scopes charges, Rialo records settlement",
     "category": [
       "Tooling",
       "AI Agent"
@@ -4401,7 +4332,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialopred",
-    "description": "On-chain prediction market built on Rialo â€” crypto, sports, World Cup, wrestling, politics & more",
+    "description": "On-chain prediction market built on Rialo — crypto, sports, World Cup, wrestling, politics & more",
     "category": [
       "Tooling",
       "AI Agent"
@@ -4467,7 +4398,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialo Signal",
-    "description": "Rialo Signal â€” Onchain Intelligence Terminal | RWA + Crypto signal engine built for the Rialo ecosystem. Live price feeds, wallet analysis, cluster visualization, and Rialo SDK-ready architecture.",
+    "description": "Rialo Signal — Onchain Intelligence Terminal | RWA + Crypto signal engine built for the Rialo ecosystem. Live price feeds, wallet analysis, cluster visualization, and Rialo SDK-ready architecture.",
     "category": [
       "Tooling",
       "AI Agent"
@@ -4819,7 +4750,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialo Spars Game",
-    "description": "Spars battle game built on Rialo network â€” on-chain PvP combat with async execution",
+    "description": "Spars battle game built on Rialo network — on-chain PvP combat with async execution",
     "category": [
       "Tooling",
       "AI Agent"
@@ -4841,7 +4772,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialo Syncred",
-    "description": "Async lending protocol demo on Goerli â€” Rialo-style deferred execution, collateral management, and async loan settlement",
+    "description": "Async lending protocol demo on Goerli — Rialo-style deferred execution, collateral management, and async loan settlement",
     "category": [
       "Tooling",
       "AI Agent"
@@ -4862,30 +4793,8 @@ function getSeedFallbackData() {
     "primarySector": "DeFi, Prediction & Lending"
   },
   {
-    "title": "Hello @everyone ðŸ“¢",
-    "description": "Hello @everyone ðŸ“¢\nWelcome to Rialo! ðŸ’\n\nRialo is the first full-stack network for real-world apps, bringing real users directly to real builders.\nWhy does it matter? Because todayâ€™s Web3 isnâ€™t the future we were promised.\n\n**âœ¨ Itâ€™s been:**\n\n- 16 years since digital scarcity on blockchains\n- 10 year",
-    "category": [
-      "Community dApp",
-      "Game/Tooling"
-    ],
-    "gitRepo": "",
-    "liveLink": "https://www.rialo.io/",
-    "builder": {
-      "name": "neyamulhadi",
-      "username": "neyamulhadi",
-      "image": "https://cdn.discordapp.com/avatars/465146664861040640/ffb5cf917edc9a9522e13689f001b2c2.png",
-      "xLink": ""
-    },
-    "loves": 3,
-    "views": 15,
-    "isNew": true,
-    "source": "Rialo Discord Community",
-    "verified": true,
-    "primarySector": "Web3 Gaming & On-Chain Arcade"
-  },
-  {
     "title": "Rialo Puzzle",
-    "description": "<@862550907349893151> \nI made game, rialo puzzle vibe game, \nFor now only max lv5, i can up more LV.\n\nhttps://x.com/Wisnu100802/status/1978063455895597556\n\nhttps://khoerulwisnupirdaus.github.io/rialo-puzzle/\n\npreviously had a bug, then we talked with <@1055977815742349373>, we discussed it together ",
+    "description": "A Rialo-themed puzzle game with increasing difficulty levels, built using HTML/CSS/JS.",
     "category": [
       "Community dApp",
       "Game/Tooling"
@@ -4907,7 +4816,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialo Shooter",
-    "description": "Hello <@862550907349893151> <@302388310142353410> \nI made a mini game using HTML, CSS and Javascript for the Rialo community and I was inspired by space shooter galaxy attack.please take a look and try playing  \n\ngithub (Open Source) : https://iddesot.github.io/Rialo-Shooter---Defend-the-Future/\n\nx ",
+    "description": "A Rialo-themed space shooter game inspired by galaxy attack. Built with HTML, CSS and JavaScript.",
     "category": [
       "Community dApp",
       "Game/Tooling"
@@ -4973,7 +4882,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialo Verse",
-    "description": "Rialo Portal is your gateway to the next era of blockchain. Powered by Rialoâ€™s event-driven smart contracts and Web2 integration, this website showcases the vision, features, and roadmap of the network.",
+    "description": "Rialo Portal is your gateway to the next era of blockchain. Powered by Rialo’s event-driven smart contracts and Web2 integration, this website showcases the vision, features, and roadmap of the network.",
     "category": [
       "Tooling",
       "AI Agent"
@@ -5087,30 +4996,8 @@ function getSeedFallbackData() {
     "primarySector": "Web3 Gaming & On-Chain Arcade"
   },
   {
-    "title": "Hereâ€™s the link to the repositories",
-    "description": "Hereâ€™s the link to the repositories https://github.com/0xQayyum/Rialo",
-    "category": [
-      "Community dApp",
-      "Game/Tooling"
-    ],
-    "gitRepo": "",
-    "liveLink": "https://github.com/0xQayyum/Rialo",
-    "builder": {
-      "name": "0xxabdul",
-      "username": "0xxabdul",
-      "image": "https://cdn.discordapp.com/avatars/828397810814025748/dd312dc7f748f0642c8af73bd4f5e341.png",
-      "xLink": ""
-    },
-    "loves": 3,
-    "views": 15,
-    "isNew": true,
-    "source": "Rialo Discord Community",
-    "verified": true,
-    "primarySector": "Web3 Gaming & On-Chain Arcade"
-  },
-  {
     "title": "Rialo Rush",
-    "description": "I Created a Game for Rialo ðŸ˜Š \nRialo Rush brings utility and fun together, a new way to experience crypto gaming. itâ€™s about belonging to a community that runs together. ðŸ’™\n\nGame Link: https://valoto2.github.io/RialoRush/\nRepo Link: https://github.com/valoto2/RialoRush\nI posted on X, Please Check ou",
+    "description": "A fast-paced Rialo-themed runner game that brings utility and fun together. Crypto gaming for the community.",
     "category": [
       "Community dApp",
       "Game/Tooling"
@@ -5132,7 +5019,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialo Space Quest",
-    "description": "Been exploring Rialoâ€™s world and couldnâ€™t resist building my own version of Rialo Space Quest ðŸš€\n\nInspired by the Coordination Layer â€” smoother gameplay, fresh visuals, and pure community energy!\n\nPlay game:- https://ashokakb000.github.io/rialouniverse/\nGithub:-https://github.com/Ashokakb000/rialoun",
+    "description": "Been exploring Rialo’s world and couldn’t resist building my own version of Rialo Space Quest 🚀\n\nInspired by the Coordination Layer — smoother gameplay, fresh visuals, and pure community energy!\n\nPlay game:- https://ashokakb000.github.io/rialouniverse/\nGithub:-https://github.com/Ashokakb000/rialoun",
     "category": [
       "Community dApp",
       "Game/Tooling"
@@ -5151,6 +5038,182 @@ function getSeedFallbackData() {
     "source": "Rialo Discord Community",
     "verified": true,
     "primarySector": "Web3 Gaming & On-Chain Arcade"
+  },
+  {
+    "title": "LatchLens",
+    "description": "Red-team assurance lab for Latch agent policies, powered by Rialo. Validates agent safety boundaries, tool constraints, and fail-closed isolated executions.",
+    "category": [
+      "Security",
+      "AI Agent"
+    ],
+    "gitRepo": "https://github.com/sanjeebdas1979/latchlens",
+    "liveLink": "https://latchlens.vercel.app",
+    "builder": {
+      "name": "sanjeebdas1979",
+      "username": "sanjeebdas1979",
+      "image": "https://avatars.githubusercontent.com/u/202400483?v=4",
+      "xLink": ""
+    },
+    "loves": 5,
+    "views": 24,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "Autonomous AI Agents & Bots"
+  },
+  {
+    "title": "Rialo Calls",
+    "description": "A fully on-chain prediction market dApp built on Rialo Network. Create prediction markets, trade outcomes, and settle transparently on-chain.",
+    "category": [
+      "DeFi",
+      "Prediction Market"
+    ],
+    "gitRepo": "https://github.com/kaicrypt00/rialo-calls",
+    "liveLink": "https://rialo-calls.vercel.app",
+    "builder": {
+      "name": "kaicrypt00",
+      "username": "kaicrypt00",
+      "image": "https://avatars.githubusercontent.com/u/283329888?v=4",
+      "xLink": ""
+    },
+    "loves": 8,
+    "views": 32,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "DeFi, Prediction & Lending"
+  },
+  {
+    "title": "MergePay",
+    "description": "Onchain bounties for GitHub pull requests, powered by Rialo. Verify contributors, escrow RLO, and settle payouts or refunds automatically through REX workflows.",
+    "category": [
+      "Dev Tooling",
+      "REX"
+    ],
+    "gitRepo": "https://github.com/Alice699/mergepay",
+    "liveLink": "https://mergepay-mu.vercel.app",
+    "builder": {
+      "name": "Alice699",
+      "username": "Alice699",
+      "image": "https://avatars.githubusercontent.com/u/120354104?v=4",
+      "xLink": ""
+    },
+    "loves": 12,
+    "views": 40,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "Developer SDKs & Tooling"
+  },
+  {
+    "title": "Resonance",
+    "description": "Anime-inspired Rialo learning adventure featuring reactive vault simulations, interactive tutorials, and on-chain mastery tracks.",
+    "category": [
+      "Education",
+      "Gaming"
+    ],
+    "gitRepo": "https://github.com/direncankutanis/resonance",
+    "liveLink": "https://resonance-learning-adventure.vercel.app",
+    "builder": {
+      "name": "direncankutanis",
+      "username": "direncankutanis",
+      "image": "https://avatars.githubusercontent.com/u/109218555?v=4",
+      "xLink": ""
+    },
+    "loves": 6,
+    "views": 28,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "Web3 Gaming & On-Chain Arcade"
+  },
+  {
+    "title": "Rialo Edge Log",
+    "description": "Tamper-evident IoT telemetry with ESP8266, signed sensor readings, and real-time on-chain verification on Rialo Devnet.",
+    "category": [
+      "IoT",
+      "DePIN"
+    ],
+    "gitRepo": "https://github.com/ra5alghu1/rialo-edge-log",
+    "liveLink": "https://rialo-edge-log.xyz",
+    "builder": {
+      "name": "ra5alghu1",
+      "username": "ra5alghu1",
+      "image": "https://avatars.githubusercontent.com/u/83699597?v=4",
+      "xLink": ""
+    },
+    "loves": 4,
+    "views": 19,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "Developer SDKs & Tooling"
+  },
+  {
+    "title": "RialoTrace",
+    "description": "Proof of Work & Engagement engine for Rialo Network. Quantifies and verifies community contributions, impressions, and viral discussions across X.",
+    "category": [
+      "Analytics",
+      "Community"
+    ],
+    "gitRepo": "https://github.com/yournahian/RialoTrace",
+    "liveLink": "https://rialotrace.vercel.app",
+    "builder": {
+      "name": "yournahian",
+      "username": "yournahian",
+      "image": "https://avatars.githubusercontent.com/u/134517537?v=4",
+      "xLink": ""
+    },
+    "loves": 7,
+    "views": 35,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "Wallets, Identity & Bridges"
+  },
+  {
+    "title": "Skyline Rialo",
+    "description": "A weather prediction duel between friends powered by Rialo's reactive, self-executing smart contracts that fetch live web data without oracles.",
+    "category": [
+      "Prediction",
+      "Gaming"
+    ],
+    "gitRepo": "https://github.com/hosammahdy91/skyline-rialo",
+    "liveLink": "https://hosam-rialo-sky.surge.sh",
+    "builder": {
+      "name": "hosammahdy91",
+      "username": "hosammahdy91",
+      "image": "https://avatars.githubusercontent.com/u/66032004?v=4",
+      "xLink": ""
+    },
+    "loves": 5,
+    "views": 22,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "DeFi, Prediction & Lending"
+  },
+  {
+    "title": "RialoScan",
+    "description": "An independent block explorer for Rialo Network. Inspect blocks, transactions, accounts, validators, and REX workflows straight from node JSON-RPC.",
+    "category": [
+      "Explorer",
+      "Infrastructure"
+    ],
+    "gitRepo": "https://github.com/Orvynel/rialoscan",
+    "liveLink": "https://github.com/Orvynel/rialoscan",
+    "builder": {
+      "name": "Orvynel",
+      "username": "Orvynel",
+      "image": "https://avatars.githubusercontent.com/u/88089483?v=4",
+      "xLink": ""
+    },
+    "loves": 9,
+    "views": 44,
+    "isNew": true,
+    "source": "Community Submissions",
+    "verified": true,
+    "primarySector": "Developer SDKs & Tooling"
   }
 ];
 }
