@@ -1,9 +1,90 @@
 [
   {
-    "date": "October 9, 2026",
+    "date": "October 16, 2026",
     "attestedBy": "@! Rollins👑 in #quiz",
     "participants": "",
     "isLatest": true,
+    "champions": [
+      {
+        "rank": 1,
+        "medal": "🥇",
+        "name": "@Lueguo",
+        "tag": "Rank 1",
+        "isTop": true
+      },
+      {
+        "rank": 2,
+        "medal": "🥈",
+        "name": "@ecamli",
+        "tag": "Rank 2",
+        "isTop": true
+      },
+      {
+        "rank": 3,
+        "medal": "🥉",
+        "name": "@GROWCHAIN",
+        "tag": "Rank 3",
+        "isTop": true
+      },
+      {
+        "rank": 4,
+        "medal": "🏅",
+        "name": "@Grimm",
+        "tag": "Rank 4",
+        "isTop": false
+      },
+      {
+        "rank": 5,
+        "medal": "🏅",
+        "name": "@dsadsubeybi",
+        "tag": "Rank 5",
+        "isTop": false
+      },
+      {
+        "rank": 6,
+        "medal": "🏅",
+        "name": "@wallets12",
+        "tag": "Rank 6",
+        "isTop": false
+      },
+      {
+        "rank": 7,
+        "medal": "🏅",
+        "name": "@Qamar Op | Rialo 🇵🇰",
+        "tag": "Rank 7",
+        "isTop": false
+      },
+      {
+        "rank": 8,
+        "medal": "🏅",
+        "name": "@lite",
+        "tag": "Rank 8",
+        "isTop": false
+      },
+      {
+        "rank": 9,
+        "medal": "🏅",
+        "name": "@Cagdasozsahin | Rialo",
+        "tag": "Rank 9",
+        "isTop": false
+      },
+      {
+        "rank": 10,
+        "medal": "🏅",
+        "name": "@0xwenwen | Rialo准时睡觉组组长",
+        "tag": "Rank 10",
+        "isTop": false
+      }
+    ],
+    "source": "verse-agent",
+    "sourceMessageId": "1560693427912577056",
+    "syncedAt": "2026-10-16T21:06:45.260Z"
+  },
+  {
+    "date": "October 9, 2026",
+    "attestedBy": "@! Rollins👑 in #quiz",
+    "participants": "",
+    "isLatest": false,
     "champions": [
       {
         "rank": 1,
