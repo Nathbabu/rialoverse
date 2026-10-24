@@ -1,4 +1,4 @@
-﻿// ══════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 // LUXURY GLASSMORPHISM TOAST & CONFIRM MODAL SYSTEM
 // ══════════════════════════════════════════════════════
 function showVerseToast(message, type, duration) {
@@ -18,7 +18,7 @@ function showVerseToast(message, type, duration) {
   var iconMap = {
     success: "✓",
     error: "✕",
-    warning: "⚠️",
+    warning: "⚠️",
     info: "⚡"
   };
 
@@ -58,7 +58,7 @@ function showVerseConfirm(options) {
 
   title.innerText = options.title || "Confirm Action";
   msg.innerText = options.message || "Are you sure you want to proceed?";
-  icon.innerText = options.icon || "⚠️";
+  icon.innerText = options.icon || "⚠️";
   confirmBtn.innerText = options.confirmText || "Confirm";
   
   if (options.isDanger) {
@@ -162,7 +162,7 @@ async function addRialoToWallet() {
 function copyText(str) {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(str).then(function() { 
-      showVerseToast("ðŸ“‹ Copied: " + str, "success"); 
+      showVerseToast("📋 Copied: " + str, "success"); 
     });
   } else {
     prompt("Copy parameter:", str);
@@ -482,17 +482,17 @@ var buildIdeas = [
     pitch: "An institutional OTC escrow desk on Rialo where whale traders and DAOs execute multi-million dollar RIA and USDC swaps with confidential balance proofs and 0.4s atomic settlement, preventing sandwich bots and frontrunning."
   },
   {
-    title: "ðŸ¤– AgentVault: Hardware TEE Cold Storage for AI Bots",
+    title: "🤖 AgentVault: Hardware TEE Cold Storage for AI Bots",
     niche: "AI Security / Latch",
     pitch: "A decentralized vault protocol enabling autonomous trading agents to execute high-volume arbitrage orders while enforcing strict daily maximum drawdown caps through hardware-verified Latch policies."
   },
   {
-    title: "ðŸ“± LatchPass: FaceID Biometric Session Authorizer",
+    title: "📱 LatchPass: FaceID Biometric Session Authorizer",
     niche: "Mobile / Key Management",
     pitch: "A mobile Progressive Web App (PWA) that acts as the hardware 2FA key for autonomous AI agents. Developers scan a QR code to grant an AI bot a 24-hour scoped lat_ token with a $20 spending limit."
   },
   {
-    title: "ðŸŽï¸ AGP Oracle Matrix: Decentralized Semantic Oracle Feeds",
+    title: "🏎️ AGP Oracle Matrix: Decentralized Semantic Oracle Feeds",
     niche: "Gaming / Oracles",
     pitch: "A low-latency oracle network optimized for Rialo's ~0.4s block time that generates cryptographically attested word-association puzzles for Agent Grand Prix racers."
   }
@@ -510,7 +510,7 @@ function generateBuildIdea() {
     "<p class=\"text-xs text-brand-text pt-1 font-sans leading-relaxed\">" + escapeHtml(idea.pitch) + "</p>" +
     "<div class=\"pt-2 flex items-center gap-3\">" +
       "<button onclick=\"generateLatchPolicy(); navigateTo('rialo');\" class=\"text-xs text-brand-pine underline font-bold\">Generate Latch Policy for this ↗</button>" +
-      "<button onclick=\"generateBuildIdea()\" class=\"text-xs text-slate-500 hover:text-black\">ðŸŽ² Try Another Idea</button>" +
+      "<button onclick=\"generateBuildIdea()\" class=\"text-xs text-slate-500 hover:text-black\">🎲 Try Another Idea</button>" +
     "</div>";
 
   box.classList.remove("hidden");
@@ -523,7 +523,7 @@ var spotlightData = [
   {
     id: "spotlight-1",
     type: "agp",
-    badge: "ðŸ AGP TOURNAMENT",
+    badge: "🏁 AGP TOURNAMENT",
     badgeColor: "bg-purple-100 text-purple-900 border-purple-200",
     title: "Agent Grand Prix (AGP) Racing Circuit",
     author: "@ericargent",
@@ -535,7 +535,7 @@ var spotlightData = [
   {
     id: "spotlight-2",
     type: "shark",
-    badge: "ðŸ¦ˆ SHARK TANK WINNER",
+    badge: "🦈 SHARK TANK WINNER",
     badgeColor: "bg-emerald-100 text-emerald-900 border-emerald-200",
     title: "Rialo Obscura (Shielded Relayer)",
     author: "@vikajoestar",
@@ -547,7 +547,7 @@ var spotlightData = [
   {
     id: "spotlight-3",
     type: "shark",
-    badge: "ðŸ¦ˆ SHARK TANK WINNER",
+    badge: "🦈 SHARK TANK WINNER",
     badgeColor: "bg-emerald-100 text-emerald-900 border-emerald-200",
     title: "Agentflow: Gasless x402 Micropayments",
     author: "@snehal007",
@@ -559,7 +559,7 @@ var spotlightData = [
   {
     id: "spotlight-4",
     type: "spotlight",
-    badge: "ðŸ”¦ COMMUNITY SPOTLIGHT",
+    badge: "🔦 COMMUNITY SPOTLIGHT",
     badgeColor: "bg-amber-100 text-amber-900 border-amber-200",
     title: "Rialoscan.org (Live Block Explorer)",
     author: "@rialoscan",
@@ -571,7 +571,7 @@ var spotlightData = [
   {
     id: "spotlight-5",
     type: "shark",
-    badge: "ðŸ¦ˆ SHARK TANK WINNER",
+    badge: "🦈 SHARK TANK WINNER",
     badgeColor: "bg-emerald-100 text-emerald-900 border-emerald-200",
     title: "Rialo Predict: ML Outcome Markets",
     author: "@eliasskun",
@@ -583,7 +583,7 @@ var spotlightData = [
   {
     id: "spotlight-6",
     type: "spotlight",
-    badge: "ðŸ”¦ COMMUNITY SPOTLIGHT",
+    badge: "🔦 COMMUNITY SPOTLIGHT",
     badgeColor: "bg-amber-100 text-amber-900 border-amber-200",
     title: "Rialink: Discord & GitHub Web3 Linker",
     author: "@rialink",
@@ -796,7 +796,7 @@ function renderLeaderboardView() {
     var b3 = sortedBuilders[2];
     podiumEl.innerHTML = 
       "<div class=\"rp-card p-6 flex flex-col items-center text-center space-y-3 shadow-sm\">" +
-        "<div class=\"px-3 py-0.5 rounded-full bg-black/5 text-[#111214] font-mono text-[10px] font-bold border border-black/10\">ðŸ¥ˆ #2 SILVER</div>" +
+        "<div class=\"px-3 py-0.5 rounded-full bg-black/5 text-[#111214] font-mono text-[10px] font-bold border border-black/10\">🥈 #2 SILVER</div>" +
         "<img src=\"" + (b2.image || ("https://api.dicebear.com/7.x/identicon/svg?seed=" + b2.username)) + "\" class=\"w-16 h-16 rounded-full object-cover border-2 border-black/10\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + b2.username + "'\" />" +
         "<h3 class=\"text-sm font-bold text-[#111214]\">" + escapeHtml(b2.name) + "</h3>" +
         "<div class=\"text-xs text-black/50 font-mono\">@" + escapeHtml(b2.username) + "</div>" +
@@ -804,7 +804,7 @@ function renderLeaderboardView() {
         "<button onclick=\"openBuilderModal('" + escapeHtml(b2.username) + "')\" class=\"text-xs text-[#111214] hover:underline pt-1 font-semibold\">View Profile</button>" +
       "</div>" +
       "<div class=\"rp-card p-8 flex flex-col items-center text-center space-y-3 border-[#205446]/40 bg-gradient-to-b from-emerald-50 to-[#F7F5F0] shadow-md\">" +
-        "<div class=\"px-3.5 py-0.5 rounded-full bg-[#205446] hover:bg-[#184237] text-white font-mono text-[10px] font-black\">ðŸ‘‘ #1 CHAMPION</div>" +
+        "<div class=\"px-3.5 py-0.5 rounded-full bg-[#205446] hover:bg-[#184237] text-white font-mono text-[10px] font-black\">👑 #1 CHAMPION</div>" +
         "<img src=\"" + (b1.image || ("https://api.dicebear.com/7.x/identicon/svg?seed=" + b1.username)) + "\" class=\"w-20 h-20 rounded-full object-cover border-2 border-[#205446] shadow-sm\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + b1.username + "'\" />" +
         "<h3 class=\"text-base font-black text-[#111214]\">" + escapeHtml(b1.name) + "</h3>" +
         "<div class=\"text-xs text-[#205446] font-mono font-bold\">@" + escapeHtml(b1.username) + "</div>" +
@@ -812,7 +812,7 @@ function renderLeaderboardView() {
         "<button onclick=\"openBuilderModal('" + escapeHtml(b1.username) + "')\" class=\"text-xs text-[#205446] hover:underline font-bold pt-1\">View Portfolio ↗</button>" +
       "</div>" +
       "<div class=\"rp-card p-6 flex flex-col items-center text-center space-y-3 shadow-sm\">" +
-        "<div class=\"px-3 py-0.5 rounded-full bg-amber-800/10 text-amber-900 font-mono text-[10px] font-bold border border-amber-800/20\">ðŸ¥‰ #3 BRONZE</div>" +
+        "<div class=\"px-3 py-0.5 rounded-full bg-amber-800/10 text-amber-900 font-mono text-[10px] font-bold border border-amber-800/20\">🥉 #3 BRONZE</div>" +
         "<img src=\"" + (b3.image || ("https://api.dicebear.com/7.x/identicon/svg?seed=" + b3.username)) + "\" class=\"w-16 h-16 rounded-full object-cover border-2 border-black/10\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + b3.username + "'\" />" +
         "<h3 class=\"text-sm font-bold text-[#111214]\">" + escapeHtml(b3.name) + "</h3>" +
         "<div class=\"text-xs text-black/50 font-mono\">@" + escapeHtml(b3.username) + "</div>" +
@@ -1011,14 +1011,14 @@ async function refreshGeminiModels() {
 
   if (btn) {
     btn.disabled = false;
-    btn.innerHTML = "<span>ðŸ”„ Refresh</span>";
+    btn.innerHTML = "<span>🔄 Refresh</span>";
   }
 
   if (result.success) {
     renderAiKeyControls();
     showVerseToast("⚡ Models Refreshed: Using " + result.model + " (" + result.availableCount + " available)", "success", 4000);
   } else {
-    showVerseToast("⚠️ Model Refresh: " + result.error, "warning", 4000);
+    showVerseToast("⚠️ Model Refresh: " + result.error, "warning", 4000);
   }
 }
 
@@ -1045,13 +1045,13 @@ function renderAiKeyControls() {
           "<span>⚡</span><span>Model: <strong>" + escapeHtml(activeModel) + "</strong></span>" +
         "</span>" +
         "<button id=\"refreshModelBtn\" onclick=\"refreshGeminiModels()\" class=\"px-2.5 py-1 rounded-xl bg-white hover:bg-black/5 text-brand-text text-xs font-mono font-bold border border-black/10 transition-all active:scale-95 shadow-sm flex items-center gap-1\" title=\"Scan and select latest available Google models\">" +
-          "<span>ðŸ”„ Refresh</span>" +
+          "<span>🔄 Refresh</span>" +
         "</button>" +
         "<button onclick=\"changeGeminiKeyPrompt()\" class=\"px-2.5 py-1 rounded-xl bg-white hover:bg-black/5 text-brand-text text-xs font-mono font-bold border border-black/10 transition-all active:scale-95 shadow-sm flex items-center gap-1\" title=\"Change API Key\">" +
           "<span>⚙️ Change</span>" +
         "</button>" +
         "<button onclick=\"removeGeminiKey()\" class=\"px-2.5 py-1 rounded-xl bg-red-50 hover:bg-red-100 text-red-700 text-xs font-mono font-bold border border-red-200 transition-all active:scale-95 shadow-sm flex items-center gap-1\" title=\"Disconnect API Key\">" +
-          "<span>ðŸ—‘ï¸ Disconnect</span>" +
+          "<span>🗑️ Disconnect</span>" +
         "</button>" +
       "</div>";
   } else {
@@ -1073,7 +1073,7 @@ async function saveAndVerifyGeminiKey() {
   if (!rawKey) {
     if (status) {
       status.className = "text-xs font-mono font-bold text-red-600 block";
-      status.textContent = "⚠️ Please paste your Gemini API key from Google AI Studio.";
+      status.textContent = "⚠️ Please paste your Gemini API key from Google AI Studio.";
     }
     return;
   }
@@ -1125,7 +1125,7 @@ function removeGeminiKey() {
   showVerseConfirm({
     title: "Disconnect Gemini API Key",
     message: "Are you sure you want to remove your API key from this browser? Verse AI will smoothly revert to the built-in offline knowledge engine.",
-    icon: "ðŸ”‘",
+    icon: "🔑",
     confirmText: "Disconnect Key",
     isDanger: true,
     onConfirm: function() {
@@ -1167,7 +1167,7 @@ function clearChatHistory() {
   showVerseConfirm({
     title: "Clear Chat Conversation",
     message: "Are you sure you want to clear the entire chat history? This will wipe the active conversation thread.",
-    icon: "ðŸ—‘ï¸",
+    icon: "🗑️",
     confirmText: "Clear History",
     isDanger: true,
     onConfirm: function() {
@@ -1225,7 +1225,7 @@ function formatMarkdownChat(text) {
     return '<div class="my-3 rounded-xl overflow-hidden bg-[#111618] border border-black/20 text-slate-100 font-mono text-xs shadow-inner select-text">' +
       '<div class="flex items-center justify-between px-3.5 py-2 bg-[#1B2327] border-b border-white/10 text-[11px] text-slate-400 font-bold">' +
         '<span>' + languageLabel + '</span>' +
-        '<button onclick="copyCodeBlock(this)" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-white transition-all flex items-center gap-1 font-sans text-xs"><span>ðŸ“‹</span><span>Copy Code</span></button>' +
+        '<button onclick="copyCodeBlock(this)" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-white transition-all flex items-center gap-1 font-sans text-xs"><span>📋</span><span>Copy Code</span></button>' +
       '</div>' +
       '<pre class="p-4 overflow-x-auto leading-relaxed select-text font-mono text-xs selection:bg-emerald-500 selection:text-black"><code>' + escapeHtml(cleanCode) + '</code></pre>' +
     '</div>';
@@ -1266,7 +1266,7 @@ function copyCodeBlock(btn) {
   if (codeEl) {
     navigator.clipboard.writeText(codeEl.innerText).then(function() {
       btn.innerHTML = '<span>✅</span><span>Copied!</span>';
-      setTimeout(function() { btn.innerHTML = '<span>ðŸ“‹</span><span>Copy Code</span>'; }, 2000);
+      setTimeout(function() { btn.innerHTML = '<span>📋</span><span>Copy Code</span>'; }, 2000);
     });
   }
 }
@@ -1277,7 +1277,7 @@ function copyAssistantMessage(btn) {
     var rawText = bubble.getAttribute('data-raw-text') || bubble.innerText;
     navigator.clipboard.writeText(rawText).then(function() {
       btn.innerHTML = '<span>✅ Copied!</span>';
-      setTimeout(function() { btn.innerHTML = '<span>ðŸ“‹ Copy</span>'; }, 2000);
+      setTimeout(function() { btn.innerHTML = '<span>📋 Copy</span>'; }, 2000);
     });
   }
 }
@@ -1417,7 +1417,7 @@ function appendChatMessage(role, text, saveToStorage, animate) {
           '</div>' +
           '<div class="flex items-center gap-2.5">' +
             '<button onclick="copyAssistantMessage(this)" class="px-2 py-0.5 rounded-lg bg-black/[0.04] hover:bg-black/[0.08] text-[11px] font-mono font-bold text-slate-600 transition-all flex items-center gap-1 shadow-2xs" title="Copy full response">' +
-              '<span>ðŸ“‹ Copy</span>' +
+              '<span>📋 Copy</span>' +
             '</button>' +
             '<span class="text-[11px] font-mono text-black/40">' + currentTime + '</span>' +
           '</div>' +
@@ -1574,19 +1574,19 @@ function generateAutonomousLatchAnswer(query) {
 
   // 1. EXACT TARGET: Prevent Wallet Drains / Latch Security
   if (q.includes("wallet drain") || q.includes("drain") || q.includes("hardware tee") || q.includes("spending cap") || q.includes("latch token") || q.includes("policy") || q.includes("security") || q.includes("lat_")) {
-    return "ðŸ›¡ï¸ **Verse AI Guide: How Latch Prevents Wallet Drains**\n\n" +
+    return "🛡️ **Verse AI Guide: How Latch Prevents Wallet Drains**\n\n" +
       "Autonomous AI agents operating directly on-chain face a critical risk: prompt injections or malicious contract calls can drain an unconstrained private key.\n\n" +
       "**Latch Hardware Solution:**\n" +
       "1. **Scoped Session Tokens (`lat_...`):** Agents never hold raw private keys. Instead, they receive scoped tokens generated in secure TEE (Trusted Execution Environment) hardware enclaves.\n" +
       "2. **Strict Spending Limits:** Developers set hard per-transaction caps (e.g. 5 RP) and 24-hour daily limits (e.g. 50 RP).\n" +
       "3. **Contract Whitelisting:** Agents can only call verified, authorized smart contract addresses.\n" +
       "4. **Sub-second Revocation:** If an agent acts unexpectedly, its token is instantly revoked on-chain with ~0.4s finality.\n\n" +
-      "ðŸ‘‰ Visit the [Rialo & Latch Tab](#rialo) to configure an interactive security policy!";
+      "👉 Visit the [Rialo & Latch Tab](#rialo) to configure an interactive security policy!";
   }
 
   // 2. EXACT TARGET: AGP Race Strategy
   if (q.includes("agp") || q.includes("grand prix") || q.includes("race") || q.includes("racing") || q.includes("word circuit") || q.includes("circuit") || q.includes("betting")) {
-    return "ðŸŽï¸ **Verse AI Guide: Agent Grand Prix (AGP) Strategy & Rules**\n\n" +
+    return "🏎️ **Verse AI Guide: Agent Grand Prix (AGP) Strategy & Rules**\n\n" +
       "Agent Grand Prix ([agp.onlatch.com](https://agp.onlatch.com)) is Rialo's premier autonomous racing benchmark where AI agents navigate real-time word circuits:\n\n" +
       "**Winning Strategies:**\n" +
       "• **Low Latency RPC Calls:** Leverage Rialo's ~0.4s finality to query oracle clues and submit route words before opponents.\n" +
@@ -1597,7 +1597,7 @@ function generateAutonomousLatchAnswer(query) {
 
   // 3. EXACT TARGET: RPC & 20 RP Faucet
   if (q.includes("faucet") || q.includes("20 rp") || q.includes("rpc") || q.includes("metamask") || q.includes("chain id") || q.includes("testnet") || q.includes("connect wallet") || q.includes("claim rp")) {
-    return "ðŸ§ª **Verse AI Guide: Rialo Testnet RPC & 20 RP Faucet Guide**\n\n" +
+    return "🧪 **Verse AI Guide: Rialo Testnet RPC & 20 RP Faucet Guide**\n\n" +
       "**Network Parameters:**\n" +
       "• **Network Name:** Rialo Testnet\n" +
       "• **RPC URL:** `https://testnet.rialo.io`\n" +
@@ -1613,7 +1613,7 @@ function generateAutonomousLatchAnswer(query) {
 
   // 4. EXACT TARGET: Retroactive Points & Profile Linking (playground.rialo.io)
   if (q.includes("profile") || q.includes("link") || q.includes("retroactive") || q.includes("playground.rialo.io") || q.includes("connect discord") || q.includes("connect github") || q.includes("lock")) {
-    return "ðŸŽ **Verse AI Guide: Retroactive Rialo Points & Profile Linking**\n\n" +
+    return "🎁 **Verse AI Guide: Retroactive Rialo Points & Profile Linking**\n\n" +
       "Rialo has officially distributed retroactive Rialo Points for all past building, testing, and ecosystem contributions!\n\n" +
       "**How to Link Your Profile & Claim Points:**\n" +
       "1. Go to [playground.rialo.io](https://playground.rialo.io) and sign in with Google.\n" +
@@ -1621,13 +1621,13 @@ function generateAutonomousLatchAnswer(query) {
       "3. Double check that you connected the right handles (disconnect and reconnect if wrong).\n" +
       "4. Click **'Connect and claim points'**.\n" +
       "5. Confirm with **'Yes, connect and claim'** to add retroactive Points to your balance!\n\n" +
-      "⚠️ **Important Rule:** Once confirmed, your connected accounts are **permanently locked** to your wallet and cannot be changed or moved to another wallet!\n\n" +
-      "ðŸ”— **Official Portal:** [playground.rialo.io](https://playground.rialo.io)";
+      "⚠️ **Important Rule:** Once confirmed, your connected accounts are **permanently locked** to your wallet and cannot be changed or moved to another wallet!\n\n" +
+      "🔗 **Official Portal:** [playground.rialo.io](https://playground.rialo.io)";
   }
 
   // 5. EXACT TARGET: Python Latch SDK Code
   if (q.includes("python") || q.includes("sdk") || q.includes("code") || q.includes("snippet") || q.includes("script") || q.includes("library")) {
-    return "ðŸ’» **Verse AI Guide: Python Latch SDK Integration**\n\n" +
+    return "💻 **Verse AI Guide: Python Latch SDK Integration**\n\n" +
       "Here is how to initialize an autonomous AI agent with hardware-enforced spending limits using the Latch SDK:\n\n" +
       "```python\n" +
       "from rialo_latch import LatchAgent, Policy\n\n" +
@@ -1664,23 +1664,23 @@ function generateAutonomousLatchAnswer(query) {
       "• **Edition #1 Winner (July 20, 2026):**\n" +
       "  - **Winner:** **Vika Joestar** (`@vikajoestar`)\n" +
       "  - **Winning dApp:** **CyberRialo Combat Arena**\n\n" +
-      "ðŸ‘‰ Visit the [Events Tab](#events) to flip through all historical pitch winners!";
+      "👉 Visit the [Events Tab](#events) to flip through all historical pitch winners!";
   }
 
   // 7. EXACT TARGET: Top Verified Ecosystem dApps
   if (q.includes("dapp") || q.includes("app") || q.includes("verified") || q.includes("ecosystem") || q.includes("project") || q.includes("gaming") || q.includes("defi") || q.includes("olpa") || q.includes("dex")) {
-    return "ðŸ“± **Verse AI Guide: Top Verified Community dApps**\n\n" +
+    return "📱 **Verse AI Guide: Top Verified Community dApps**\n\n" +
       "Here are top community-built applications across key sectors:\n\n" +
-      "• **ðŸ’Ž DeFi & Derivatives:**\n" +
+      "• **💎 DeFi & Derivatives:**\n" +
       "  - *OLPA DEX*: Event-native decentralized derivatives AMM ([olpadex.vercel.app](https://olpadex.vercel.app/)).\n" +
       "  - *YieldSentinel*: Automated LP rebalancing using Latch agents.\n\n" +
-      "• **ðŸŽ® Gaming & Racing:**\n" +
+      "• **🎮 Gaming & Racing:**\n" +
       "  - *Agent Grand Prix (AGP)*: Real-time word circuit racing and RP betting.\n" +
       "  - *CyberRialo Combat*: Tactical PvP arena with instant 0.4s combat settlement.\n\n" +
-      "• **ðŸ¤– AI Agents & Tools:**\n" +
+      "• **🤖 AI Agents & Tools:**\n" +
       "  - *RialOS*: The official agent desktop environment (Shark Tank Winner).\n" +
       "  - *Latch Sentinel*: Hardware policy generator and security sandbox.\n\n" +
-      "ðŸ‘‰ Visit the [dApps Tab](#dapps) to search, filter by sector, and launch all 165+ live applications!";
+      "👉 Visit the [dApps Tab](#dapps) to search, filter by sector, and launch all 165+ live applications!";
   }
 
   // 8. EXACT TARGET: Quiz Games & Leaderboard Archive
@@ -1690,10 +1690,10 @@ function generateAutonomousLatchAnswer(query) {
     var quizLines = (latestQuiz && latestQuiz.champions) ? latestQuiz.champions.slice(0, 3).map(function (c) {
       return "  - " + c.medal + " " + c.tag + ": **" + c.name + "**\n";
     }).join("") : "";
-    return "ðŸ§  **Verse AI Guide: Quiz Games & Community Leaderboard**\n\n" +
+    return "🧠 **Verse AI Guide: Quiz Games & Community Leaderboard**\n\n" +
       "Rialo hosts weekly tech quizzes on Discord #quiz (" + quizCount + " rounds archived):\n\n" +
       (latestQuiz ? "• **Latest quiz (" + latestQuiz.date + "):**\n" + quizLines + "\n" : "") +
-      "ðŸ‘‰ Visit the [Events & Leaderboard Tabs](#events) to browse every round and the live builder rankings!";
+      "👉 Visit the [Events & Leaderboard Tabs](#events) to browse every round and the live builder rankings!";
   }
 
   // 9. EXACT TARGET: Community Spotlight / Members of the Week
@@ -1702,10 +1702,10 @@ function generateAutonomousLatchAnswer(query) {
     var spotCount = (typeof spotlightHistory !== "undefined") ? spotlightHistory.length : 9;
     var spotNames = (latestSpot && latestSpot.members && latestSpot.members.length)
       ? latestSpot.members.slice(0, 5).map(function (m) { return m.name; }).join(", ") : "";
-    return "ðŸŒŸ **Verse AI Guide: Community Spotlight & Members of the Week**\n\n" +
+    return "🌟 **Verse AI Guide: Community Spotlight & Members of the Week**\n\n" +
       "Rialo recognizes top regional community champions every week (" + spotCount + " editions recorded):\n\n" +
       (latestSpot ? "• **Latest edition (" + latestSpot.date + "):** " + (spotNames ? spotNames + ", and more regional ambassadors." : "see the archive for the full lineup.") + "\n" : "") +
-      "ðŸ‘‰ Visit the [Events Tab](#events) to view regional portraits and contributor details!";
+      "👉 Visit the [Events Tab](#events) to view regional portraits and contributor details!";
   }
 
   // 10. General Rialo Overview
@@ -5343,7 +5343,7 @@ function renderSharkTankCard() {
         "<div class=\"flex items-start gap-3.5 sm:gap-4\">" +
           "<div class=\"relative flex-shrink-0\">" +
             "<img src=\"" + data.avatar + "\" alt=\"" + escapeHtml(data.winnerName) + "\" class=\"w-14 h-14 sm:w-16 sm:h-16 rounded-2xl border-2 border-brand-pine/40 shadow-sm object-cover bg-slate-900\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + encodeURIComponent(data.winnerName) + "'\" />" +
-            "<div class=\"absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-amber-400 text-amber-950 flex items-center justify-center text-[10px] font-bold border-2 border-white shadow-xs\" title=\"Pitch Champion\">ðŸ‘‘</div>" +
+            "<div class=\"absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-amber-400 text-amber-950 flex items-center justify-center text-[10px] font-bold border-2 border-white shadow-xs\" title=\"Pitch Champion\">👑</div>" +
           "</div>" +
           "<div class=\"space-y-1 min-w-0 flex-1\">" +
             "<div class=\"flex items-center justify-between gap-2 flex-wrap\">" +
@@ -5365,7 +5365,7 @@ function renderSharkTankCard() {
 
         // Meta tags
         "<div class=\"flex items-center justify-between text-[11px] font-mono text-brand-textMuted pt-0.5\">" +
-          "<span class=\"flex items-center gap-1\">ðŸ“… <span>" + data.date + "</span></span>" +
+          "<span class=\"flex items-center gap-1\">📅 <span>" + data.date + "</span></span>" +
           "<span class=\"text-emerald-800 font-bold flex items-center gap-1\"><span>🏆</span> <span>Rialo Discord Stage Winner</span></span>" +
         "</div>" +
       "</div>" +
@@ -5373,7 +5373,7 @@ function renderSharkTankCard() {
       // Bottom Row / Footer (Matching AGP card's footer border & height)
       "<div class=\"pt-2 border-t border-black/[0.06] flex items-center justify-between gap-3\">" +
         "<div class=\"text-xs font-mono text-emerald-900 font-bold flex items-center gap-1.5 bg-emerald-50/90 px-3 py-2 rounded-xl border border-emerald-200/70\">" +
-          "<span>ðŸ¦ˆ</span>" +
+          "<span>🦈</span>" +
           "<span class=\"truncate\">Weekly Shark Tank Pitch Champion</span>" +
         "</div>" +
         "<div>" +
@@ -5407,70 +5407,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@khalid | Rialo",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@Hasinur | Rialo",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@Sojibjaber1",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Grimm",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Lueguo",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Yash",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@LastExam",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Shin vN",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@vangle",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@midmintmick!!!",
         "tag": "Rank 10",
         "isTop": false
@@ -5485,70 +5485,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@Siyam AHMED",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@Ranjay",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@shaking",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Rial/bleidd",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@vangle",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Lueguo",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Shin vn",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@LastExam",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@NathBabu",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Hun-Jun-Suk",
         "tag": "Rank 10",
         "isTop": false
@@ -5563,70 +5563,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@Rahma",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@won",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@Em3rald",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@JASMINE",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@BitsyBae",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Iconic | Latch",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Lueguo",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@shaking",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Ceejay",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@GROWCHAIN",
         "tag": "Rank 10",
         "isTop": false
@@ -5641,70 +5641,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@esek serhat",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
-        "name": "@Nabori | RialoðŸ’š",
+        "medal": "🥈",
+        "name": "@Nabori | Rialo💚",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@won",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Nayem",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@alice-Rialo—æœªæ¥å¯æœŸ",
+        "medal": "🎖️",
+        "name": "@alice-Rialo—未来可期",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@vinhthui2005",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Koray-Rialo",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Baster",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@CHEN",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@haisen",
         "tag": "Rank 10",
         "isTop": false
@@ -5719,70 +5719,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
-        "name": "@ç™½èŒ¶ä¸¨Rialoä¿å®‰å¤§é˜ŸåŒèŠ±çº¢æ£",
+        "medal": "🥇",
+        "name": "@白茶丨Rialo保安大队双花红棍",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@haisen",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@Ranjay",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Shizuka",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Fay",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Adá¥±Ìá¥•á¥²Ìá¥£á¥±Ì ðŸ‘‘",
+        "medal": "🎖️",
+        "name": "@Adᥱ́ᥕᥲ́ᥣᥱ́ 👑",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Lueguo",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@CreativeCat",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@BitsyBae",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Yash",
         "tag": "Rank 10",
         "isTop": false
@@ -5797,70 +5797,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@JASMINE",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@Lueguo",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@vangle",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@DebeliqM",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@MeMe",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@d",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Maharshi",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Grimm 2",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@ð— ð—”ð—›ð—˜ | ðŸ‡§ðŸ‡©",
+        "medal": "🎖️",
+        "name": "@𝗠𝗔𝗛𝗘 | 🇧🇩",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Rahma",
         "tag": "Rank 10",
         "isTop": false
@@ -5875,70 +5875,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@Rebirth",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@JASMINE",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@MeMe",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@d",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Testnetnodes I RiaLo",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Kingsleypremus",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@RitaCryptoTips",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@yida/ Rialoä¿å®‰å¤§é˜Ÿä¹‹å¤œç­ä¿å®‰",
+        "medal": "🎖️",
+        "name": "@yida/ Rialo保安大队之夜班保安",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Haykeenz",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@KingCobra",
         "tag": "Rank 10",
         "isTop": false
@@ -5953,71 +5953,71 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@Em3rald",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
-        "name": "@midmintmick!!!ðŸ¤",
+        "medal": "🥈",
+        "name": "@midmintmick!!!🤐",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@rivale",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@vita5000 | ë¦¬ì•Œë¡œì™€ ì‚¬ëŠ” ë¹„íƒ€",
+        "medal": "🎖️",
+        "name": "@vita5000 | 리알로와 사는 비타",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@atik.eth",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@-Marsu  |  Rialo ðŸŒ¿",
+        "medal": "🎖️",
+        "name": "@-Marsu  |  Rialo 🌿",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Testnetnodes I RiaLo",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@JUST-ABDO",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@!ðŸ˜ð•©ð•ð•šð•œð•’ð•ð• ð•–ð•¤ð•¥ð•’ð•£",
+        "medal": "🎖️",
+        "name": "@!𝟘𝕩𝕍𝕚𝕜𝕒𝕁𝕠𝕖𝕤𝕥𝕒𝕣",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Adá¥±Ìá¥•á¥²Ìá¥£á¥±Ì ðŸ‘‘",
+        "medal": "🎖️",
+        "name": "@Adᥱ́ᥕᥲ́ᥣᥱ́ 👑",
         "tag": "Rank 10",
         "isTop": false
       }
@@ -6031,70 +6031,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@rivale",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
-        "name": "@-Marsu  |  Rialo ðŸŒ¿",
+        "medal": "🥈",
+        "name": "@-Marsu  |  Rialo 🌿",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@JASMINE",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@lite",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Li TEiNo",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@vangle",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@vita5000 | ë¦¬ì•Œë¡œì™€ ì‚¬ëŠ” ë¹„íƒ€",
+        "medal": "🎖️",
+        "name": "@vita5000 | 리알로와 사는 비타",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@0xwenwen | Rialoå‡†æ—¶ç¡è§‰ç»„ç»„é•¿",
+        "medal": "🎖️",
+        "name": "@0xwenwen | Rialo准时睡觉组组长",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Guynextdooooor",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@NEO",
         "tag": "Rank 10",
         "isTop": false
@@ -6109,70 +6109,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@won",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
-        "name": "@alice-Rialo—æœªæ¥å¯æœŸ",
+        "medal": "🥈",
+        "name": "@alice-Rialo—未来可期",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@TinkyViki",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@PAPITO",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@OhlamzzðŸ« ",
+        "medal": "🎖️",
+        "name": "@Ohlamzz🫠",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@nixx66",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@å¼€ç‰Œè§æœ•",
+        "medal": "🎖️",
+        "name": "@开牌见朕",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Haykeenz",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@LastExam",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Guynextdooooor",
         "tag": "Rank 10",
         "isTop": false
@@ -6187,70 +6187,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
-        "name": "@YiÄžiT",
+        "medal": "🥇",
+        "name": "@YiĞiT",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@Rialo Queen of Cheese.",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@MeMe",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@JASMINE",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@lite",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@vita5000 | ë¦¬ì•Œë¡œì™€ ì‚¬ëŠ” ë¹„íƒ€",
+        "medal": "🎖️",
+        "name": "@vita5000 | 리알로와 사는 비타",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@0xwenwen | Rialoå‡†æ—¶ç¡è§‰ç»„ç»„é•¿",
+        "medal": "🎖️",
+        "name": "@0xwenwen | Rialo准时睡觉组组长",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Li TEiNo",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@SpecialForces",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Grimm",
         "tag": "Rank 10",
         "isTop": false
@@ -6265,70 +6265,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@SuperPio",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
-        "name": "@ðŸ¦‹âƒŸBluberrry (â–,â–)",
+        "medal": "🥈",
+        "name": "@🦋⃟Bluberrry (❖,❖)",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@Jeyromeeee",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Fay",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Seloly /ttkx",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Ishu | ðŸ‡µðŸ‡°",
+        "medal": "🎖️",
+        "name": "@Ishu | 🇵🇰",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@I am Ñ‚Ð½Ñ” Ñ”Ð¸âˆ‚äº—",
+        "medal": "🎖️",
+        "name": "@I am тнє єи∂亗",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@yida/ Rialoä¿å®‰å¤§é˜Ÿä¹‹å¤œç­ä¿å®‰",
+        "medal": "🎖️",
+        "name": "@yida/ Rialo保安大队之夜班保安",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@DoLuong",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Tendi",
         "tag": "Rank 10",
         "isTop": false
@@ -6343,70 +6343,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
-        "name": "@Nabori | RialoðŸ’š",
+        "medal": "🥇",
+        "name": "@Nabori | Rialo💚",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
-        "name": "@0xwenwen | Rialoå‡†æ—¶ç¡è§‰ç»„ç»„é•¿",
+        "medal": "🥈",
+        "name": "@0xwenwen | Rialo准时睡觉组组长",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@moi",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Shin ðŸ‡»ðŸ‡³",
+        "medal": "🎖️",
+        "name": "@Shin 🇻🇳",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@lite",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@YiÄžiT",
+        "medal": "🎖️",
+        "name": "@YiĞiT",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@JUST-ABDO",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Yuura",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@!ðŸ˜ð•©ð•ð•šð•œð•’ð•ð• ð•–ð•¤ð•¥ð•’ð•£",
+        "medal": "🎖️",
+        "name": "@!𝟘𝕩𝕍𝕚𝕜𝕒𝕁𝕠𝕖𝕤𝕥𝕒𝕣",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Lueguo",
         "tag": "Rank 10",
         "isTop": false
@@ -6421,71 +6421,71 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@Vincen",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
-        "name": "@YiÄžiT",
+        "medal": "🥈",
+        "name": "@YiĞiT",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@lite",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@ë§Œë‹´ê¾¼ | Rialo",
+        "medal": "🎖️",
+        "name": "@만담꾼 | Rialo",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Adá¥±Ìá¥•á¥²Ìá¥£á¥±Ì ðŸ‘‘",
+        "medal": "🎖️",
+        "name": "@Adᥱ́ᥕᥲ́ᥣᥱ́ 👑",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Normal",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Lueguo",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@0xwenwen | Rialoå‡†æ—¶ç¡è§‰ç»„ç»„é•¿",
+        "medal": "🎖️",
+        "name": "@0xwenwen | Rialo准时睡觉组组长",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Sunney4557 l ì‘¤ë‹ˆ ðŸ’›",
+        "medal": "🎖️",
+        "name": "@Sunney4557 l 쑤니 💛",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Wayne  ä¸¨Rialo ä¿å®‰é˜Ÿå¥èº«ç›‘ç£å‘˜",
+        "medal": "🎖️",
+        "name": "@Wayne  丨Rialo 保安队健身监督员",
         "tag": "Rank 10",
         "isTop": false
       }
@@ -6499,71 +6499,71 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@shaking",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
-        "name": "@jiek | ä¹äºŽåŠ©äººçš„ jiek",
+        "medal": "🥈",
+        "name": "@jiek | 乐于助人的 jiek",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@77MC | Rialo",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@nikky",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@SpecialForces",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Fay",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@S H Îž NÂ²â¶ |89|",
+        "medal": "🎖️",
+        "name": "@S H Ξ N²⁶ |89|",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@momo",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Nayem",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@ðš”ðš‘ðšŠðš•ðš’ðš | Rialo",
+        "medal": "🎖️",
+        "name": "@𝚔𝚑𝚊𝚕𝚒𝚍 | Rialo",
         "tag": "Rank 10",
         "isTop": false
       }
@@ -6577,70 +6577,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@sukanto",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
-        "name": "@Heyve ðŸ¤",
+        "medal": "🥈",
+        "name": "@Heyve 🤍",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@Lueguo",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Catchy",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@gyeouri",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@POCKETSIZE_☘️",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@!0xOyenJoestar",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Shin ðŸ‡»ðŸ‡³",
+        "medal": "🎖️",
+        "name": "@Shin 🇻🇳",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Dp | ðŸ‡¨ðŸ‡³",
+        "medal": "🎖️",
+        "name": "@Dp | 🇨🇳",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@0xwenwen",
         "tag": "Rank 10",
         "isTop": false
@@ -6655,70 +6655,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@cxxxv 135",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
-        "name": "@Adá¥±Ìá¥•á¥²Ìá¥£á¥±Ì ðŸ‘‘",
+        "medal": "🥈",
+        "name": "@Adᥱ́ᥕᥲ́ᥣᥱ́ 👑",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@mack",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@SKS | Latch",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@!ðŸ˜ð•©ð•ð•šð•œð•’ð•ð• ð•–ð•¤ð•¥ð•’ð•£",
+        "medal": "🎖️",
+        "name": "@!𝟘𝕩𝕍𝕚𝕜𝕒𝕁𝕠𝕖𝕤𝕥𝕒𝕣",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Tasniya",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@YiÄžiT",
+        "medal": "🎖️",
+        "name": "@YiĞiT",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@BadakBerenang",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Rayleigh",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Tanvir",
         "tag": "Rank 10",
         "isTop": false
@@ -6733,71 +6733,71 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@Ken lee Lubi dubi Dau Chu Arc",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@SuperPio",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@esek serhat",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@CCæžœæ± | Rialoæ— æ•Œçˆ†ç‚¸é›·éœ†éœ¹é›³å¤§é•¿è…¿",
+        "medal": "🎖️",
+        "name": "@CC果汁 | Rialo无敌爆炸雷霆霹雳大长腿",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Lina(❤️ Ï‰ ❤️)Rialo ä¿å®‰å¤§é˜Ÿå®£ä¼ éƒ¨é—¨(èŠ±ç“¶)",
+        "medal": "🎖️",
+        "name": "@Lina(❤ ω ❤)Rialo 保安大队宣传部门(花瓶)",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@0xrumora",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@I am Ñ‚Ð½Ñ” Ñ”Ð¸âˆ‚äº—",
+        "medal": "🎖️",
+        "name": "@I am тнє єи∂亗",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Dp | ðŸ‡¨ðŸ‡³",
+        "medal": "🎖️",
+        "name": "@Dp | 🇨🇳",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@ð—»ð—¼ð˜ƒð—®ð—½ð—¶ð—»ð—¼",
+        "medal": "🎖️",
+        "name": "@𝗻𝗼𝘃𝗮𝗽𝗶𝗻𝗼",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@!LolaaaðŸ’œ",
+        "medal": "🎖️",
+        "name": "@!Lolaaa💜",
         "tag": "Rank 10",
         "isTop": false
       }
@@ -6811,71 +6811,71 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@stfu '-'",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@? Daniel",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
-        "name": "@ã€Žð™¹ðš’ðšœðšŠðš—ã€ ð™»ðšŠðšðšŒðš‘",
+        "medal": "🥉",
+        "name": "@『𝙹𝚒𝚜𝚊𝚗』 𝙻𝚊𝚝𝚌𝚑",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Lina(❤️ Ï‰ ❤️)Rialo ä¿å®‰å¤§é˜Ÿå®£ä¼ éƒ¨é—¨(èŠ±ç“¶)",
+        "medal": "🎖️",
+        "name": "@Lina(❤ ω ❤)Rialo 保安大队宣传部门(花瓶)",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@SKS | Latch",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@haisen",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Fahad | Ryve",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Fay",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@moi",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@MANNAN | Rialo ðŸ‡§ðŸ‡©",
+        "medal": "🎖️",
+        "name": "@MANNAN | Rialo 🇧🇩",
         "tag": "Rank 10",
         "isTop": false
       }
@@ -6889,71 +6889,71 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@Jahid",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@SKS | Latch",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@Fahad | Ryve",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@ã€Žð™¹ðš’ðšœðšŠðš—ã€ ð™»ðšŠðšðšŒðš‘",
+        "medal": "🎖️",
+        "name": "@『𝙹𝚒𝚜𝚊𝚗』 𝙻𝚊𝚝𝚌𝚑",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@STEVEN | RIALO",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Saif",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@MG",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@KAMRUL",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@vita5000 | ë¦¬ì•Œë¡œì™€ ì‚¬ëŠ” ë¹„íƒ€",
+        "medal": "🎖️",
+        "name": "@vita5000 | 리알로와 사는 비타",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@BrutðŸ–¤",
+        "medal": "🎖️",
+        "name": "@Brut🖤",
         "tag": "Rank 10",
         "isTop": false
       }
@@ -6967,70 +6967,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
-        "name": "@UTA ðŸ‘¹ | ONI",
+        "medal": "🥇",
+        "name": "@UTA 👹 | ONI",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
-        "name": "@!ðŸ˜ð•©ð•ð•šð•œð•’ð•ð• ð•–ð•¤ð•¥ð•’ð•£",
+        "medal": "🥈",
+        "name": "@!𝟘𝕩𝕍𝕚𝕜𝕒𝕁𝕠𝕖𝕤𝕥𝕒𝕣",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@Baster",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Nabori | RialoðŸ’š",
+        "medal": "🎖️",
+        "name": "@Nabori | Rialo💚",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@0xwenwen | Rialoå‡†æ—¶ç¡è§‰ç»„ç»„é•¿",
+        "medal": "🎖️",
+        "name": "@0xwenwen | Rialo准时睡觉组组长",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@KingJ |  ðŸ‡¨ðŸ‡³",
+        "medal": "🎖️",
+        "name": "@KingJ |  🇨🇳",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Jahid",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@vita5000 | ë¦¬ì•Œë¡œì™€ ì‚¬ëŠ” ë¹„íƒ€",
+        "medal": "🎖️",
+        "name": "@vita5000 | 리알로와 사는 비타",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Wayne  ä¸¨Rialo ä¿å®‰é˜Ÿå¥èº«ç›‘ç£å‘˜",
+        "medal": "🎖️",
+        "name": "@Wayne  丨Rialo 保安队健身监督员",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Caroline TT | Rialo",
         "tag": "Rank 10",
         "isTop": false
@@ -7045,70 +7045,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@Smith",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
-        "name": "@!ðŸ˜ð•©ð•ð•šð•œð•’ð•ð• ð•–ð•¤ð•¥ð•’ð•£",
+        "medal": "🥈",
+        "name": "@!𝟘𝕩𝕍𝕚𝕜𝕒𝕁𝕠𝕖𝕤𝕥𝕒𝕣",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
-        "name": "@0ï¾’ã„’ã„–Kã„šã„–",
+        "medal": "🥉",
+        "name": "@0ﾒㄒㄖKㄚㄖ",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Guynextdooooor",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Ceejay",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@reinn.",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Loveress✨",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Future88",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Fay",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@atik.eth",
         "tag": "Rank 10",
         "isTop": false
@@ -7123,71 +7123,71 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@Smith",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@77MC | Rialo",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@Fahad | Ryve",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@? Daniel",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@TOBEL || PRIME",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@illonash",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@STEVEN | RIALO",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@007",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Tasniya",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@ðš”ðš‘ðšŠðš•ðš’ðš | Rialo",
+        "medal": "🎖️",
+        "name": "@𝚔𝚑𝚊𝚕𝚒𝚍 | Rialo",
         "tag": "Rank 10",
         "isTop": false
       }
@@ -7201,70 +7201,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
-        "name": "@A Nas | ðŸ¦‰",
+        "medal": "🥇",
+        "name": "@A Nas | 🦉",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@GRAYDENBOY",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@secondT",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@SpecialistOG",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Nayem",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Lovezayoki",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Koushik Nir | ðŸ‡§ðŸ‡©",
+        "medal": "🎖️",
+        "name": "@Koushik Nir | 🇧🇩",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Dp | ðŸ‡¨ðŸ‡³",
+        "medal": "🎖️",
+        "name": "@Dp | 🇨🇳",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@TOBEL || PRIME",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Fenrir",
         "tag": "Rank 10",
         "isTop": false
@@ -7279,70 +7279,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
-        "name": "@saltics1(â–,â–)",
+        "medal": "🥇",
+        "name": "@saltics1(❖,❖)",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@0xgokdeniz | Rialo",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@Tanvir",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Tanvir Nabil",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@cxxxv 135",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@ZOEFUNDS | BlockchainBard",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Mirel",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Mushfiq Hasan",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@CRIMSON ðŸ’œ",
+        "medal": "🎖️",
+        "name": "@CRIMSON 💜",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Luzzy",
         "tag": "Rank 10",
         "isTop": false
@@ -7357,70 +7357,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@Testnetnodes I RiaLo",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@JUST-ABDO",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
-        "name": "@K.Gufran | ðŸ‡®ðŸ‡©",
+        "medal": "🥉",
+        "name": "@K.Gufran | 🇮🇩",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Damggu ðŸˆ",
+        "medal": "🎖️",
+        "name": "@Damggu 🍈",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@0xwenwen | Rialoå‡†æ—¶ç¡è§‰ç»„ç»„é•¿",
+        "medal": "🎖️",
+        "name": "@0xwenwen | Rialo准时睡觉组组长",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@ADÎžLKHATÎžR | RIALO",
+        "medal": "🎖️",
+        "name": "@ADΞLKHATΞR | RIALO",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@-Persic!",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Sytada",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@JASMINE",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Den | Rialo",
         "tag": "Rank 10",
         "isTop": false
@@ -7435,71 +7435,71 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
-        "name": "@Cao Tháº§n Quang",
+        "medal": "🥇",
+        "name": "@Cao Thần Quang",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@Tanvir Nabil",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@-Persic!",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Ritu - Rialo",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Subzero",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Ken lee Lubi dubi Dau Chu Arc",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Monir",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@3cæž—æž—_xyz | Rialo ä¿å®‰é˜Ÿé˜Ÿé•¿",
+        "medal": "🎖️",
+        "name": "@3c林林_xyz | Rialo 保安队队长",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@KAMRUL",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@2026ïº­ïº­ | ðŸ‡¨ðŸ‡³ Rialoå®¢æœç»„é•¿å°R",
+        "medal": "🎖️",
+        "name": "@2026ﺭﺭ | 🇨🇳 Rialo客服组长小R",
         "tag": "Rank 10",
         "isTop": false
       }
@@ -7513,70 +7513,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@musti7317",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@hieunguyen173",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@etobrutal",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@just_abdo__",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@dappy0070",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@yigitaydin",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@gofarhilman",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@aryan346",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@bubbl1k",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@kris_bogachenko1",
         "tag": "Rank 10",
         "isTop": false
@@ -7591,70 +7591,70 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
-        "name": "@Floor.rialo | æ‚Ÿç©ºå®¢æœå›°éš¾",
+        "medal": "🥇",
+        "name": "@Floor.rialo | 悟空客服困难",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
+        "medal": "🥈",
         "name": "@CHEN",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@Scrooge | Rialo",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Yuura",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Rango :) ðŸ¦Ž",
+        "medal": "🎖️",
+        "name": "@Rango :) 🦎",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@illonash",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@Dp | ðŸ‡¨ðŸ‡³",
+        "medal": "🎖️",
+        "name": "@Dp | 🇨🇳",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@SKS | Latch",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@hannie",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Hisleten",
         "tag": "Rank 10",
         "isTop": false
@@ -7669,71 +7669,71 @@ var quizHistory = [
     "champions": [
       {
         "rank": 1,
-        "medal": "ðŸ¥‡",
+        "medal": "🥇",
         "name": "@Nafis Sadik",
         "tag": "Rank 1",
         "isTop": true
       },
       {
         "rank": 2,
-        "medal": "ðŸ¥ˆ",
-        "name": "@NineðŸ‘¹| D.O.P.E",
+        "medal": "🥈",
+        "name": "@Nine👹| D.O.P.E",
         "tag": "Rank 2",
         "isTop": true
       },
       {
         "rank": 3,
-        "medal": "ðŸ¥‰",
+        "medal": "🥉",
         "name": "@Aiolos",
         "tag": "Rank 3",
         "isTop": true
       },
       {
         "rank": 4,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@blonerd",
         "tag": "Rank 4",
         "isTop": false
       },
       {
         "rank": 5,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@TuLee-.-",
         "tag": "Rank 5",
         "isTop": false
       },
       {
         "rank": 6,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@SKS | Latch",
         "tag": "Rank 6",
         "isTop": false
       },
       {
         "rank": 7,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@illonash",
         "tag": "Rank 7",
         "isTop": false
       },
       {
         "rank": 8,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Fenrir",
         "tag": "Rank 8",
         "isTop": false
       },
       {
         "rank": 9,
-        "medal": "ðŸŽ–ï¸",
+        "medal": "🎖️",
         "name": "@Grimm",
         "tag": "Rank 9",
         "isTop": false
       },
       {
         "rank": 10,
-        "medal": "ðŸŽ–ï¸",
-        "name": "@ðŒð²ð¤ð¨ð¥ðšð²",
+        "medal": "🎖️",
+        "name": "@𝐌𝐲𝐤𝐨𝐥𝐚𝐲",
         "tag": "Rank 10",
         "isTop": false
       }
@@ -7757,11 +7757,11 @@ function renderQuizChampions() {
   container.innerHTML = 
     "<div class=\"flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-black/[0.08] pb-3.5\">" +
       "<div class=\"flex items-center gap-3\">" +
-        "<div class=\"w-9 h-9 rounded-xl bg-purple-100 text-purple-900 flex items-center justify-center font-bold text-base shadow-sm\">ðŸ§ </div>" +
+        "<div class=\"w-9 h-9 rounded-xl bg-purple-100 text-purple-900 flex items-center justify-center font-bold text-base shadow-sm\">🧠</div>" +
         "<div>" +
           "<div class=\"flex items-center gap-2\">" +
             "<h3 class=\"text-base font-extrabold text-brand-text\">Tech Quiz Champions</h3>" +
-            "<span class=\"text-xs font-mono font-bold bg-purple-100/80 text-purple-900 px-2.5 py-0.5 rounded-full border border-purple-200/60\">ðŸ“… " + data.date + "</span>" +
+            "<span class=\"text-xs font-mono font-bold bg-purple-100/80 text-purple-900 px-2.5 py-0.5 rounded-full border border-purple-200/60\">📅 " + data.date + "</span>" +
             (data.isLatest ? "<span class=\"text-[10px] font-mono font-bold bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-200\">LATEST</span>" : "") +
           "</div>" +
           "<p class=\"text-[11px] text-black/60 font-mono mt-0.5\">Official top 10 winners attested by " + data.attestedBy + "</p>" +
@@ -8041,11 +8041,11 @@ function renderCommunitySpotlight() {
   container.innerHTML = 
     "<div class=\"flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-black/[0.08] pb-3.5\">" +
       "<div class=\"flex items-center gap-3\">" +
-        "<div class=\"w-9 h-9 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-base shadow-sm\">ðŸ”¦</div>" +
+        "<div class=\"w-9 h-9 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-base shadow-sm\">🔦</div>" +
         "<div>" +
           "<div class=\"flex items-center gap-2\">" +
             "<h3 class=\"text-base font-extrabold text-brand-text\">Community Spotlight: Members of the Week</h3>" +
-            "<span class=\"text-xs font-mono font-bold bg-amber-100/80 text-amber-900 px-2.5 py-0.5 rounded-full border border-amber-200/60\">ðŸ“… " + data.date + "</span>" +
+            "<span class=\"text-xs font-mono font-bold bg-amber-100/80 text-amber-900 px-2.5 py-0.5 rounded-full border border-amber-200/60\">📅 " + data.date + "</span>" +
             (data.isLatest ? "<span class=\"text-[10px] font-mono font-bold bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-200\">LATEST</span>" : "") +
           "</div>" +
           "<p class=\"text-[11px] text-black/60 font-mono mt-0.5\">Recognizing 15 top regional contributors and community champions across the globe</p>" +
