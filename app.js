@@ -1,6 +1,6 @@
-﻿// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+﻿// ══════════════════════════════════════════════════════
 // LUXURY GLASSMORPHISM TOAST & CONFIRM MODAL SYSTEM
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════
 function showVerseToast(message, type, duration) {
   if (type === undefined) type = "success";
   if (duration === undefined) duration = 3200;
@@ -16,14 +16,14 @@ function showVerseToast(message, type, duration) {
      "bg-[#205446]/95 text-white border-emerald-500/40 shadow-emerald-950/20");
 
   var iconMap = {
-    success: "âœ“",
-    error: "âœ•",
-    warning: "âš ï¸",
-    info: "âš¡"
+    success: "✓",
+    error: "✕",
+    warning: "⚠️",
+    info: "⚡"
   };
 
   toast.innerHTML = 
-    '<span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs shrink-0">' + (iconMap[type] || "âœ“") + '</span>' +
+    '<span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs shrink-0">' + (iconMap[type] || "✓") + '</span>' +
     '<span class="flex-1 leading-snug font-sans text-xs font-semibold">' + escapeHtml(message) + '</span>';
 
   container.appendChild(toast);
@@ -58,7 +58,7 @@ function showVerseConfirm(options) {
 
   title.innerText = options.title || "Confirm Action";
   msg.innerText = options.message || "Are you sure you want to proceed?";
-  icon.innerText = options.icon || "âš ï¸";
+  icon.innerText = options.icon || "⚠️";
   confirmBtn.innerText = options.confirmText || "Confirm";
   
   if (options.isDanger) {
@@ -146,7 +146,7 @@ async function addRialoToWallet() {
           blockExplorerUrls: ["https://explorer.testnet.rialo.io"]
         }]
       });
-      showVerseToast("âœ“ Rialo Testnet successfully added to your wallet!", "success");
+      showVerseToast("✓ Rialo Testnet successfully added to your wallet!", "success");
     } catch (error) {
       if (error.code === 4001) {
         showVerseToast("Network request was cancelled by user.", "info");
@@ -201,7 +201,7 @@ function generateLatchPolicy() {
       ")\n\n" +
       "print(\"Safe Transaction Executed on Rialo:\", tx.tx_hash)";
   }
-  showVerseToast("âœ“ New Latch Policy & Scoped Token Generated for: " + role, "success");
+  showVerseToast("✓ New Latch Policy & Scoped Token Generated for: " + role, "success");
 }
 
 function copyGeneratedLatchCode() {
@@ -279,7 +279,7 @@ function shortSectorName(sector) {
   return String(sector).split(/[,&]/)[0].trim();
 }
 
-// Compute the 4 analytics metric cards live from the data â€” no hardcoded percentages.
+// Compute the 4 analytics metric cards live from the data — no hardcoded percentages.
 function updateAnalyticsMetrics(sectorCounts, sortedSectors, total) {
   if (typeof document === "undefined") return;
   var pct = function (c) { return Math.round((c / total) * 100); };
@@ -309,7 +309,7 @@ function updateAnalyticsMetrics(sectorCounts, sortedSectors, total) {
   // Biggest gap = smallest sector (last after descending sort) = best opportunity.
   var gap = sortedSectors[sortedSectors.length - 1];
   set("metricGapName", shortSectorName(gap) + " (" + pct(sectorCounts[gap]) + "%)");
-  set("metricGapSub", sectorCounts[gap] + " dApps â€” room to build");
+  set("metricGapSub", sectorCounts[gap] + " dApps — room to build");
 
   set("metricBuildersCount", uniqueBuilderCount());
   set("metricBuildersSub", "shipping across " + total + " dApps");
@@ -345,7 +345,7 @@ function renderAnalyticsView() {
           "<span class=\"text-brand-text font-bold flex items-center gap-2\">" +
             "<span class=\"w-2.5 h-2.5 rounded-full flex-shrink-0\" style=\"background-color: " + meta.color + "\"></span>" +
             "<span>" + escapeHtml(sector) + "</span>" +
-            "<span class=\"text-[10px] text-brand-pine font-normal underline\">View Details â†—</span>" +
+            "<span class=\"text-[10px] text-brand-pine font-normal underline\">View Details ↗</span>" +
           "</span>" +
           "<span class=\"text-brand-text font-bold\">" + count + " dApps <span class=\"text-slate-400 font-normal\">(" + pct + "%)</span></span>" +
         "</div>" +
@@ -460,7 +460,7 @@ function openSectorModal(sectorName) {
               "<div class=\"text-xs font-bold text-brand-text truncate\">" + escapeHtml(p.title) + "</div>" +
               "<div class=\"text-[10px] text-brand-textMuted truncate\">@" + escapeHtml(p.builder ? (p.builder.username || "builder") : "builder") + "</div>" +
             "</div>" +
-            "<a href=\"" + (p.liveLink || p.gitRepo || "#") + "\" target=\"_blank\" rel=\"noopener\" class=\"px-3 py-1 rounded-full bg-[#205446] text-white text-xs font-bold shadow-sm whitespace-nowrap\">Launch â†—</a>" +
+            "<a href=\"" + (p.liveLink || p.gitRepo || "#") + "\" target=\"_blank\" rel=\"noopener\" class=\"px-3 py-1 rounded-full bg-[#205446] text-white text-xs font-bold shadow-sm whitespace-nowrap\">Launch ↗</a>" +
           "</div>";
         }).join("") +
       "</div>" +
@@ -477,7 +477,7 @@ function closeSectorModal() {
 
 var buildIdeas = [
   {
-    title: "âš¡ Rialo ZK-P2P: Confidential Over-The-Counter Swaps",
+    title: "⚡ Rialo ZK-P2P: Confidential Over-The-Counter Swaps",
     niche: "DeFi / Zero-Knowledge",
     pitch: "An institutional OTC escrow desk on Rialo where whale traders and DAOs execute multi-million dollar RIA and USDC swaps with confidential balance proofs and 0.4s atomic settlement, preventing sandwich bots and frontrunning."
   },
@@ -509,7 +509,7 @@ function generateBuildIdea() {
     "<div class=\"text-[11px] text-slate-500 uppercase tracking-wider font-semibold\">Niche: " + escapeHtml(idea.niche) + "</div>" +
     "<p class=\"text-xs text-brand-text pt-1 font-sans leading-relaxed\">" + escapeHtml(idea.pitch) + "</p>" +
     "<div class=\"pt-2 flex items-center gap-3\">" +
-      "<button onclick=\"generateLatchPolicy(); navigateTo('rialo');\" class=\"text-xs text-brand-pine underline font-bold\">Generate Latch Policy for this â†—</button>" +
+      "<button onclick=\"generateLatchPolicy(); navigateTo('rialo');\" class=\"text-xs text-brand-pine underline font-bold\">Generate Latch Policy for this ↗</button>" +
       "<button onclick=\"generateBuildIdea()\" class=\"text-xs text-slate-500 hover:text-black\">ðŸŽ² Try Another Idea</button>" +
     "</div>";
 
@@ -529,7 +529,7 @@ var spotlightData = [
     author: "@ericargent",
     desc: "The premier autonomous AI agent racing tournament on Rialo. 140 bots race under strict Latch TEE constraints to solve real-time semantic puzzles.",
     link: "https://agp.onlatch.com",
-    metrics: "140 Approved Racers Â· 25 Priority Seats",
+    metrics: "140 Approved Racers · 25 Priority Seats",
     featured: true
   },
   {
@@ -541,7 +541,7 @@ var spotlightData = [
     author: "@vikajoestar",
     desc: "Winner of Shark Tank Stage 1. Shielded transaction relayer bridging Base Sepolia to Rialo L1 with zero-knowledge private balance proofs.",
     link: "https://obscura-six.vercel.app",
-    metrics: "103 Upvotes Â· Subzero Fast-Track",
+    metrics: "103 Upvotes · Subzero Fast-Track",
     featured: true
   },
   {
@@ -553,7 +553,7 @@ var spotlightData = [
     author: "@snehal007",
     desc: "Autonomous Research -> Analyst -> Writer AI pipeline executing gasless per-step micropayments using Rialo Latch hardware tokens.",
     link: "https://agentflow-rialo.vercel.app",
-    metrics: "Shark Tank Top Pick Â· Python SDK",
+    metrics: "Shark Tank Top Pick · Python SDK",
     featured: true
   },
   {
@@ -565,7 +565,7 @@ var spotlightData = [
     author: "@rialoscan",
     desc: "Independent sub-second block and transaction explorer monitoring ~0.4s block finality, node telemetry, and validator latency.",
     link: "https://rialoscan.org",
-    metrics: "Ecosystem Critical Â· 0.4s Tracking",
+    metrics: "Ecosystem Critical · 0.4s Tracking",
     featured: true
   },
   {
@@ -577,7 +577,7 @@ var spotlightData = [
     author: "@eliasskun",
     desc: "High-accuracy real-time prediction market using machine learning models with sub-second on-chain settlement.",
     link: "https://rialopredict.vercel.app",
-    metrics: "Shark Tank Honoree Â· DeFi",
+    metrics: "Shark Tank Honoree · DeFi",
     featured: true
   },
   {
@@ -589,7 +589,7 @@ var spotlightData = [
     author: "@rialink",
     desc: "Cryptographic account linker connecting Web3 addresses to verified GitHub and Discord developer profiles for Sybil defense.",
     link: "https://rialink.vercel.app",
-    metrics: "Identity Bridge Â· 500+ Verified Linkers",
+    metrics: "Identity Bridge · 500+ Verified Linkers",
     featured: true
   }
 ];
@@ -613,7 +613,7 @@ function renderSpotlightCards(filterType) {
         "<h3 class=\"text-base font-extrabold text-brand-text mb-1.5 tracking-tight\">" + escapeHtml(item.title) + "</h3>" +
         "<p class=\"text-xs text-brand-textMuted leading-relaxed mb-4\">" + escapeHtml(item.desc) + "</p>" +
         "<div class=\"py-2 px-3 rounded-lg bg-[#F6F4EE] border border-black/[0.04] text-[11px] font-mono text-brand-pine font-bold\">" +
-          "âš¡ " + escapeHtml(item.metrics) +
+          "⚡ " + escapeHtml(item.metrics) +
         "</div>" +
       "</div>" +
       "<a href=\"" + item.link + "\" target=\"_blank\" rel=\"noopener\" class=\"w-full py-2.5 rounded-xl bg-[#F6F4EE] hover:bg-brand-pine text-brand-text hover:text-white text-xs font-bold text-center transition-all flex items-center justify-center gap-1.5 border border-black/[0.08] shadow-sm\">" +
@@ -642,7 +642,7 @@ function uniqueBuilderCount() {
   return Object.keys(set).length;
 }
 
-// Keep every displayed stat in sync with the real data â€” nothing hardcoded.
+// Keep every displayed stat in sync with the real data — nothing hardcoded.
 function refreshCounts() {
   if (typeof document === "undefined") return;
   var n = allProjects.length;
@@ -696,7 +696,7 @@ function renderProjectDirectory() {
       "<div>" +
         "<div class=\"flex items-center justify-between mb-3\">" +
           "<span class=\"text-[10px] font-mono px-2.5 py-1 rounded-full bg-brand-pineMuted text-brand-pine border border-brand-pine/25 uppercase font-bold tracking-wider\">" + escapeHtml(category) + "</span>" +
-          "<span class=\"text-xs font-mono text-pink-600 font-bold bg-pink-50 px-2.5 py-0.5 rounded-full border border-pink-100\">â¤ï¸ " + (p.loves || 1) + "</span>" +
+          "<span class=\"text-xs font-mono text-pink-600 font-bold bg-pink-50 px-2.5 py-0.5 rounded-full border border-pink-100\">❤️ " + (p.loves || 1) + "</span>" +
         "</div>" +
         "<h3 class=\"text-base font-extrabold text-brand-text mb-1.5 tracking-tight\">" + escapeHtml(p.title) + "</h3>" +
         "<p class=\"text-xs text-brand-textMuted line-clamp-2 leading-relaxed mb-4\">" + escapeHtml(p.description || "Verified Rialo ecosystem application.") + "</p>" +
@@ -705,7 +705,7 @@ function renderProjectDirectory() {
             "<img src=\"" + (p.builder && p.builder.image ? p.builder.image : ("https://api.dicebear.com/7.x/identicon/svg?seed=" + username)) + "\" class=\"w-6 h-6 rounded-full object-cover border border-black/10\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + username + "'\" />" +
             "<span class=\"text-xs text-brand-text font-medium truncate group-hover:text-brand-pine\">@" + escapeHtml(username) + "</span>" +
           "</div>" +
-          (gitRepo ? "<a href=\"" + gitRepo + "\" target=\"_blank\" rel=\"noopener\" class=\"text-brand-textMuted hover:text-black text-xs font-mono underline\">GitHub â†—</a>" : "") +
+          (gitRepo ? "<a href=\"" + gitRepo + "\" target=\"_blank\" rel=\"noopener\" class=\"text-brand-textMuted hover:text-black text-xs font-mono underline\">GitHub ↗</a>" : "") +
         "</div>" +
       "</div>" +
       "<a href=\"" + liveLink + "\" target=\"_blank\" rel=\"noopener\" class=\"w-full py-2.5 rounded-xl bg-[#F6F4EE] hover:bg-brand-pine text-brand-text hover:text-white text-xs font-bold text-center transition-all flex items-center justify-center gap-1.5 border border-black/[0.08] shadow-sm\">" +
@@ -800,7 +800,7 @@ function renderLeaderboardView() {
         "<img src=\"" + (b2.image || ("https://api.dicebear.com/7.x/identicon/svg?seed=" + b2.username)) + "\" class=\"w-16 h-16 rounded-full object-cover border-2 border-black/10\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + b2.username + "'\" />" +
         "<h3 class=\"text-sm font-bold text-[#111214]\">" + escapeHtml(b2.name) + "</h3>" +
         "<div class=\"text-xs text-black/50 font-mono\">@" + escapeHtml(b2.username) + "</div>" +
-        "<div class=\"text-xs font-mono font-bold text-[#205446]\">" + b2.projectsCount + " dApps Â· " + b2.totalLoves + " loves</div>" +
+        "<div class=\"text-xs font-mono font-bold text-[#205446]\">" + b2.projectsCount + " dApps · " + b2.totalLoves + " loves</div>" +
         "<button onclick=\"openBuilderModal('" + escapeHtml(b2.username) + "')\" class=\"text-xs text-[#111214] hover:underline pt-1 font-semibold\">View Profile</button>" +
       "</div>" +
       "<div class=\"rp-card p-8 flex flex-col items-center text-center space-y-3 border-[#205446]/40 bg-gradient-to-b from-emerald-50 to-[#F7F5F0] shadow-md\">" +
@@ -808,15 +808,15 @@ function renderLeaderboardView() {
         "<img src=\"" + (b1.image || ("https://api.dicebear.com/7.x/identicon/svg?seed=" + b1.username)) + "\" class=\"w-20 h-20 rounded-full object-cover border-2 border-[#205446] shadow-sm\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + b1.username + "'\" />" +
         "<h3 class=\"text-base font-black text-[#111214]\">" + escapeHtml(b1.name) + "</h3>" +
         "<div class=\"text-xs text-[#205446] font-mono font-bold\">@" + escapeHtml(b1.username) + "</div>" +
-        "<div class=\"text-sm font-mono font-black text-[#205446]\">" + b1.projectsCount + " dApps Â· " + b1.totalLoves + " loves</div>" +
-        "<button onclick=\"openBuilderModal('" + escapeHtml(b1.username) + "')\" class=\"text-xs text-[#205446] hover:underline font-bold pt-1\">View Portfolio â†—</button>" +
+        "<div class=\"text-sm font-mono font-black text-[#205446]\">" + b1.projectsCount + " dApps · " + b1.totalLoves + " loves</div>" +
+        "<button onclick=\"openBuilderModal('" + escapeHtml(b1.username) + "')\" class=\"text-xs text-[#205446] hover:underline font-bold pt-1\">View Portfolio ↗</button>" +
       "</div>" +
       "<div class=\"rp-card p-6 flex flex-col items-center text-center space-y-3 shadow-sm\">" +
         "<div class=\"px-3 py-0.5 rounded-full bg-amber-800/10 text-amber-900 font-mono text-[10px] font-bold border border-amber-800/20\">ðŸ¥‰ #3 BRONZE</div>" +
         "<img src=\"" + (b3.image || ("https://api.dicebear.com/7.x/identicon/svg?seed=" + b3.username)) + "\" class=\"w-16 h-16 rounded-full object-cover border-2 border-black/10\" onerror=\"this.src='https://api.dicebear.com/7.x/identicon/svg?seed=" + b3.username + "'\" />" +
         "<h3 class=\"text-sm font-bold text-[#111214]\">" + escapeHtml(b3.name) + "</h3>" +
         "<div class=\"text-xs text-black/50 font-mono\">@" + escapeHtml(b3.username) + "</div>" +
-        "<div class=\"text-xs font-mono font-bold text-[#205446]\">" + b3.projectsCount + " dApps Â· " + b3.totalLoves + " loves</div>" +
+        "<div class=\"text-xs font-mono font-bold text-[#205446]\">" + b3.projectsCount + " dApps · " + b3.totalLoves + " loves</div>" +
         "<button onclick=\"openBuilderModal('" + escapeHtml(b3.username) + "')\" class=\"text-xs text-[#111214] hover:underline pt-1 font-semibold\">View Profile</button>" +
       "</div>";
   }
@@ -836,7 +836,7 @@ function renderLeaderboardView() {
         "<div class=\"flex items-center gap-5 text-right font-mono\">" +
           "<div>" +
             "<div class=\"text-xs font-bold text-[#111214]\">" + b.projectsCount + " <span class=\"text-slate-400 font-normal\">dApps</span></div>" +
-            "<div class=\"text-[10px] text-pink-600 font-bold\">â¤ï¸ " + b.totalLoves + " loves</div>" +
+            "<div class=\"text-[10px] text-pink-600 font-bold\">❤️ " + b.totalLoves + " loves</div>" +
           "</div>" +
           "<button onclick=\"openBuilderModal('" + escapeHtml(b.username) + "')\" class=\"px-3.5 py-1.5 rounded-full bg-white hover:bg-black/[0.04] text-[#111214] border border-black/[0.08] text-xs font-semibold shadow-sm\">Profile</button>" +
         "</div>" +
@@ -874,7 +874,7 @@ function openBuilderModal(username) {
         builderProjects.map(function(p) {
           return "<div class=\"p-3.5 rounded-xl bg-white border border-black/[0.06] flex items-center justify-between gap-3 shadow-sm\">" +
             "<div class=\"text-xs font-bold text-[#111214] truncate\">" + escapeHtml(p.title) + "</div>" +
-            "<a href=\"" + (p.liveLink || "#") + "\" target=\"_blank\" rel=\"noopener\" class=\"px-3.5 py-1.5 rounded-full bg-[#205446] hover:bg-[#184237] text-white text-xs font-bold shadow-sm flex items-center gap-1 transition-all\"><span>Open App</span> <span class=\"text-[11px]\">â†—</span></a>" +
+            "<a href=\"" + (p.liveLink || "#") + "\" target=\"_blank\" rel=\"noopener\" class=\"px-3.5 py-1.5 rounded-full bg-[#205446] hover:bg-[#184237] text-white text-xs font-bold shadow-sm flex items-center gap-1 transition-all\"><span>Open App</span> <span class=\"text-[11px]\">↗</span></a>" +
           "</div>";
         }).join("") +
       "</div>" +
@@ -887,13 +887,13 @@ function closeBuilderModal() {
   if (modalEl) modalEl.classList.add("hidden");
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════
 // DYNAMIC GOOGLE GEMINI MODEL DISCOVERY & AUTO-HEALING ENGINE
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════
 // POLISHED VERSE AI WITH STREAMING & COPY CONTROLS
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════
 
 var GEMINI_STORAGE_KEY = "rialoverse_gemini_api_key";
 var GEMINI_MODEL_KEY = "rialoverse_gemini_active_model";
@@ -1004,7 +1004,7 @@ async function refreshGeminiModels() {
   var btn = document.getElementById("refreshModelBtn");
   if (btn) {
     btn.disabled = true;
-    btn.innerHTML = "<span class=\"animate-spin text-xs\">â³</span><span>Scanning Google Models...</span>";
+    btn.innerHTML = "<span class=\"animate-spin text-xs\">⏳</span><span>Scanning Google Models...</span>";
   }
 
   var result = await discoverAndSelectBestModel(key);
@@ -1016,9 +1016,9 @@ async function refreshGeminiModels() {
 
   if (result.success) {
     renderAiKeyControls();
-    showVerseToast("âš¡ Models Refreshed: Using " + result.model + " (" + result.availableCount + " available)", "success", 4000);
+    showVerseToast("⚡ Models Refreshed: Using " + result.model + " (" + result.availableCount + " available)", "success", 4000);
   } else {
-    showVerseToast("âš ï¸ Model Refresh: " + result.error, "warning", 4000);
+    showVerseToast("⚠️ Model Refresh: " + result.error, "warning", 4000);
   }
 }
 
@@ -1042,13 +1042,13 @@ function renderAiKeyControls() {
     container.innerHTML = 
       "<div class=\"flex flex-wrap items-center gap-2\">" +
         "<span class=\"text-xs font-mono text-emerald-900 font-bold bg-emerald-50 px-2.5 py-1 rounded-xl border border-emerald-300 flex items-center gap-1.5 shadow-sm\" title=\"Active Verified Model\">" +
-          "<span>âš¡</span><span>Model: <strong>" + escapeHtml(activeModel) + "</strong></span>" +
+          "<span>⚡</span><span>Model: <strong>" + escapeHtml(activeModel) + "</strong></span>" +
         "</span>" +
         "<button id=\"refreshModelBtn\" onclick=\"refreshGeminiModels()\" class=\"px-2.5 py-1 rounded-xl bg-white hover:bg-black/5 text-brand-text text-xs font-mono font-bold border border-black/10 transition-all active:scale-95 shadow-sm flex items-center gap-1\" title=\"Scan and select latest available Google models\">" +
           "<span>ðŸ”„ Refresh</span>" +
         "</button>" +
         "<button onclick=\"changeGeminiKeyPrompt()\" class=\"px-2.5 py-1 rounded-xl bg-white hover:bg-black/5 text-brand-text text-xs font-mono font-bold border border-black/10 transition-all active:scale-95 shadow-sm flex items-center gap-1\" title=\"Change API Key\">" +
-          "<span>âš™ï¸ Change</span>" +
+          "<span>⚙️ Change</span>" +
         "</button>" +
         "<button onclick=\"removeGeminiKey()\" class=\"px-2.5 py-1 rounded-xl bg-red-50 hover:bg-red-100 text-red-700 text-xs font-mono font-bold border border-red-200 transition-all active:scale-95 shadow-sm flex items-center gap-1\" title=\"Disconnect API Key\">" +
           "<span>ðŸ—‘ï¸ Disconnect</span>" +
@@ -1058,7 +1058,7 @@ function renderAiKeyControls() {
     if (banner) banner.classList.remove("hidden");
     if (modeBadge) {
       modeBadge.className = "px-3 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#F6F4EE] text-slate-700 border border-black/10";
-      modeBadge.textContent = "âš¡ BUILT-IN KNOWLEDGE ENGINE";
+      modeBadge.textContent = "⚡ BUILT-IN KNOWLEDGE ENGINE";
     }
     container.innerHTML = "";
   }
@@ -1073,14 +1073,14 @@ async function saveAndVerifyGeminiKey() {
   if (!rawKey) {
     if (status) {
       status.className = "text-xs font-mono font-bold text-red-600 block";
-      status.textContent = "âš ï¸ Please paste your Gemini API key from Google AI Studio.";
+      status.textContent = "⚠️ Please paste your Gemini API key from Google AI Studio.";
     }
     return;
   }
 
   if (btn) {
     btn.disabled = true;
-    btn.innerHTML = "<span class=\"animate-spin text-xs\">â³</span><span>Discovering Google Models...</span>";
+    btn.innerHTML = "<span class=\"animate-spin text-xs\">⏳</span><span>Discovering Google Models...</span>";
   }
   if (status) {
     status.className = "text-xs font-mono font-bold text-slate-600 block";
@@ -1098,7 +1098,7 @@ async function saveAndVerifyGeminiKey() {
     if (input) input.value = "";
     if (status) {
       status.className = "text-xs font-mono font-bold text-emerald-600 block";
-      status.textContent = "âœ… Connected! Found " + result.availableCount + " available models. Optimal model set: " + result.model;
+      status.textContent = "✅ Connected! Found " + result.availableCount + " available models. Optimal model set: " + result.model;
     }
     renderAiKeyControls();
     setTimeout(function() {
@@ -1107,7 +1107,7 @@ async function saveAndVerifyGeminiKey() {
   } else {
     if (status) {
       status.className = "text-xs font-mono font-bold text-red-600 block";
-      status.textContent = "âŒ Verification Failed: " + result.error;
+      status.textContent = "❌ Verification Failed: " + result.error;
     }
   }
 }
@@ -1206,9 +1206,9 @@ function loadSavedChatHistory() {
   }
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════
 // ADVANCED MARKDOWN PARSER WITH COPY & CLEAN STYLING
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════
 
 function formatMarkdownChat(text) {
   if (!text) return "";
@@ -1246,10 +1246,10 @@ function formatMarkdownChat(text) {
   str = str.replace(/(^|[^\*])\*([^\*]+)\*([^\*]|$)/g, '$1<em class="italic text-brand-textMuted">$2</em>$3');
 
   // 6. Markdown Links ([Text](URL))
-  str = str.replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" class="text-brand-pine font-bold underline hover:text-brand-pineHover inline-flex items-center gap-0.5">$1 â†—</a>');
+  str = str.replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" class="text-brand-pine font-bold underline hover:text-brand-pineHover inline-flex items-center gap-0.5">$1 ↗</a>');
 
-  // 7. Bullet Lists (â€¢, *, -)
-  str = str.replace(/^[â€¢\*\-]\s+(.*$)/gim, '<li class="ml-5 list-disc text-sm text-brand-text my-1 leading-relaxed">$1</li>');
+  // 7. Bullet Lists (•, *, -)
+  str = str.replace(/^[•\*\-]\s+(.*$)/gim, '<li class="ml-5 list-disc text-sm text-brand-text my-1 leading-relaxed">$1</li>');
   
   // 8. Numbered Lists (1., 2.)
   str = str.replace(/^(\d+)\.\s+(.*$)/gim, '<li class="ml-5 list-decimal text-sm text-brand-text my-1 leading-relaxed"><strong class="text-brand-text">$1.</strong> $2</li>');
@@ -1265,7 +1265,7 @@ function copyCodeBlock(btn) {
   var codeEl = btn.closest('.rounded-xl').querySelector('code');
   if (codeEl) {
     navigator.clipboard.writeText(codeEl.innerText).then(function() {
-      btn.innerHTML = '<span>âœ…</span><span>Copied!</span>';
+      btn.innerHTML = '<span>✅</span><span>Copied!</span>';
       setTimeout(function() { btn.innerHTML = '<span>ðŸ“‹</span><span>Copy Code</span>'; }, 2000);
     });
   }
@@ -1276,15 +1276,15 @@ function copyAssistantMessage(btn) {
   if (bubble) {
     var rawText = bubble.getAttribute('data-raw-text') || bubble.innerText;
     navigator.clipboard.writeText(rawText).then(function() {
-      btn.innerHTML = '<span>âœ… Copied!</span>';
+      btn.innerHTML = '<span>✅ Copied!</span>';
       setTimeout(function() { btn.innerHTML = '<span>ðŸ“‹ Copy</span>'; }, 2000);
     });
   }
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════
 // ULTRA-SMOOTH BLOCK & TOKEN STREAMING ENGINE
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════
 function typewriteResponse(targetElement, fullHtml, fullRawText, onComplete) {
   var thread = document.getElementById("chatThread");
   targetElement.innerHTML = "";
@@ -1400,7 +1400,7 @@ function appendChatMessage(role, text, saveToStorage, animate) {
     msgDiv.className = "flex justify-start select-none";
     msgDiv.innerHTML = 
       '<div class="p-4 rounded-2xl rounded-tl-sm bg-white border border-black/[0.08] text-sm text-brand-textMuted flex items-center gap-2.5 shadow-sm">' +
-        '<span class="animate-spin text-base">âš™ï¸</span>' +
+        '<span class="animate-spin text-base">⚙️</span>' +
         '<span class="font-mono text-xs text-brand-pine font-bold">' + escapeHtml(text) + '</span>' +
       '</div>';
   } else {
@@ -1466,25 +1466,25 @@ async function submitChatMessage() {
       cleanModel = activeModel.replace(/^models\//, "").trim();
 
       var systemPrompt = 
-        "You are Verse AI, the independent community AI assistant, ecosystem guide, and historical archive keeper for RialoVerse (rialoverse.com) â€” a community intelligence hub for Rialo Layer-1 Network (rialo.network) and Latch Protocol (onlatch.com / Subzero Labs).\n\n" +
+        "You are Verse AI, the independent community AI assistant, ecosystem guide, and historical archive keeper for RialoVerse (rialoverse.com) — a community intelligence hub for Rialo Layer-1 Network (rialo.network) and Latch Protocol (onlatch.com / Subzero Labs).\n\n" +
         "ECOSYSTEM SECTORS & DAPP RECOMMENDATION DATABASE (Community Ecosystem Directory):\n" +
-        "â€¢ Gaming, Racing & Betting:\n" +
+        "• Gaming, Racing & Betting:\n" +
         "  - Agent Grand Prix (AGP): Word-circuit AI agent racing with live parimutuel RP betting (agp.onlatch.com).\n" +
         "  - CyberRialo Combat Arena: Tactical PvP combat with 0.4s instant settlement (Shark Tank #1 Winner).\n" +
         "  - Rialo Pixel Quest & Rialo Roulette: On-chain gaming and probability games.\n" +
-        "â€¢ DeFi, DEX & Yield:\n" +
+        "• DeFi, DEX & Yield:\n" +
         "  - OLPA DEX: Event-native decentralized derivatives exchange & AMM (olpadex.vercel.app).\n" +
         "  - Rialo Agent Vault / YieldSentinel: Automated yield optimization and LP rebalancing using Latch agents.\n" +
-        "â€¢ AI Agents, Operating Systems & Tooling:\n" +
+        "• AI Agents, Operating Systems & Tooling:\n" +
         "  - RialOS: The agent desktop operating system for automated payroll and credit (rialos.vercel.app, Shark Tank #3 Winner by Just Jena).\n" +
         "  - Latch Sentinel & Policy Sandbox: TEE hardware policy builder for spend limits and scoped session tokens.\n" +
         "  - RialoVerse: The central ecosystem super-hub created by @NathBabu.\n" +
-        "â€¢ Social, Profiles & Identity:\n" +
+        "• Social, Profiles & Identity:\n" +
         "  - Official Profile Linking & Retroactive Points Portal: playground.rialo.io.\n" +
-        "â€¢ Top Builders by Shipped Apps: Yusoof4all (4 dApps), AMR70234 (4 dApps), Elias (3 dApps), Kingxfn (3 dApps), Iblamehsan (3 dApps).\n" +
-        "â€¢ @NathBabu: Creator of RialoVerse & Quiz Round 27 Top 10 Finisher.\n" +
-        "â€¢ Shark Tank Archive: Edition #3 Just Jena (RialOS), Edition #2 Elias (Rialo Agent Vault), Edition #1 Vika Joestar (CyberRialo).\n" +
-        "â€¢ Rialo Tech: ~0.4s instant finality, Latch TEE hardware security, native ZK math, Chain ID 9001, RP token.\n\n" +
+        "• Top Builders by Shipped Apps: Yusoof4all (4 dApps), AMR70234 (4 dApps), Elias (3 dApps), Kingxfn (3 dApps), Iblamehsan (3 dApps).\n" +
+        "• @NathBabu: Creator of RialoVerse & Quiz Round 27 Top 10 Finisher.\n" +
+        "• Shark Tank Archive: Edition #3 Just Jena (RialOS), Edition #2 Elias (Rialo Agent Vault), Edition #1 Vika Joestar (CyberRialo).\n" +
+        "• Rialo Tech: ~0.4s instant finality, Latch TEE hardware security, native ZK math, Chain ID 9001, RP token.\n\n" +
         "GUIDELINES:\n" +
         "- When asked if there is a specific type of dApp (e.g. 'Is there a racing game?', 'Is there a DEX?', 'Is there a betting app?', 'Is there a prediction market?'), identify the matching category and recommend the exact dApp name, what it does, who built it, and how to access it.\n" +
         "- If asked about gap areas (e.g. what is missing in Rialo), encourage builders to deploy in under-served categories.\n" +
@@ -1589,21 +1589,21 @@ function generateAutonomousLatchAnswer(query) {
     return "ðŸŽï¸ **Verse AI Guide: Agent Grand Prix (AGP) Strategy & Rules**\n\n" +
       "Agent Grand Prix ([agp.onlatch.com](https://agp.onlatch.com)) is Rialo's premier autonomous racing benchmark where AI agents navigate real-time word circuits:\n\n" +
       "**Winning Strategies:**\n" +
-      "â€¢ **Low Latency RPC Calls:** Leverage Rialo's ~0.4s finality to query oracle clues and submit route words before opponents.\n" +
-      "â€¢ **Subzero Oracle Prompts:** Parse linguistic hints broadcasted by the oracle to predict the next circuit checkpoint.\n" +
-      "â€¢ **Parimutuel RP Betting:** Spectators stake Rialo Points (RP) on agent racers with dynamic on-chain odds.\n" +
-      "â€¢ **Telemetry Safeguards:** Use Latch policy tokens to prevent agent racers from exceeding gas allowances during high-speed laps.";
+      "• **Low Latency RPC Calls:** Leverage Rialo's ~0.4s finality to query oracle clues and submit route words before opponents.\n" +
+      "• **Subzero Oracle Prompts:** Parse linguistic hints broadcasted by the oracle to predict the next circuit checkpoint.\n" +
+      "• **Parimutuel RP Betting:** Spectators stake Rialo Points (RP) on agent racers with dynamic on-chain odds.\n" +
+      "• **Telemetry Safeguards:** Use Latch policy tokens to prevent agent racers from exceeding gas allowances during high-speed laps.";
   }
 
   // 3. EXACT TARGET: RPC & 20 RP Faucet
   if (q.includes("faucet") || q.includes("20 rp") || q.includes("rpc") || q.includes("metamask") || q.includes("chain id") || q.includes("testnet") || q.includes("connect wallet") || q.includes("claim rp")) {
     return "ðŸ§ª **Verse AI Guide: Rialo Testnet RPC & 20 RP Faucet Guide**\n\n" +
       "**Network Parameters:**\n" +
-      "â€¢ **Network Name:** Rialo Testnet\n" +
-      "â€¢ **RPC URL:** `https://testnet.rialo.io`\n" +
-      "â€¢ **Chain ID:** `9001` (Hex: `0x2329`)\n" +
-      "â€¢ **Currency Symbol:** `RP` (or `RIA`)\n" +
-      "â€¢ **Block Explorer:** [explorer.testnet.rialo.io](https://explorer.testnet.rialo.io)\n\n" +
+      "• **Network Name:** Rialo Testnet\n" +
+      "• **RPC URL:** `https://testnet.rialo.io`\n" +
+      "• **Chain ID:** `9001` (Hex: `0x2329`)\n" +
+      "• **Currency Symbol:** `RP` (or `RIA`)\n" +
+      "• **Block Explorer:** [explorer.testnet.rialo.io](https://explorer.testnet.rialo.io)\n\n" +
       "**How to Claim 20 RP:**\n" +
       "1. Join the official Rialo Discord: [discord.gg/BuwYqeZ357](https://discord.gg/BuwYqeZ357)\n" +
       "2. Head over to the **#faucet** channel.\n" +
@@ -1621,7 +1621,7 @@ function generateAutonomousLatchAnswer(query) {
       "3. Double check that you connected the right handles (disconnect and reconnect if wrong).\n" +
       "4. Click **'Connect and claim points'**.\n" +
       "5. Confirm with **'Yes, connect and claim'** to add retroactive Points to your balance!\n\n" +
-      "âš ï¸ **Important Rule:** Once confirmed, your connected accounts are **permanently locked** to your wallet and cannot be changed or moved to another wallet!\n\n" +
+      "⚠️ **Important Rule:** Once confirmed, your connected accounts are **permanently locked** to your wallet and cannot be changed or moved to another wallet!\n\n" +
       "ðŸ”— **Official Portal:** [playground.rialo.io](https://playground.rialo.io)";
   }
 
@@ -1648,20 +1648,20 @@ function generateAutonomousLatchAnswer(query) {
       "tx_receipt = agent.execute_trade(pair='RP/USDT', amount=3.5)\n" +
       "print(f'Trade executed safely: {tx_receipt.hash}')\n" +
       "```\n\n" +
-      "ðŸ’¡ *Tip: For customized code generation for your own smart contract, connect your free Gemini API key using the banner above!*";
+      "💡 *Tip: For customized code generation for your own smart contract, connect your free Gemini API key using the banner above!*";
   }
 
   // 6. EXACT TARGET: Shark Tank Pitch Winners
   if (q.includes("shark tank") || q.includes("pitch") || q.includes("jena") || q.includes("elias") || q.includes("vika")) {
-    return "ðŸ† **Verse AI Guide: Shark Tank Pitch Champions**\n\n" +
+    return "🏆 **Verse AI Guide: Shark Tank Pitch Champions**\n\n" +
       "Rialo Shark Tank is the official community pitch competition where ecosystem builders present live dApps:\n\n" +
-      "â€¢ **Edition #3 Winner (August 18, 2026):**\n" +
+      "• **Edition #3 Winner (August 18, 2026):**\n" +
       "  - **Winner:** **Just Jena** (`@kirahell69`)\n" +
       "  - **Winning dApp:** **RialOS - The Agent Desktop** ([rialos.vercel.app](https://rialos.vercel.app/))\n\n" +
-      "â€¢ **Edition #2 Winner (August 4, 2026):**\n" +
+      "• **Edition #2 Winner (August 4, 2026):**\n" +
       "  - **Winner:** **Elias** (`@eliasskun`)\n" +
       "  - **Winning dApp:** **Rialo Agent Vault**\n\n" +
-      "â€¢ **Edition #1 Winner (July 20, 2026):**\n" +
+      "• **Edition #1 Winner (July 20, 2026):**\n" +
       "  - **Winner:** **Vika Joestar** (`@vikajoestar`)\n" +
       "  - **Winning dApp:** **CyberRialo Combat Arena**\n\n" +
       "ðŸ‘‰ Visit the [Events Tab](#events) to flip through all historical pitch winners!";
@@ -1671,13 +1671,13 @@ function generateAutonomousLatchAnswer(query) {
   if (q.includes("dapp") || q.includes("app") || q.includes("verified") || q.includes("ecosystem") || q.includes("project") || q.includes("gaming") || q.includes("defi") || q.includes("olpa") || q.includes("dex")) {
     return "ðŸ“± **Verse AI Guide: Top Verified Community dApps**\n\n" +
       "Here are top community-built applications across key sectors:\n\n" +
-      "â€¢ **ðŸ’Ž DeFi & Derivatives:**\n" +
+      "• **ðŸ’Ž DeFi & Derivatives:**\n" +
       "  - *OLPA DEX*: Event-native decentralized derivatives AMM ([olpadex.vercel.app](https://olpadex.vercel.app/)).\n" +
       "  - *YieldSentinel*: Automated LP rebalancing using Latch agents.\n\n" +
-      "â€¢ **ðŸŽ® Gaming & Racing:**\n" +
+      "• **ðŸŽ® Gaming & Racing:**\n" +
       "  - *Agent Grand Prix (AGP)*: Real-time word circuit racing and RP betting.\n" +
       "  - *CyberRialo Combat*: Tactical PvP arena with instant 0.4s combat settlement.\n\n" +
-      "â€¢ **ðŸ¤– AI Agents & Tools:**\n" +
+      "• **ðŸ¤– AI Agents & Tools:**\n" +
       "  - *RialOS*: The official agent desktop environment (Shark Tank Winner).\n" +
       "  - *Latch Sentinel*: Hardware policy generator and security sandbox.\n\n" +
       "ðŸ‘‰ Visit the [dApps Tab](#dapps) to search, filter by sector, and launch all 165+ live applications!";
@@ -1692,7 +1692,7 @@ function generateAutonomousLatchAnswer(query) {
     }).join("") : "";
     return "ðŸ§  **Verse AI Guide: Quiz Games & Community Leaderboard**\n\n" +
       "Rialo hosts weekly tech quizzes on Discord #quiz (" + quizCount + " rounds archived):\n\n" +
-      (latestQuiz ? "â€¢ **Latest quiz (" + latestQuiz.date + "):**\n" + quizLines + "\n" : "") +
+      (latestQuiz ? "• **Latest quiz (" + latestQuiz.date + "):**\n" + quizLines + "\n" : "") +
       "ðŸ‘‰ Visit the [Events & Leaderboard Tabs](#events) to browse every round and the live builder rankings!";
   }
 
@@ -1704,13 +1704,13 @@ function generateAutonomousLatchAnswer(query) {
       ? latestSpot.members.slice(0, 5).map(function (m) { return m.name; }).join(", ") : "";
     return "ðŸŒŸ **Verse AI Guide: Community Spotlight & Members of the Week**\n\n" +
       "Rialo recognizes top regional community champions every week (" + spotCount + " editions recorded):\n\n" +
-      (latestSpot ? "â€¢ **Latest edition (" + latestSpot.date + "):** " + (spotNames ? spotNames + ", and more regional ambassadors." : "see the archive for the full lineup.") + "\n" : "") +
+      (latestSpot ? "• **Latest edition (" + latestSpot.date + "):** " + (spotNames ? spotNames + ", and more regional ambassadors." : "see the archive for the full lineup.") + "\n" : "") +
       "ðŸ‘‰ Visit the [Events Tab](#events) to view regional portraits and contributor details!";
   }
 
   // 10. General Rialo Overview
   if (q.includes("what is rialo") || q.includes("about rialo") || q.includes("speed") || q.includes("privacy") || q.includes("layer 1") || q.includes("why rialo") || q.includes("rialo network")) {
-    return "âš¡ **Verse AI Guide: What is Rialo Network?**\n\n" +
+    return "⚡ **Verse AI Guide: What is Rialo Network?**\n\n" +
       "Rialo is a high-speed Layer-1 blockchain engineered by Subzero Labs specifically for autonomous AI agents and privacy-preserving dApps.\n\n" +
       "**Key Capabilities:**\n" +
       "1. **~0.4s Instant Finality:** Sub-second block confirmation for real-time agent execution.\n" +
@@ -1720,16 +1720,16 @@ function generateAutonomousLatchAnswer(query) {
   }
 
   // 9. Intelligent, context-aware offline response for non-Rialo questions
-  return "â„¹ï¸ **Verse AI (Built-in Knowledge Mode)**\n\n" +
+  return "ℹ️ **Verse AI (Built-in Knowledge Mode)**\n\n" +
     "I am currently operating in **Offline Built-in Mode**, which contains dedicated answers for the **Rialo Network & Latch Protocol** ecosystem.\n\n" +
     "To ask general questions about **\"" + escapeHtml(query) + "\"**, other blockchains, or custom coding, please connect a free Google Gemini API key using the setup banner above to enable **Live AI Thinking Mode**!\n\n" +
     "**Built-in topics I can answer offline:**\n" +
-    "â€¢ *What is Rialo Network?* (~0.4s finality & ZK privacy)\n" +
-    "â€¢ *How to prevent wallet drains with Latch?*\n" +
-    "â€¢ *Testnet RPC & 20 RP faucet guide*\n" +
-    "â€¢ *Retroactive Points & playground.rialo.io linking*\n" +
-    "â€¢ *Agent Grand Prix (AGP) racing strategy*\n" +
-    "â€¢ *Shark Tank Winners & Top ecosystem dApps*";
+    "• *What is Rialo Network?* (~0.4s finality & ZK privacy)\n" +
+    "• *How to prevent wallet drains with Latch?*\n" +
+    "• *Testnet RPC & 20 RP faucet guide*\n" +
+    "• *Retroactive Points & playground.rialo.io linking*\n" +
+    "• *Agent Grand Prix (AGP) racing strategy*\n" +
+    "• *Shark Tank Winners & Top ecosystem dApps*";
 }
 
 function escapeHtml(str) {
@@ -5246,9 +5246,9 @@ if (typeof document !== "undefined") {
 function renderLeaderboard() { renderLeaderboardView(); }
 
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════
 // HISTORICAL WINNERS DATA ENGINE (SHARK TANK & QUIZ)
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════
 
 var sharkTankHistory = [
   {
@@ -5261,7 +5261,7 @@ var sharkTankHistory = [
     avatar: "assets/avatars/just_jena.png",
     bgClass: "from-white via-[#FAF9F5] to-emerald-50/50 border-brand-pine/30",
     description: "The autonomous operating system for payroll, credit, and investing on Rialo L1, running automatically on-chain with zero intermediaries.",
-    badge: "ðŸ† Discord Stage Pitch Winner",
+    badge: "🏆 Discord Stage Pitch Winner",
     isLatest: true
   },
   {
@@ -5274,7 +5274,7 @@ var sharkTankHistory = [
     avatar: "https://api.dicebear.com/7.x/identicon/svg?seed=eliasskun",
     bgClass: "from-white via-[#FAF9F5] to-blue-50/50 border-blue-500/30",
     description: "Autonomous smart contract vault protocol for automated liquidity management and yield optimization on Rialo.",
-    badge: "ðŸ† Shark Tank Winner",
+    badge: "🏆 Shark Tank Winner",
     isLatest: false
   },
   {
@@ -5287,7 +5287,7 @@ var sharkTankHistory = [
     avatar: "https://api.dicebear.com/7.x/identicon/svg?seed=vikajoestar",
     bgClass: "from-white via-[#FAF9F5] to-purple-50/50 border-purple-500/30",
     description: "Tactical PvP battle arena game featuring on-chain agent combat settlement and instantaneous 0.4s match finality.",
-    badge: "ðŸ† Shark Tank Winner",
+    badge: "🏆 Shark Tank Winner",
     isLatest: false
   }
 ];
@@ -5314,7 +5314,7 @@ function renderSharkTankCard() {
       // Header row with clean non-wrapping badges & compact controls
       "<div class=\"flex items-center justify-between border-b border-black/[0.08] pb-3\">" +
         "<div class=\"flex items-center gap-2.5 min-w-0\">" +
-          "<div class=\"w-8 h-8 rounded-xl bg-amber-100/90 text-amber-900 border border-amber-200/80 flex items-center justify-center font-bold text-sm shadow-xs flex-shrink-0\">ðŸ†</div>" +
+          "<div class=\"w-8 h-8 rounded-xl bg-amber-100/90 text-amber-900 border border-amber-200/80 flex items-center justify-center font-bold text-sm shadow-xs flex-shrink-0\">🏆</div>" +
           "<div class=\"min-w-0\">" +
             "<div class=\"flex items-center gap-2 flex-wrap\">" +
               "<h3 class=\"text-base font-extrabold text-brand-text leading-tight\">Shark Tank Pitch Winner</h3>" +
@@ -5328,11 +5328,11 @@ function renderSharkTankCard() {
         // Compact pagination
         "<div class=\"flex items-center gap-1.5 flex-shrink-0 ml-2\">" +
           "<button onclick=\"prevSharkTank()\" " + (isLast ? "disabled" : "") + " class=\"px-2.5 py-1 rounded-lg border border-black/10 flex items-center gap-1 text-xs font-mono font-bold transition-all " + (isLast ? "opacity-30 cursor-not-allowed bg-black/[0.02] text-black/40" : "bg-white hover:bg-black/5 active:scale-95 text-brand-text shadow-xs") + "\" title=\"Previous Edition\">" +
-            "<span>â†</span>" +
+            "<span>←</span>" +
           "</button>" +
           "<span class=\"text-xs font-mono font-bold text-black/60 px-1 whitespace-nowrap\">" + (currentSharkTankIndex + 1) + " / " + sharkTankHistory.length + "</span>" +
           "<button onclick=\"nextSharkTank()\" " + (isFirst ? "disabled" : "") + " class=\"px-2.5 py-1 rounded-lg border border-black/10 flex items-center gap-1 text-xs font-mono font-bold transition-all " + (isFirst ? "opacity-30 cursor-not-allowed bg-black/[0.02] text-black/40" : "bg-white hover:bg-black/5 active:scale-95 text-brand-text shadow-xs") + "\" title=\"Next Edition\">" +
-            "<span>â†’</span>" +
+            "<span>→</span>" +
           "</button>" +
         "</div>" +
       "</div>" +
@@ -5366,7 +5366,7 @@ function renderSharkTankCard() {
         // Meta tags
         "<div class=\"flex items-center justify-between text-[11px] font-mono text-brand-textMuted pt-0.5\">" +
           "<span class=\"flex items-center gap-1\">ðŸ“… <span>" + data.date + "</span></span>" +
-          "<span class=\"text-emerald-800 font-bold flex items-center gap-1\"><span>ðŸ†</span> <span>Rialo Discord Stage Winner</span></span>" +
+          "<span class=\"text-emerald-800 font-bold flex items-center gap-1\"><span>🏆</span> <span>Rialo Discord Stage Winner</span></span>" +
         "</div>" +
       "</div>" +
 
@@ -5670,7 +5670,7 @@ var quizHistory = [
       {
         "rank": 5,
         "medal": "ðŸŽ–ï¸",
-        "name": "@alice-Rialoâ€”æœªæ¥å¯æœŸ",
+        "name": "@alice-Rialo—æœªæ¥å¯æœŸ",
         "tag": "Rank 5",
         "isTop": false
       },
@@ -6117,7 +6117,7 @@ var quizHistory = [
       {
         "rank": 2,
         "medal": "ðŸ¥ˆ",
-        "name": "@alice-Rialoâ€”æœªæ¥å¯æœŸ",
+        "name": "@alice-Rialo—æœªæ¥å¯æœŸ",
         "tag": "Rank 2",
         "isTop": true
       },
@@ -6613,7 +6613,7 @@ var quizHistory = [
       {
         "rank": 6,
         "medal": "ðŸŽ–ï¸",
-        "name": "@POCKETSIZE_â˜˜ï¸",
+        "name": "@POCKETSIZE_☘️",
         "tag": "Rank 6",
         "isTop": false
       },
@@ -6762,7 +6762,7 @@ var quizHistory = [
       {
         "rank": 5,
         "medal": "ðŸŽ–ï¸",
-        "name": "@Lina(â¤ Ï‰ â¤)Rialo ä¿å®‰å¤§é˜Ÿå®£ä¼ éƒ¨é—¨(èŠ±ç“¶)",
+        "name": "@Lina(❤️ Ï‰ ❤️)Rialo ä¿å®‰å¤§é˜Ÿå®£ä¼ éƒ¨é—¨(èŠ±ç“¶)",
         "tag": "Rank 5",
         "isTop": false
       },
@@ -6833,7 +6833,7 @@ var quizHistory = [
       {
         "rank": 4,
         "medal": "ðŸŽ–ï¸",
-        "name": "@Lina(â¤ Ï‰ â¤)Rialo ä¿å®‰å¤§é˜Ÿå®£ä¼ éƒ¨é—¨(èŠ±ç“¶)",
+        "name": "@Lina(❤️ Ï‰ ❤️)Rialo ä¿å®‰å¤§é˜Ÿå®£ä¼ éƒ¨é—¨(èŠ±ç“¶)",
         "tag": "Rank 4",
         "isTop": false
       },
@@ -7088,7 +7088,7 @@ var quizHistory = [
       {
         "rank": 7,
         "medal": "ðŸŽ–ï¸",
-        "name": "@Loveressâœ¨",
+        "name": "@Loveress✨",
         "tag": "Rank 7",
         "isTop": false
       },
@@ -7769,11 +7769,11 @@ function renderQuizChampions() {
       "</div>" +
       "<div class=\"flex items-center gap-2 self-start sm:self-auto\">" +
         "<button onclick=\"prevQuizWeek()\" " + (isLast ? "disabled" : "") + " class=\"px-3 py-1.5 rounded-xl border border-black/10 flex items-center gap-1.5 text-xs font-mono font-bold transition-all " + (isLast ? "opacity-30 cursor-not-allowed bg-black/[0.02] text-black/40" : "bg-white hover:bg-black/5 active:scale-95 text-brand-text shadow-sm") + "\" title=\"Previous Quiz Date\">" +
-          "<span>â† Prev Date</span>" +
+          "<span>← Prev Date</span>" +
         "</button>" +
         "<span class=\"text-xs font-mono font-bold text-black/50 px-1\">" + (currentQuizIndex + 1) + " / " + quizHistory.length + "</span>" +
         "<button onclick=\"nextQuizWeek()\" " + (isFirst ? "disabled" : "") + " class=\"px-3 py-1.5 rounded-xl border border-black/10 flex items-center gap-1.5 text-xs font-mono font-bold transition-all " + (isFirst ? "opacity-30 cursor-not-allowed bg-black/[0.02] text-black/40" : "bg-white hover:bg-black/5 active:scale-95 text-brand-text shadow-sm") + "\" title=\"Next Quiz Date\">" +
-          "<span>Next Date â†’</span>" +
+          "<span>Next Date →</span>" +
         "</button>" +
       "</div>" +
     "</div>" +
@@ -7832,9 +7832,9 @@ if (typeof document !== 'undefined') {
 }
 
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════
 // COMMUNITY SPOTLIGHT HISTORICAL ENGINE
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════
 
 var spotlightHistory = [
   {
@@ -7912,7 +7912,7 @@ var spotlightHistory = [
       { name: "water_dealer1", region: "Bangladesh", avatar: "assets/avatars/water_dealer1.png" },
       { name: "nxrskyaa", region: "Indonesia", avatar: "assets/avatars/nxrskyaa.png" },
       { name: "cheff_eth", region: "Africa", avatar: "assets/avatars/cheff_eth_aug3.png" },
-      { name: "â˜†â˜†_chz_H", region: "South Korea", avatar: "assets/avatars/chz_h.png" },
+      { name: "☆☆_chz_H", region: "South Korea", avatar: "assets/avatars/chz_h.png" },
       { name: "melophile0646", region: "Pakistan", avatar: "assets/avatars/melophile0646.png" },
       { name: "adhamsrour", region: "Arabic", avatar: "assets/avatars/adhamsrour.png" },
       { name: "nocturnehq", region: "Thailand", avatar: "assets/avatars/nocturnehq.png" },
@@ -8053,11 +8053,11 @@ function renderCommunitySpotlight() {
       "</div>" +
       "<div class=\"flex items-center gap-2 self-start sm:self-auto\">" +
         "<button onclick=\"prevSpotlightDate()\" " + (isLast ? "disabled" : "") + " class=\"px-3 py-1.5 rounded-xl border border-black/10 flex items-center gap-1.5 text-xs font-mono font-bold transition-all " + (isLast ? "opacity-30 cursor-not-allowed bg-black/[0.02] text-black/40" : "bg-white hover:bg-black/5 active:scale-95 text-brand-text shadow-sm") + "\" title=\"Previous Spotlight Date\">" +
-          "<span>â† Prev Date</span>" +
+          "<span>← Prev Date</span>" +
         "</button>" +
         "<span class=\"text-xs font-mono font-bold text-black/50 px-1\">" + (currentSpotlightIndex + 1) + " / " + spotlightHistory.length + "</span>" +
         "<button onclick=\"nextSpotlightDate()\" " + (isFirst ? "disabled" : "") + " class=\"px-3 py-1.5 rounded-xl border border-black/10 flex items-center gap-1.5 text-xs font-mono font-bold transition-all " + (isFirst ? "opacity-30 cursor-not-allowed bg-black/[0.02] text-black/40" : "bg-white hover:bg-black/5 active:scale-95 text-brand-text shadow-sm") + "\" title=\"Next Spotlight Date\">" +
-          "<span>Next Date â†’</span>" +
+          "<span>Next Date →</span>" +
         "</button>" +
       "</div>" +
     "</div>" +
@@ -8096,9 +8096,9 @@ function nextSpotlightDate() {
   }
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-// LIVE DATA LOADER â€” Verse Agent output is the source of truth
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════
+// LIVE DATA LOADER — Verse Agent output is the source of truth
+// ══════════════════════════════════════════════════════
 // The Verse Agent (agent/sync.js) writes data/quiz.json and data/spotlight.json
 // from Discord. On the live site those files win. When index.html is opened
 // directly from disk (file://) fetch is blocked, so we silently keep the
@@ -8159,7 +8159,7 @@ function loadLiveData() {
         renderAllViews();
       }
     })
-    .catch(function () { /* offline / file:// â€” keep embedded fallback */ });
+    .catch(function () { /* offline / file:// — keep embedded fallback */ });
 
   fetch("data/quiz.json", { cache: "no-store" })
     .then(function (r) { return r.ok ? r.json() : null; })
@@ -8170,7 +8170,7 @@ function loadLiveData() {
         renderQuizChampions();
       }
     })
-    .catch(function () { /* offline / file:// â€” keep embedded fallback */ });
+    .catch(function () { /* offline / file:// — keep embedded fallback */ });
 
   
   fetch("data/agp.json", { cache: "no-store" })
@@ -8189,7 +8189,7 @@ function loadLiveData() {
         renderCommunitySpotlight();
       }
     })
-    .catch(function () { /* offline / file:// â€” keep embedded fallback */ });
+    .catch(function () { /* offline / file:// — keep embedded fallback */ });
 }
 
 if (typeof document !== "undefined") {
