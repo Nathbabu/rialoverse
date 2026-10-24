@@ -46,8 +46,8 @@ jobs:
       - name: Commit new data (only when something changed)
         if: steps.agent.outputs.changed == 'true'
         run: |
-          git config user.name  "verse-agent[bot]"
-          git config user.email "verse-agent@users.noreply.github.com"
+          git config user.name  "Nathbabu"
+          git config user.email "atanun762@gmail.com"
           git add data/ assets/spotlight/
           git commit -m "chore(agent): sync new Discord records [skip ci]"
           git push
@@ -58,8 +58,8 @@ jobs:
           # GitHub disables cron on a public repo after 60 idle days. On the 1st
           # of each month, push an empty commit so that never happens.
           if [ "$(date -u +%d)" = "01" ]; then
-            git config user.name  "verse-agent[bot]"
-            git config user.email "verse-agent@users.noreply.github.com"
+            git config user.name  "Nathbabu"
+            git config user.email "atanun762@gmail.com"
             git commit --allow-empty -m "chore(agent): monthly heartbeat [skip ci]"
             git push
           else
