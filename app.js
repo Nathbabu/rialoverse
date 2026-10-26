@@ -2049,7 +2049,7 @@ function getSeedFallbackData() {
       "username": "syf1213764315",
       "image": "https://pbs.twimg.com/profile_images/2010998012731146249/BSRCYUaT_400x400.jpg",
       "xLink": "https://x.com/ayun24335167",
-      "about": "web3亏钱者"
+      "about": "Rialo Web3 Ecosystem Developer"
     },
     "loves": 3,
     "views": 10,
@@ -2382,7 +2382,7 @@ function getSeedFallbackData() {
       "username": "tenoli0424",
       "image": "https://pbs.twimg.com/profile_images/2036224208376848384/8clGeaSJ_400x400.jpg",
       "xLink": "https://x.com/dwowmuch",
-      "about": "코인과 AI를 좋아하는 INFP (헛소리 심함) D is for Dogecoin"
+      "about": "AI & Web3 enthusiast building prediction markets"
     },
     "loves": 0,
     "views": 3,
@@ -2448,7 +2448,7 @@ function getSeedFallbackData() {
     "gitRepo": "https://github.com/GeorgeScoote/rialo-",
     "liveLink": "https://rialo-qrv4.vercel.app/",
     "builder": {
-      "name": "ウルトラマンエース",
+      "name": "Ace Builder",
       "username": "memeswapbitj6842",
       "image": "https://pbs.twimg.com/profile_images/2029092326828851202/e9ytdsyv_400x400.jpg",
       "xLink": "https://x.com/TeenaTiesha",
@@ -2606,7 +2606,7 @@ function getSeedFallbackData() {
       "username": "syf1213764315",
       "image": "https://pbs.twimg.com/profile_images/2010998012731146249/BSRCYUaT_400x400.jpg",
       "xLink": "https://x.com/ayun24335167",
-      "about": "web3亏钱者"
+      "about": "Rialo Web3 Ecosystem Developer"
     },
     "loves": 0,
     "views": 2,
@@ -2870,7 +2870,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialo Playground Automation",
-    "description": "Multi-account terminal client (TUI) untuk Rialo Playground — cek wallet, klaim faucet, dan pantau points dari satu terminal. Go + Bubble Tea + Camoufox.",
+    "description": "Multi-account terminal client (TUI) for Rialo Playground — check wallet balances, claim faucet funds, and monitor testnet points and tasks.",
     "category": [
       "Tooling",
       "AI Agent"
@@ -3019,7 +3019,7 @@ function getSeedFallbackData() {
     "gitRepo": "https://github.com/Jennivarl/Rialo-Weather-Insurance",
     "liveLink": "https://payonrain.vercel.app/",
     "builder": {
-      "name": "varl𓏲ּ𝄢",
+      "name": "varl",
       "username": "varl999",
       "image": "https://pbs.twimg.com/profile_images/2017108189053956096/Xhz4pMt0_400x400.jpg",
       "xLink": "https://x.com/varl999",
@@ -3452,7 +3452,7 @@ function getSeedFallbackData() {
   },
   {
     "title": "Rialobounty",
-    "description": "Açık kaynağa katkı ver, RIALO ile kazan. Şirketler ödül koyar, geliştiriciler GitHub üzerinden çözüm gönderir, en iyi çözüm seçilir ve ödeme zincir üstünde otomatik yapılır.",
+    "description": "Contribute to open source and earn with RIALO. Companies post bounties, developers submit solutions via GitHub, and payouts settle automatically on-chain.",
     "category": [
       "Tooling",
       "AI Agent"
@@ -4837,8 +4837,8 @@ function getSeedFallbackData() {
     "primarySector": "Web3 Gaming & On-Chain Arcade"
   },
   {
-    "title": "Rialo Ecosystem Project",
-    "description": "https://x.com/AyushSingh3291/status/1978041220707361103?t=M6wG686_flACcJmMlI44tw&s=19\n\nCreated a Flap game for Rialo fam \n\nGame link: https://yaaas32.github.io/Rialoflap/\n\n<@862550907349893151> \nPlease check ser!",
+    "title": "Rialo Flap",
+    "description": "A fast-paced Rialo-themed flapping flyer game built for the Rialo community — navigate obstacles and log achievements.",
     "category": [
       "Community dApp",
       "Game/Tooling"
@@ -4952,8 +4952,8 @@ function getSeedFallbackData() {
     "primarySector": "Developer SDKs & Tooling"
   },
   {
-    "title": "Im made mini game escape from orca",
-    "description": "Im made mini game escape from orca\n\nkindly check please <@862550907349893151> , <@740494723080388638> , <@953512127983915009> \n\nhttps://x.com/Rickstrife08/status/1977768224143048780\n\ndeployment link on X\n\nrepository https://github.com/Rickstrifes/Rialo",
+    "title": "Escape From Orca",
+    "description": "An on-chain mini survival game built for Rialo community — avoid obstacles, survive underwater hazards, and compete for high scores.",
     "category": [
       "Community dApp",
       "Game/Tooling"
