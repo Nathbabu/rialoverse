@@ -1,9 +1,90 @@
 [
   {
-    "date": "October 23, 2026",
+    "date": "October 30, 2026",
     "attestedBy": "@! Rollins👑 in #quiz",
     "participants": "",
     "isLatest": true,
+    "champions": [
+      {
+        "rank": 1,
+        "medal": "🥇",
+        "name": "@ecamli",
+        "tag": "Rank 1",
+        "isTop": true
+      },
+      {
+        "rank": 2,
+        "medal": "🥈",
+        "name": "@Zk",
+        "tag": "Rank 2",
+        "isTop": true
+      },
+      {
+        "rank": 3,
+        "medal": "🥉",
+        "name": "@JUST-ABDO",
+        "tag": "Rank 3",
+        "isTop": true
+      },
+      {
+        "rank": 4,
+        "medal": "🏅",
+        "name": "@vita5000 | 리알로와 사는 비타",
+        "tag": "Rank 4",
+        "isTop": false
+      },
+      {
+        "rank": 5,
+        "medal": "🏅",
+        "name": "@dsadsubeybi",
+        "tag": "Rank 5",
+        "isTop": false
+      },
+      {
+        "rank": 6,
+        "medal": "🏅",
+        "name": "@Jo",
+        "tag": "Rank 6",
+        "isTop": false
+      },
+      {
+        "rank": 7,
+        "medal": "🏅",
+        "name": "@Ts",
+        "tag": "Rank 7",
+        "isTop": false
+      },
+      {
+        "rank": 8,
+        "medal": "🏅",
+        "name": "@songsong",
+        "tag": "Rank 8",
+        "isTop": false
+      },
+      {
+        "rank": 9,
+        "medal": "🏅",
+        "name": "@『𝙹𝚒𝚜𝚊𝚗』 𝙻𝚊𝚝𝚌𝚑",
+        "tag": "Rank 9",
+        "isTop": false
+      },
+      {
+        "rank": 10,
+        "medal": "🏅",
+        "name": "@UCIHA IRVAN TITUT",
+        "tag": "Rank 10",
+        "isTop": false
+      }
+    ],
+    "source": "verse-agent",
+    "sourceMessageId": "1565766954860421121",
+    "syncedAt": "2026-10-30T22:18:45.392Z"
+  },
+  {
+    "date": "October 23, 2026",
+    "attestedBy": "@! Rollins👑 in #quiz",
+    "participants": "",
+    "isLatest": false,
     "champions": [
       {
         "rank": 1,
