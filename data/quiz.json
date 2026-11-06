@@ -1,9 +1,90 @@
 [
   {
+    "date": "November 6, 2026",
+    "attestedBy": "@Koushik Nir in #quiz",
+    "participants": "",
+    "isLatest": true,
+    "champions": [
+      {
+        "rank": 1,
+        "medal": "🥇",
+        "name": "@Gundar | Rialo",
+        "tag": "Rank 1",
+        "isTop": true
+      },
+      {
+        "rank": 2,
+        "medal": "🥈",
+        "name": "@KingJ |  🇨🇳",
+        "tag": "Rank 2",
+        "isTop": true
+      },
+      {
+        "rank": 3,
+        "medal": "🥉",
+        "name": "@Tahsin | Rialo",
+        "tag": "Rank 3",
+        "isTop": true
+      },
+      {
+        "rank": 4,
+        "medal": "🏅",
+        "name": "@Mirel",
+        "tag": "Rank 4",
+        "isTop": false
+      },
+      {
+        "rank": 5,
+        "medal": "🏅",
+        "name": "@midmintmick!!!🤐",
+        "tag": "Rank 5",
+        "isTop": false
+      },
+      {
+        "rank": 6,
+        "medal": "🏅",
+        "name": "@Fay",
+        "tag": "Rank 6",
+        "isTop": false
+      },
+      {
+        "rank": 7,
+        "medal": "🏅",
+        "name": "@illonash",
+        "tag": "Rank 7",
+        "isTop": false
+      },
+      {
+        "rank": 8,
+        "medal": "🏅",
+        "name": "@Noël 🎅",
+        "tag": "Rank 8",
+        "isTop": false
+      },
+      {
+        "rank": 9,
+        "medal": "🏅",
+        "name": "@mack",
+        "tag": "Rank 9",
+        "isTop": false
+      },
+      {
+        "rank": 10,
+        "medal": "🏅",
+        "name": "@seven7 橘子 | Rialo保安大队电棍组",
+        "tag": "Rank 10",
+        "isTop": false
+      }
+    ],
+    "source": "verse-agent",
+    "sourceMessageId": "1568305373532655616",
+    "syncedAt": "2026-11-06T23:07:16.166Z"
+  },
+  {
     "date": "October 30, 2026",
     "attestedBy": "@! Rollins👑 in #quiz",
     "participants": "",
-    "isLatest": true,
+    "isLatest": false,
     "champions": [
       {
         "rank": 1,
